@@ -515,7 +515,11 @@
         font-size: 1.2rem;
     }
 }
-
+@media (max-width: 576px) {
+    .slider-btn {
+        display: none;
+    }
+}
     
     /* Products Section with ISME Colors */
 
