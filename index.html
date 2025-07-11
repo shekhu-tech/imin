@@ -80,11 +80,12 @@
     <!-- Image Slider -->
         <div class="image-slider" id="slider">
             <div class="slider-background">
-                <img src="e1.jpg" alt="Lottery Ticket" class="active">
-                <img src="e2.jpg" alt="Winning Numbers" class="active">
-                <img src="e3.jpg" alt="prize" class="active">
-                <img src="e4.jpg" alt="Money Rain" class="active">
-                <img src="e5.jpg" alt="Celebration" class="active">
+<img src="e1.jpg" alt="Lottery Ticket" class="active" loading="lazy">
+    <img src="e2.jpg" alt="Winning Numbers" loading="lazy">
+    <img src="e3.jpg" alt="Prize Celebration" loading="lazy">
+    <img src="e4.jpg" alt="Money Rain" loading="lazy">
+    <img src="e5.jpg" alt="Big Win" loading="lazy">
+
             </div>
             
             <div class="slider-overlay">
@@ -116,8 +117,28 @@
             </div>
         </div>
     </div>
-</head>
-<body>
+    <script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slider-background img');
+    const totalSlides = slides.length;
+    const slideInterval = 7000;
+
+    function showSlide(index) {
+        slides.forEach((img, i) => {
+            img.classList.remove('active');
+            if (i === index) {
+                img.classList.add('active');
+            }
+        });
+    }
+
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % totalSlides;
+        showSlide(currentSlide);
+    }
+
+    setInterval(nextSlide, slideInterval);
+</script>
     <div id="header-container"></div>
     <br>
     <main>
