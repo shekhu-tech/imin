@@ -72,9 +72,8 @@ function injectFooter() {
   footerContainer.innerHTML = `
     <footer id="site-footer">
       <div class="footer-container">
-        <div class="footer-logo">LivFit.pro</div>
-        <p class="footer-description">
-          Where Wellness Meets Lifestyle. Unlock your healthiest, most vibrant self with LivFit.pro — your ultimate destination for holistic fitness, mindful living, and powerful transformation.
+        <div class="footer-logo"></div>
+        <p>
         </p>
         <div class="footer-buttons">
   <a href="electronics.html" class="footer-btn">Electronics</a>
