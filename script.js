@@ -92,15 +92,6 @@ function injectFooter() {
   <a href="donate.html" class="footer-btn">Donate</a>
   <a href="policy.html" class="footer-btn">Privacy Policy</a>
 </div>
-
-
-        <div class="social-links">
-          <a href="#"><i class="fab fa-facebook-f"></i></a>
-          <a href="#"><i class="fab fa-twitter"></i></a>
-          <a href="#"><i class="fab fa-instagram"></i></a>
-          <a href="#"><i class="fab fa-youtube"></i></a>
-          <a href="#"><i class="fab fa-pinterest"></i></a>
-        </div>
         <div class="copyright">
           &copy; ${new Date().getFullYear()} LivFit.pro. All rights reserved.
         </div>
