@@ -135,10 +135,11 @@
     <br>
     <main>
         <style>
-  .products-section {
+  /* ======= Main Section ======= */
+.products-section {
   padding: 4rem 2rem;
   text-align: center;
-  background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+  background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
 }
 
 .section-title {
@@ -150,7 +151,7 @@
   -webkit-text-fill-color: transparent;
 }
 
-/* Layout for 3 cards per row */
+/* ======= Card Container (3 per row) ======= */
 .cards-container1 {
   display: flex;
   flex-wrap: wrap;
@@ -161,20 +162,21 @@
 }
 
 .cards-container1 > .card {
-  width: calc(33.333% - 1.34rem); /* Ensures exactly 3 per row with gap */
+  width: calc(33.333% - 1.34rem);
   box-sizing: border-box;
   text-decoration: none;
 }
 
-/* Card style */
+/* ======= Card Styling ======= */
 .card {
   position: relative;
   border-radius: 20px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
   height: 270px;
+  max-width: 399px;
+  width: 100%;
   background-color: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -188,47 +190,50 @@
   box-shadow: 0 0 30px #ff4b2b;
 }
 
+/* ======= Background Image (65%) ======= */
 .card-background {
-  position: absolute;
-  top: 0;
-  left: 0;
+  height: 65%;
   width: 100%;
-  height: 100%;
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
   opacity: 0.7;
-  z-index: 1;
-  background-color: #000; /* fallback */
+  background-color: #000;
 }
 
+/* ======= Card Content (35%) ======= */
 .card-content2 {
-  padding: 1rem;
+  height: 35%;
+  background: rgba(0, 0, 0, 0.85);
   color: white;
-  position: relative;
-  background: rgba(0, 0, 0, 0.8);
+  padding: 0.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   z-index: 2;
   text-align: center;
 }
 
 .card-content2 h3 {
-  font-size: 1.4rem;
-  margin-bottom: 0.6rem;
+  font-size: 1.2rem;
+  margin-bottom: 6px;
   color: white;
-  text-decoration: none;
-  border: none;
 }
 
+/* ======= Full-Width Button Styling ======= */
 .btn {
-  display: inline-block;
-  padding: 8px 20px;
-  border-radius: 30px;
-  background: #ff416c;
+  display: block;
   width: 100%;
+  font-size: 0.95rem;
+  padding: 10px 0;
+  border-radius: 999px;
+  background: #ff416c;
   color: white;
   font-weight: bold;
+  text-align: center;
   text-decoration: none;
-  transition: background 0.3s ease;
-  font-size: 1rem;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
 .btn:hover {
@@ -236,7 +241,7 @@
   box-shadow: 0 0 10px #ff4b2b;
 }
 
-/* Triangle ribbon (top-left) */
+/* ======= Top-Left Ribbon ======= */
 .corner-ribbon {
   position: absolute;
   top: 0;
@@ -248,7 +253,7 @@
   z-index: 10;
 }
 
-/* Pill-style badge (top-right) */
+/* ======= Top-Right Badge ======= */
 .card-category-badge {
   position: absolute;
   top: 12px;
@@ -264,7 +269,7 @@
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
 
-/* Responsive: tablet & below */
+/* ======= Responsive: Tablet & Below ======= */
 @media (max-width: 1024px) {
   .cards-container1 > .card {
     width: 100%;
@@ -272,12 +277,29 @@
   }
 
   .card {
-    min-height: 250px;
-    height: auto;
+    height: 270px;
+  }
+
+  .card-background {
+    height: 65%;
+  }
+
+  .card-content2 {
+    height: 35%;
+    padding: 0.4rem;
+  }
+
+  .card-content2 h3 {
+    font-size: 1.1rem;
+  }
+
+  .btn {
+    font-size: 0.9rem;
+    padding: 8px 0;
   }
 }
 
-/* Responsive: phones */
+/* ======= Responsive: Mobile Phones ======= */
 @media (max-width: 480px) {
   .products-section {
     padding: 2rem 1rem;
@@ -285,24 +307,19 @@
 
   .section-title {
     font-size: 1.8rem;
-  }
-
-  .card-content2 h3 {
-    font-size: 1.1rem;
-    margin-bottom: 0.5rem;
-  }
-
-  .btn {
-    font-size: 0.9rem;
-    padding: 8px 16px;
+    text-align: center;
   }
 
   .corner-ribbon {
     border-top: 40px solid #c62828;
     border-right: 40px solid transparent;
   }
-}
 
+  .btn {
+    font-size: 0.85rem;
+    padding: 8px 0;
+  }
+}
 </style>
 
 <body>
