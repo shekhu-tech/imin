@@ -32,6 +32,7 @@
 <meta name="twitter:description" content="Join LuckyWin to win gold coins, bikes, trips, and cash prizes. It’s your chance to win big every week!" />
 <meta name="twitter:image" content="https://luckywin.pro/images/twitter-card.jpg" />
 <meta name="twitter:creator" content="@luckywin" />
+<link rel="stylesheet" href="styles.css">
 
 <!-- Structured Data (JSON-LD) -->
 <script type="application/ld+json">
@@ -58,7 +59,7 @@
 
   <!-- FontAwesome & Styles -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <link rel="stylesheet" href="styles.css" />
+  
 
   
 
@@ -133,120 +134,244 @@
     <div id="header-container"></div>
     <br>
     <main>
-        <div class="container">
-        <h2 class="section-title">Win Amazing Prizes</h2>
-        
-        <div class="container1">
-        <!-- Features Section -->
-        <section class="features-section">
-            <h2 class="section-title">Why Choose Us?</h2>
-            <div class="cards-container">
-                <!-- Trust & Security Card -->
-                <div class="feature-card">
-                    <span class="jackpot-badge">Top Rated</span>
-                    <div class="card-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <div class="card-content1">
-                        <h3>Trusted & Secure</h3>
-                        <p>Licensed and regulated lottery platform with bank-level security to protect your transactions and personal information. Your safety is our top priority.</p>
-                    </div>
-                </div>
-                
-                <!-- Big Jackpots Card -->
-                <div class="feature-card">
-                    <span class="jackpot-badge">Massive Wins</span>
-                    <div class="card-icon">
-                        <i class="fas fa-trophy"></i>
-                    </div>
-                    <div class="card-content1">
-                        <h3>Life-Changing Jackpots</h3>
-                        <p>We offer the biggest jackpots in the industry with record-breaking prizes. Join millions of players chasing life-changing winnings every day.</p>
-                    </div>
-                </div>
-                
-                <!-- Instant Payouts Card -->
-                <div class="feature-card">
-                    <span class="jackpot-badge">Fast Cash</span>
-                    <div class="card-icon">
-                        <i class="fas fa-bolt"></i>
-                    </div>
-                    <div class="card-content1">
-                        <h3>Instant Payouts</h3>
-                        <p>Get your winnings instantly with our lightning-fast payment system. No waiting periods - your money is transferred within minutes of winning!</p>
-                    </div>
-                </div>
-                
-                <!-- Variety of Games Card -->
-                <div class="feature-card">
-                    <span class="jackpot-badge">Endless Fun</span>
-                    <div class="card-icon">
-                        <i class="fas fa-dice"></i>
-                    </div>
-                    <div class="card-content1">
-                        <h3>Endless Game Variety</h3>
-                        <p>From daily draws to massive jackpot games, scratch cards to number games - we offer the widest selection of lottery games anywhere.</p>
-                    </div>
-                </div>
-                
-                <!-- Mobile Experience Card -->
-                <div class="feature-card">
-                    <span class="jackpot-badge">Play Anywhere</span>
-                    <div class="card-icon">
-                        <i class="fas fa-mobile-alt"></i>
-                    </div>
-                    <div class="card-content1">
-                        <h3>Seamless Mobile Play</h3>
-                        <p>Play your favorite lottery games anywhere, anytime with our award-winning mobile app. Never miss a draw with push notifications.</p>
-                    </div>
-                </div>
-                
-                <!-- Customer Support Card -->
-                <div class="feature-card">
-                    <span class="jackpot-badge">24/7 Support</span>
-                    <div class="card-icon">
-                        <i class="fas fa-headset"></i>
-                    </div>
-                    <div class="card-content">
-                        <h3>Dedicated Support</h3>
-                        <p>Our lottery experts are available 24/7 to answer your questions. Get instant help via live chat, phone, or email whenever you need it.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
+        <style>
+  .products-section {
+  padding: 4rem 2rem;
+  text-align: center;
+  background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+}
 
-    <script>
-        // Add animations to cards
-        document.addEventListener('DOMContentLoaded', function() {
-            const cards = document.querySelectorAll('.feature-card');
-            
-            // Initial animation on page load
-            setTimeout(() => {
-                cards.forEach((card, index) => {
-                    setTimeout(() => {
-                        card.style.opacity = "1";
-                        card.style.transform = "translateY(0)";
-                    }, 200 * index);
-                });
-            }, 500);
-            
-            // Add hover effect
-            cards.forEach(card => {
-                card.style.opacity = "0";
-                card.style.transform = "translateY(30px)";
-                card.style.transition = "all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275)";
-                
-                card.addEventListener('mouseenter', function() {
-                    this.style.transform = 'translateY(-15px)';
-                });
-                
-                card.addEventListener('mouseleave', function() {
-                    this.style.transform = 'translateY(0)';
-                });
-            });
-        });
-    </script>
+.section-title {
+  font-size: 2.5rem;
+  color: #fff;
+  margin-bottom: 3rem;
+  background: linear-gradient(to right, #ff416c, #ff4b2b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Layout for 3 cards per row */
+.cards-container1 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.cards-container1 > .card {
+  width: calc(33.333% - 1.34rem); /* Ensures exactly 3 per row with gap */
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+/* Card style */
+.card {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 270px;
+  background-color: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-decoration: none;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 30px #ff4b2b;
+}
+
+.card-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.7;
+  z-index: 1;
+  background-color: #000; /* fallback */
+}
+
+.card-content2 {
+  padding: 1rem;
+  color: white;
+  position: relative;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 2;
+  text-align: center;
+}
+
+.card-content2 h3 {
+  font-size: 1.4rem;
+  margin-bottom: 0.6rem;
+  color: white;
+  text-decoration: none;
+  border: none;
+}
+
+.btn {
+  display: inline-block;
+  padding: 8px 20px;
+  border-radius: 30px;
+  background: #ff416c;
+  width: 100%;
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background 0.3s ease;
+  font-size: 1rem;
+}
+
+.btn:hover {
+  background: #ff4b2b;
+  box-shadow: 0 0 10px #ff4b2b;
+}
+
+/* Triangle ribbon (top-left) */
+.corner-ribbon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-top: 60px solid #c62828;
+  border-right: 60px solid transparent;
+  z-index: 10;
+}
+
+/* Pill-style badge (top-right) */
+.card-category-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: #c62828;
+  color: white;
+  font-weight: bold;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  z-index: 10;
+  white-space: nowrap;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive: tablet & below */
+@media (max-width: 1024px) {
+  .cards-container1 > .card {
+    width: 100%;
+    max-width: 90%;
+  }
+
+  .card {
+    min-height: 250px;
+    height: auto;
+  }
+}
+
+/* Responsive: phones */
+@media (max-width: 480px) {
+  .products-section {
+    padding: 2rem 1rem;
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+  }
+
+  .card-content2 h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .btn {
+    font-size: 0.9rem;
+    padding: 8px 16px;
+  }
+
+  .corner-ribbon {
+    border-top: 40px solid #c62828;
+    border-right: 40px solid transparent;
+  }
+}
+
+</style>
+
+<body>
+  <section class="products-section">
+    <h2 class="section-title">Win-Amazing-Prizes</h2>
+    <div class="cards-container1">
+      <!-- Single Card -->
+      <a href="gold.html" class="card">
+        <div class="corner-ribbon"></div>
+        <div class="card-category-badge">Gold & Bullion</div>
+        <div class="card-background" style="background-image: url('#');"></div>
+        <div class="card-content2">
+          <h3>Activate Yourself</h3>
+          <span class="btn">Stretching</span>
+        </div>
+      </a>
+
+      <a href="gold.html" class="card">
+        <div class="corner-ribbon"></div>
+        <div class="card-category-badge">Gold & Bullion</div>
+        <div class="card-background" style="background-image: url('#');"></div>
+        <div class="card-content2">
+          <h3>Activate Yourself</h3>
+          <span class="btn">Stretching</span>
+        </div>
+      </a>
+
+      <a href="gold.html" class="card">
+        <div class="corner-ribbon"></div>
+        <div class="card-category-badge">Gold & Bullion</div>
+        <div class="card-background" style="background-image: url('#');"></div>
+        <div class="card-content2">
+          <h3>Activate Yourself</h3>
+          <span class="btn">Stretching</span>
+        </div>
+      </a>
+
+      <a href="gold.html" class="card">
+        <div class="corner-ribbon"></div>
+        <div class="card-category-badge">Gold & Bullion</div>
+        <div class="card-background" style="background-image: url('#');"></div>
+        <div class="card-content2">
+          <h3>Activate Yourself</h3>
+          <span class="btn">Stretching</span>
+        </div>
+      </a>
+
+      <a href="gold.html" class="card">
+        <div class="corner-ribbon"></div>
+        <div class="card-category-badge">Gold & Bullion</div>
+        <div class="card-background" style="background-image: url('#');"></div>
+        <div class="card-content2">
+          <h3>Activate Yourself</h3>
+          <span class="btn">Stretching</span>
+        </div>
+      </a>
+
+      <a href="gold.html" class="card">
+        <div class="corner-ribbon"></div>
+        <div class="card-category-badge">Gold & Bullion</div>
+        <div class="card-background" style="background-image: url('#');"></div>
+        <div class="card-content2">
+          <h3>Activate Yourself</h3>
+          <span class="btn">Stretching</span>
+        </div>
+      </a>   
+    </div>
+  </section>
+
 
     <!-- Features Section -->
     <style>
@@ -488,8 +613,6 @@
             }
         }
     </style>
-</head>
-<body>
     <div class="container1">
         <!-- Features Section -->
         <section class="features-section">
@@ -568,7 +691,7 @@
                 </div>
             </div>
         </section>
-    </div>
+    </div>    
 
     <script>
         // Add animations to cards
@@ -601,7 +724,7 @@
             });
         });
     </script>
-
+ </main>
   
    
     <!-- Footer will be injected here -->
