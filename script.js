@@ -281,7 +281,7 @@ function injectProductSection() {
     <section class="products-section">
       <h2 class="section-title">Win-Amazing-Prizes</h2>
       <div class="cards-container1">
-        <a href="p1.html" class="card">
+        <a href="proone.html" class="card">
           <div class="corner-ribbon"></div>
           <div class="card-category-badge">Gold & Bullion</div>
           <div class="card-background" style="background-image: url('rn.png');"></div>
