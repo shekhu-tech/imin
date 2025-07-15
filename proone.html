@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>LivFit Lottery - Win Amazing Prizes!</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link rel="stylesheet" href="styles.css">
   <style>
     :root {
       --primary: #4a148c;
@@ -20,10 +19,15 @@
       --transition: all 0.3s ease;
     }
 
-    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
 
     body {
-      background: linear-gradient(135deg, #000000, #1a001f, #0c0012);
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
       color: var(--light);
       line-height: 1.6;
       overflow-x: hidden;
@@ -35,7 +39,63 @@
       visibility: hidden;
     }
 
-   
+    /* Header Styles */
+    header {
+      background: rgba(26, 26, 46, 0.9);
+      backdrop-filter: blur(10px);
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      padding: 1rem 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: var(--shadow);
+      border-bottom: 1px solid rgba(123, 31, 162, 0.3);
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--light);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+    }
+
+    .logo i {
+      color: var(--accent);
+      margin-right: 10px;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+    }
+
+    .nav-links li {
+      margin-left: 1.5rem;
+    }
+
+    .nav-links a {
+      color: var(--light);
+      text-decoration: none;
+      font-weight: 500;
+      transition: var(--transition);
+      padding: 0.5rem 1rem;
+      border-radius: 30px;
+    }
+
+    .nav-links a:hover {
+      background: rgba(123, 31, 162, 0.3);
+    }
+
+    .hamburger {
+      display: none;
+      cursor: pointer;
+      font-size: 1.5rem;
+    }
 
     /* Main Content */
     main {
@@ -486,6 +546,70 @@
       background: rgba(0, 0, 0, 0.1);
     }
 
+    /* Footer */
+    footer {
+      background: rgba(26, 26, 46, 0.9);
+      padding: 3rem 5% 2rem;
+      margin-top: 4rem;
+      border-top: 1px solid rgba(123, 31, 162, 0.3);
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-bottom: 2rem;
+    }
+
+    .footer-column h3 {
+      color: #bb86fc;
+      margin-bottom: 1.5rem;
+      font-size: 1.3rem;
+    }
+
+    .footer-column p, .footer-column a {
+      color: #e0e0e0;
+      margin-bottom: 0.8rem;
+      display: block;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .footer-column a:hover {
+      color: var(--accent);
+    }
+
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 1rem;
+    }
+
+    .social-links a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      transition: var(--transition);
+    }
+
+    .social-links a:hover {
+      background: var(--accent);
+      transform: translateY(-3px);
+    }
+
+    .copyright {
+      text-align: center;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: #b0b0b0;
+      font-size: 0.9rem;
+    }
+
     /* Responsive Styles */
     @media (max-width: 992px) {
       .slider-overlay h2 {
@@ -562,10 +686,22 @@
       }
     }
   </style>
-
+</head>
+<body>
   <!-- Header -->
-  <!-- Header will be injected here -->
-  <div id="header-container"></div>
+  <header>
+    <a href="#" class="logo"><i class="fas fa-ticket-alt"></i>LivFit Lottery</a>
+    <ul class="nav-links">
+      <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
+      <li><a href="#"><i class="fas fa-gift"></i> Prizes</a></li>
+      <li><a href="#"><i class="fas fa-history"></i> Winners</a></li>
+      <li><a href="#"><i class="fas fa-info-circle"></i> About</a></li>
+      <li><a href="#"><i class="fas fa-phone"></i> Contact</a></li>
+    </ul>
+    <div class="hamburger">
+      <i class="fas fa-bars"></i>
+    </div>
+  </header>
 
   <!-- Hidden H1 for SEO -->
   <h1 class="hidden-h1">No Any Subscription Gym, Yoga, Calisthenics, Detox & Diet Programs | LivFit.pro</h1>
@@ -575,11 +711,40 @@
     <!-- Image Slider -->
     <div class="image-slider" id="slider">
       <div class="slider-background">
-        <img src="e1.jpg" alt="Lottery Ticket" class="active" loading="lazy">
-        <img src="e2.jpg" alt="Winning Numbers" loading="lazy">
-        <img src="e3.jpg" alt="Prize Celebration" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1589998059171-988d887df646?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Lottery Ticket" class="active" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1593111774240-d529f12f5ad8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Winning Numbers" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1589998059171-988d887df646?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Prize Celebration" loading="lazy">
       </div>
-  
+      <div class="slider-overlay">
+        <h2>Win the Ultimate Fitness Package!</h2>
+        <p>Enter now for a chance to win premium gym equipment, personalized training sessions, and a complete home gym setup worth $5,000!</p>
+      </div>
+      <div class="slider-controls">
+        <button id="prev-slide"><i class="fas fa-chevron-left"></i></button>
+        <button id="next-slide"><i class="fas fa-chevron-right"></i></button>
+      </div>
+    </div>
+    
+    <!-- Lottery Stats -->
+    <div class="lottery-stats">
+      <div class="stat-card">
+        <h3>Current Jackpot</h3>
+        <p>$245M</p>
+      </div>
+      <div class="stat-card">
+        <h3>Next Draw</h3>
+        <p>July 15</p>
+      </div>
+      <div class="stat-card">
+        <h3>Last Winner</h3>
+        <p>$189M</p>
+      </div>
+      <div class="stat-card">
+        <h3>Tickets Sold</h3>
+        <p>4.2M</p>
+      </div>
+    </div>
+    
     <!-- Product Section -->
     <section class="product-section">
       <div class="product-header">
@@ -625,245 +790,90 @@
       </div>
     </section>
     
-    <!-- Current Lottery Tickets Section -->
-  
-    
-  
-<style>
-/* ======= Main Section ======= */
-.products-section {
-  padding: 4rem 2rem;
-  text-align: center;
-  background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
-  
-}
-
-/* ======= Title Gradient ======= */
-.section-title {
-  font-size: 2.5rem;
-  margin-bottom: 3rem;
-  background: linear-gradient(90deg, #ffd700, #ff4b2b, #ff00cc);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-/* ======= Card Layout ======= */
-.cards-container1 {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.cards-container1 > .card {
-  width: calc(33.333% - 1.34rem);
-  box-sizing: border-box;
-  text-decoration: none;
-}
-
-/* ======= Card Styling ======= */
-.card {
-  position: relative;
-  border-radius: 20px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  height: 270px;
-  max-width: 399px;
-  width: 100%;
-  background: linear-gradient(145deg, #1a001f, #0d0d0d);
-  border: 2px solid rgba(255, 215, 0, 0.2);
-  box-shadow: 0 0 25px rgba(255, 215, 0, 0.15), 0 0 10px #ff4b2b33;
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-  backdrop-filter: blur(10px);
-}
-
-.card:hover {
-  transform: scale(1.07);
-  border-color: #ffd700;
-  box-shadow: 0 0 40px #ffd700, 0 0 15px #ff0080;
-}
-
-/* ======= Background Image Area ======= */
-.card-background {
-  height: 65%;
-  width: 100%;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  opacity: 0.85;
-  background-color: #000;
-}
-
-/* ======= Card Content ======= */
-.card-content2 {
-  height: 35%;
-  background: linear-gradient(to right, #190033, #0d001a);
-  color: white;
-  padding: 0.6rem 1rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border-top: 1px solid #ff00cc;
-  text-align: center;
-}
-
-.card-content2 h3 {
-  font-size: 1.2rem;
-  margin-bottom: 6px;
-  color: #ffffff;
-  text-shadow: 0 0 8px rgba(255, 0, 255, 0.2);
-  letter-spacing: 0.5px;
-}
-
-/* ======= Button Style ======= */
-.btn {
-  display: block;
-  width: 100%;
-  font-size: 0.95rem;
-  padding: 10px 0;
-  border-radius: 999px;
-  background: linear-gradient(90deg, #ff9000, #ff4b2b, #ff0080);
-  color: white;
-  font-weight: bold;
-  text-align: center;
-  text-decoration: none;
-  box-shadow: 0 0 18px rgba(255, 105, 180, 0.4);
-  transition: all 0.3s ease;
-}
-
-.btn:hover {
-  background: linear-gradient(90deg, #ffd700, #ff0080);
-  color: #000;
-  box-shadow: 0 0 24px #ffd700;
-}
-
-/* ======= Top Corner Ribbon ======= */
-.corner-ribbon {
-  position: absolute;
-  top: 0;
-  left: 0;
-  border-top: 60px solid #ff00cc;
-  border-right: 60px solid transparent;
-  z-index: 10;
-}
-
-/* ======= Top Badge ======= */
-.card-category-badge {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  background: linear-gradient(135deg, #ffd700, #ff8c00);
-  color: #000;
-  font-weight: bold;
-  padding: 6px 14px;
-  border-radius: 999px;
-  font-size: 0.9rem;
-  z-index: 10;
-  box-shadow: 0 2px 8px rgba(255, 200, 0, 0.5);
-}
-
-/* ======= Tablet ======= */
-@media (max-width: 1024px) {
-  .cards-container1 > .card {
-    width: 100%;
-    max-width: 90%;
-  }
-  .card {
-    height: 270px;
-  }
-}
-
-/* ======= Mobile ======= */
-@media (max-width: 480px) {
-  .products-section {
-    padding: 2rem 1rem;
-  }
-  .section-title {
-    font-size: 1.8rem;
-  }
-  .corner-ribbon {
-    border-top: 40px solid #ff00cc;
-    border-right: 40px solid transparent;
-  }
-  .btn {
-    font-size: 0.85rem;
-    padding: 8px 0;
-  }
-}
-</style>
-
-
-<body>
-  <section class="products-section">
-    <h2 class="section-title">Current Lottery Tickets</h2>
-    <div class="cards-container1">
-      <!-- Single Card -->
-      <a href="p1.html" class="card">
-        <div class="corner-ribbon"></div>
-        <div class="card-category-badge">Gold & Bullion</div>
-        <div class="card-background" style="background-image: url('rn.png');"></div>
-        <div class="card-content2">
-          <h3>Activate Yourself</h3>
-          <span class="btn">Stretching</span>
+    <!-- Ticket Cards Section -->
+    <h2 style="text-align: center; margin: 2rem 0; color: #bb86fc;">Current Lottery Tickets</h2>
+    <div class="ticket-cards">
+      <div class="ticket-card">
+        <div class="card-header">Basic Package</div>
+        <div class="card-body">
+          <p>Original Value: <span class="card-value">$499</span></p>
+          <p>Lottery Price: <span class="card-value">$5</span></p>
+          <p>Entries: <span class="card-value">12,458</span></p>
+          <p>Draw Date: <span class="card-value">Jul 20, 2025</span></p>
         </div>
-      </a>
-
-      <a href="gold.html" class="card">
-        <div class="corner-ribbon"></div>
-        <div class="card-category-badge">Gold & Bullion</div>
-        <div class="card-background" style="background-image: url('rn.png');"></div>
-        <div class="card-content2">
-          <h3>Activate Yourself</h3>
-          <span class="btn">Stretching</span>
+        <div class="card-footer">
+          <button class="btn btn-primary">Participate</button>
         </div>
-      </a>
-
-      <a href="gold.html" class="card">
-        <div class="corner-ribbon"></div>
-        <div class="card-category-badge">Gold & Bullion</div>
-        <div class="card-background" style="background-image: url('rn.png');"></div>
-        <div class="card-content2">
-          <h3>Activate Yourself</h3>
-          <span class="btn">Stretching</span>
+      </div>
+      
+      <div class="ticket-card">
+        <div class="card-header">Premium Package</div>
+        <div class="card-body">
+          <p>Original Value: <span class="card-value">$1,299</span></p>
+          <p>Lottery Price: <span class="card-value">$10</span></p>
+          <p>Entries: <span class="card-value">8,742</span></p>
+          <p>Draw Date: <span class="card-value">Jul 22, 2025</span></p>
         </div>
-      </a>
-
-      <a href="gold.html" class="card">
-        <div class="corner-ribbon"></div>
-        <div class="card-category-badge">Gold & Bullion</div>
-        <div class="card-background" style="background-image: url('rn.png');"></div>
-        <div class="card-content2">
-          <h3>Activate Yourself</h3>
-          <span class="btn">Stretching</span>
+        <div class="card-footer">
+          <button class="btn btn-primary">Participate</button>
         </div>
-      </a>
-
-      <a href="gold.html" class="card">
-        <div class="corner-ribbon"></div>
-        <div class="card-category-badge">Gold & Bullion</div>
-        <div class="card-background" style="background-image: url('rn.png');"></div>
-        <div class="card-content2">
-          <h3>Activate Yourself</h3>
-          <span class="btn">Stretching</span>
+      </div>
+      
+      <div class="ticket-card">
+        <div class="card-header">Ultimate Package</div>
+        <div class="card-body">
+          <p>Original Value: <span class="card-value">$2,999</span></p>
+          <p>Lottery Price: <span class="card-value">$15</span></p>
+          <p>Entries: <span class="card-value">5,126</span></p>
+          <p>Draw Date: <span class="card-value">Jul 25, 2025</span></p>
         </div>
-      </a>
-
-      <a href="gold.html" class="card">
-        <div class="corner-ribbon"></div>
-        <div class="card-category-badge">Gold & Bullion</div>
-        <div class="card-background" style="background-image: url('rn.png');"></div>
-        <div class="card-content2">
-          <h3>Activate Yourself</h3>
-          <span class="btn">Stretching</span>
+        <div class="card-footer">
+          <button class="btn btn-primary">Participate</button>
         </div>
-      </a>   
+      </div>
     </div>
-  </section>
-
+  </main>
+  
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-column">
+        <h3>About LivFit Lottery</h3>
+        <p>We provide exciting opportunities to win premium fitness packages at lottery prices. Our mission is to make high-quality fitness accessible to everyone.</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="footer-column">
+        <h3>Quick Links</h3>
+        <a href="#">Home</a>
+        <a href="#">Current Lotteries</a>
+        <a href="#">Previous Winners</a>
+        <a href="#">How It Works</a>
+        <a href="#">FAQs</a>
+      </div>
+      <div class="footer-column">
+        <h3>Legal</h3>
+        <a href="#">Terms & Conditions</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Responsible Gaming</a>
+        <a href="#">Cookie Policy</a>
+      </div>
+      <div class="footer-column">
+        <h3>Contact Us</h3>
+        <p><i class="fas fa-map-marker-alt"></i> 123 Fitness Street, Healthville</p>
+        <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+        <p><i class="fas fa-envelope"></i> support@livfit.lottery</p>
+      </div>
+    </div>
+    <div class="copyright">
+      &copy; 2025 LivFit Lottery. All rights reserved. Must be 18+ to participate. 
+    </div>
+  </footer>
+  
   <!-- Participation Modal -->
   <div class="modal" id="participation-modal">
     <div class="modal-content">
@@ -1231,10 +1241,5 @@
     minDate.setFullYear(today.getFullYear() - 18);
     document.getElementById('dob').max = minDate.toISOString().split('T')[0];
   </script>
-
-  <!-- Footer will be injected here -->
-    <div id="footer-container"></div>
-    <!-- JavaScript to inject header and footer -->
-  <script src="script.js" defer></script>
 </body>
 </html>
