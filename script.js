@@ -713,57 +713,6 @@ function initializeSite() {
     });
   });
 
-  // Create floating register button
-  const buttonStyle = document.createElement('style');
-  buttonStyle.textContent = `
-    .floating-register-button {
-      position: fixed;
-      top: 50%;
-      left: 0;
-      transform: translateY(-50%);
-      z-index: 1000;
-      transition: all 0.3s ease;
-    }
-    .register-button-inner {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100px;
-      width: 30px;
-      background: linear-gradient(180deg, #ff8c00, #ff0080);
-      color: white;
-      font-weight: bold;
-      border-radius: 0 10px 10px 0;
-      box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.3);
-      transition: all 0.3s ease;
-      writing-mode: vertical-rl;
-      text-orientation: mixed;
-      font-size: 14px;
-      letter-spacing: 1px;
-    }
-    .register-button-inner:hover {
-      background: linear-gradient(180deg, #ffd700, #ff00cc);
-      width: 35px;
-    }
-    @media (max-width: 768px) {
-      .floating-register-button {
-        top: auto;
-        bottom: 20px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 100px;
-        height: 40px;
-      }
-      .register-button-inner {
-        writing-mode: horizontal-tb;
-        text-orientation: unset;
-        width: 100%;
-        height: 100%;
-        border-radius: 30px;
-      }
-    }
-  `;
   document.head.appendChild(buttonStyle);
 
   const button = document.createElement('a');
