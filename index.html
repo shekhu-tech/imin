@@ -142,24 +142,24 @@
     <div id="header-container"></div>
     <br>
     <main>
-        <style>
-  /* ======= Main Section ======= */
+                <style>
+/* ======= Main Section ======= */
 .products-section {
   padding: 4rem 2rem;
   text-align: center;
-  background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+  background: linear-gradient(135deg, #000000, #1a001f, #0c0012);
 }
 
+/* ======= Title Gradient ======= */
 .section-title {
   font-size: 2.5rem;
-  color: #fff;
   margin-bottom: 3rem;
-  background: linear-gradient(to right, #ff416c, #ff4b2b);
+  background: linear-gradient(90deg, #ffd700, #ff4b2b, #ff00cc);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-/* ======= Card Container (3 per row) ======= */
+/* ======= Card Layout ======= */
 .cards-container1 {
   display: flex;
   flex-wrap: wrap;
@@ -185,144 +185,122 @@
   height: 270px;
   max-width: 399px;
   width: 100%;
-  background-color: rgba(255, 255, 255, 0.05);
+  background: linear-gradient(145deg, #1a001f, #0d0d0d);
+  border: 2px solid rgba(255, 215, 0, 0.2);
+  box-shadow: 0 0 25px rgba(255, 215, 0, 0.15), 0 0 10px #ff4b2b33;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  text-decoration: none;
 }
 
 .card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 30px #ff4b2b;
+  transform: scale(1.07);
+  border-color: #ffd700;
+  box-shadow: 0 0 40px #ffd700, 0 0 15px #ff0080;
 }
 
-/* ======= Background Image (65%) ======= */
+/* ======= Background Image Area ======= */
 .card-background {
   height: 65%;
   width: 100%;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  opacity: 0.7;
+  opacity: 0.85;
   background-color: #000;
 }
 
-/* ======= Card Content (35%) ======= */
+/* ======= Card Content ======= */
 .card-content2 {
   height: 35%;
-  background: rgba(0, 0, 0, 0.85);
+  background: linear-gradient(to right, #190033, #0d001a);
   color: white;
-  padding: 0.5rem 1rem;
+  padding: 0.6rem 1rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  z-index: 2;
+  border-top: 1px solid #ff00cc;
   text-align: center;
 }
 
 .card-content2 h3 {
   font-size: 1.2rem;
   margin-bottom: 6px;
-  color: white;
+  color: #ffffff;
+  text-shadow: 0 0 8px rgba(255, 0, 255, 0.2);
+  letter-spacing: 0.5px;
 }
 
-/* ======= Full-Width Button Styling ======= */
+/* ======= Button Style ======= */
 .btn {
   display: block;
   width: 100%;
   font-size: 0.95rem;
   padding: 10px 0;
   border-radius: 999px;
-  background: #ff416c;
+  background: linear-gradient(90deg, #ff9000, #ff4b2b, #ff0080);
   color: white;
   font-weight: bold;
   text-align: center;
   text-decoration: none;
-  transition: background 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 0 18px rgba(255, 105, 180, 0.4);
+  transition: all 0.3s ease;
 }
 
 .btn:hover {
-  background: #ff4b2b;
-  box-shadow: 0 0 10px #ff4b2b;
+  background: linear-gradient(90deg, #ffd700, #ff0080);
+  color: #000;
+  box-shadow: 0 0 24px #ffd700;
 }
 
-/* ======= Top-Left Ribbon ======= */
+/* ======= Top Corner Ribbon ======= */
 .corner-ribbon {
   position: absolute;
   top: 0;
   left: 0;
-  width: 0;
-  height: 0;
-  border-top: 60px solid #c62828;
+  border-top: 60px solid #ff00cc;
   border-right: 60px solid transparent;
   z-index: 10;
 }
 
-/* ======= Top-Right Badge ======= */
+/* ======= Top Badge ======= */
 .card-category-badge {
   position: absolute;
   top: 12px;
   right: 12px;
-  background: #c62828;
-  color: white;
+  background: linear-gradient(135deg, #ffd700, #ff8c00);
+  color: #000;
   font-weight: bold;
   padding: 6px 14px;
   border-radius: 999px;
   font-size: 0.9rem;
   z-index: 10;
-  white-space: nowrap;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 2px 8px rgba(255, 200, 0, 0.5);
 }
 
-/* ======= Responsive: Tablet & Below ======= */
+/* ======= Tablet ======= */
 @media (max-width: 1024px) {
   .cards-container1 > .card {
     width: 100%;
     max-width: 90%;
   }
-
   .card {
     height: 270px;
   }
-
-  .card-background {
-    height: 65%;
-  }
-
-  .card-content2 {
-    height: 35%;
-    padding: 0.4rem;
-  }
-
-  .card-content2 h3 {
-    font-size: 1.1rem;
-  }
-
-  .btn {
-    font-size: 0.9rem;
-    padding: 8px 0;
-  }
 }
 
-/* ======= Responsive: Mobile Phones ======= */
+/* ======= Mobile ======= */
 @media (max-width: 480px) {
   .products-section {
     padding: 2rem 1rem;
   }
-
   .section-title {
     font-size: 1.8rem;
-    text-align: center;
   }
-
   .corner-ribbon {
-    border-top: 40px solid #c62828;
+    border-top: 40px solid #ff00cc;
     border-right: 40px solid transparent;
   }
-
   .btn {
     font-size: 0.85rem;
     padding: 8px 0;
