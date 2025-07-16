@@ -558,337 +558,115 @@
     /* Products Section with ISME Colors */
 
 
-        .container {
-            padding: 5rem 2rem;
-            background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
-            text-align: center;
-        }
-
-        .section-title {
-            font-size: 3.2rem;
-            margin-bottom: 50px;
-            background: linear-gradient(to right, #FFD700, #FFA500);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            font-weight: 800;
-            letter-spacing: 1.5px;
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-title:after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 120px;
-            height: 5px;
-            background: linear-gradient(to right, #FFD700, #FFA500);
-            border-radius: 3px;
-        }
-
-        /* Fixed Cards Container with 3 cards per row */
-        .cards-container {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr); /* Always 3 cards per row */
-            gap: 30px;
-            max-width: 1400px; /* Adjusted for better centering */
-            margin: 0 auto;
-            justify-content: center; /* Center the grid horizontally */
-        }
-
-        /* Card Layout */
-        .card {
-            background: rgba(255, 255, 255, 0.08);
-            border-radius: 16px;
-            overflow: hidden;
-            position: relative;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            transition: all 0.4s ease;
-            height: 320px;
-            display: flex;
-            flex-direction: column;
-            border: 1px solid rgba(255, 215, 0, 0.2);
-        }
-
-        .card:hover {
-            transform: translateY(-15px);
-            box-shadow: 0 20px 40px rgba(255, 215, 0, 0.25);
-            border-color: #FFD700;
-        }
-
-        .card-link {
-            display: block;
-            text-decoration: none;
-            color: inherit;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-
-        /* Card Image Section */
-        .card-background {
-            width: 100%;
-            height: 180px;
-            background-size: cover;
-            background-position: center;
-            transition: all 0.4s ease;
-            position: relative;
-        }
-
-        .card:hover .card-background {
-            transform: scale(1.05);
-        }
-
-        .card-background:after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.6));
-        }
-
-        /* Card Content Section */
-        .card-content2 {
-            padding: 20px;
-            color: #fff;
-            position: relative;
-            z-index: 2;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            background: rgba(26, 26, 26, 0.7);
-        }
-
-        .card-content h3 {
-            font-size: 1.7rem;
-            margin-bottom: 10px;
-            color: #FFD700;
-            font-weight: 700;
-        }
-
-        .card-content p {
-            font-size: 1rem;
-            opacity: 0.9;
-        }
-
-        /* Category Tag */
-        .card-category {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: linear-gradient(135deg, #C1272D, #8E1E23);
-            color: #fff;
-            padding: 8px 20px;
-            border-radius: 30px;
-            font-size: 0.9rem;
-            font-weight: bold;
-            z-index: 3;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-        }
-
-        /* Ribbon effect */
-        .card:before {
-            content: '';
-            position: absolute;
-            top: -10px;
-            left: -10px;
-            width: 40px;
-            height: 40px;
-            background: #C1272D;
-            transform: rotate(45deg);
-            z-index: 2;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        }
-
-        /* Card footer with play button */
-        .card-footer {
-            padding: 15px;
-            background: rgba(26, 26, 26, 0.8);
-            display: flex;
-            justify-content: center;
-        }
-
-        .play-btn {
-            background: linear-gradient(135deg, #FFD700, #FFA500);
-            color: #1a1a1a;
-            padding: 8px 25px;
-            border-radius: 30px;
-            font-size: 1rem;
-            font-weight: 700;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            border: none;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .play-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
-        }
-
-        /* Responsive Design */
-        @media (max-width: 1200px) {
-            .cards-container {
-                grid-template-columns: repeat(3, 1fr); /* Maintain 3 columns */
-                max-width: 100%; /* Allow full width */
-            }
-        }
-
-        @media (max-width: 992px) {
-            .cards-container {
-                grid-template-columns: repeat(2, 1fr); /* 2 columns on medium screens */
-            }
-        }
-
-        @media (max-width: 768px) {
-            .section-title {
-                font-size: 2.5rem;
-            }
-            
-            .cards-container {
-                grid-template-columns: 1fr; /* 1 column on small screens */
-            }
-            
-            .card {
-                height: 300px;
-                max-width: 500px;
-                margin: 0 auto; /* Center cards on mobile */
-            }
-            
-            .card-background {
-                height: 160px;
-            }
-            
-            .card-content h3 {
-                font-size: 1.5rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .section-title {
-                font-size: 2rem;
-            }
-            
-            .card-content h3 {
-                font-size: 1.4rem;
-            }
-        }
-
+      
 
     
     /* Footer Styles with ISME Colors */
-    footer {
-  background: linear-gradient(135deg, #1a001f, #0c0012); /* Added a background gradient */
+    /* Footer Styles with ISME Colors - CORRECTED */
+footer {
+  background: linear-gradient(135deg, #1a001f, #0c0012);
   padding: 3rem 2rem;
   text-align: center;
-  color: var(--isme-white);
-  position: relative; /* Added for scroll-to-top button positioning */
+  color: var(--white); /* CORREGIDO: Se usó la variable --white definida */
+  position: relative;
 }
 
 .footer-container {
   max-width: 1200px;
   margin: 0 auto;
-  display: flex; /* Use flexbox for overall layout */
-  flex-direction: column; /* Stack elements vertically */
-  align-items: center; /* Center items horizontally */
-  gap: 1.5rem; /* Add spacing between major sections */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
 }
 
 .footer-logo {
-  font-size: 2.8rem; /* Increased font size for prominence */
+  font-size: 2.8rem;
   font-weight: bold;
-  margin-bottom: 0.5rem; /* Reduced margin for tighter spacing */
-  color: #ffd700; /* Changed logo color to gold */
-  text-shadow: 0 0 10px rgba(255, 215, 0, 0.5); /* Added text shadow for glow */
+  margin-bottom: 0.5rem;
+  color: #ffd700;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
 }
 
 .footer-description {
-  max-width: 700px; /* Increased max-width for longer descriptions */
-  margin: 0 auto 1.5rem; /* Adjusted margin */
+  max-width: 700px;
+  margin: 0 auto 1.5rem;
   opacity: 0.9;
-  line-height: 1.8; /* Improved line height for readability */
-  font-size: 1.1rem; /* Slightly larger font for readability */
+  line-height: 1.8;
+  font-size: 1.1rem;
 }
 
 .footer-buttons {
-  margin: 1.5rem 0; /* Adjusted margin */
+  margin: 1.5rem 0;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 15px; /* Increased gap between buttons */
+  gap: 15px;
 }
 
 .footer-btn {
-  background: linear-gradient(90deg, #ff9000, #ff4b2b); /* Gradient background for buttons */
-  color: white; /* Text color */
-  padding: 12px 25px; /* Adjusted padding */
+  background: linear-gradient(90deg, #ff9000, #ff4b2b);
+  color: white;
+  padding: 12px 25px;
   text-decoration: none;
-  border-radius: 5px; /* Slightly less rounded corners */
-  font-size: 1rem; /* Slightly larger font size */
-  border: none; /* Remove border */
+  border-radius: 5px;
+  font-size: 1rem;
+  border: none;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 10px rgba(255, 102, 0, 0.3); /* Softer shadow */
+  box-shadow: 0 4px 10px rgba(255, 102, 0, 0.3);
 }
 
 .footer-btn:hover {
-  background: linear-gradient(90deg, #ffd700, #ff00cc); /* Different gradient on hover */
-  color: #fff; /* Text color on hover */
-  transform: translateY(-5px) scale(1.02); /* More pronounced hover effect */
-  box-shadow: 0 8px 20px rgba(255, 215, 0, 0.4); /* Enhanced shadow on hover */
+  background: linear-gradient(90deg, #ffd700, #ff00cc);
+  color: #fff;
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 8px 20px rgba(255, 215, 0, 0.4);
 }
 
 .social-links {
   margin: 2rem 0;
-  display: flex; /* Use flexbox for social icons */
-  justify-content: center; /* Center social icons */
-  gap: 20px; /* Space out social icons */
+  display: flex;
+  justify-content: center;
+  gap: 20px;
 }
 
 .social-links a {
-  display: flex; /* Use flex for centering icon inside circle */
+  display: flex;
   align-items: center;
   justify-content: center;
-  width: 45px; /* Slightly larger circles */
+  width: 45px;
   height: 45px;
-  background: rgba(255, 255, 255, 0.15); /* Slightly more opaque background */
+  background: rgba(255, 255, 255, 0.15);
   border-radius: 50%;
-  color: var(--isme-white);
-  font-size: 1.3rem; /* Larger icons */
+  color: var(--white); /* CORREGIDO: Se usó la variable --white */
+  font-size: 1.3rem;
   transition: all 0.3s ease;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for icons */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 .social-links a:hover {
-  background: linear-gradient(45deg, #ff00cc, #ffd700); /* Gradient hover for social icons */
-  color: #333; /* Darker color on hover for contrast */
-  transform: translateY(-8px) rotate(5deg); /* Dynamic hover effect */
-  box-shadow: 0 8px 20px rgba(255, 0, 204, 0.4); /* Enhanced shadow on hover */
+  background: linear-gradient(45deg, #ff00cc, #ffd700);
+  color: #333;
+  transform: translateY(-8px) rotate(5deg);
+  box-shadow: 0 8px 20px rgba(255, 0, 204, 0.4);
 }
 
 .copyright {
-  margin-top: 2.5rem; /* Increased margin-top */
+  margin-top: 2.5rem;
   opacity: 0.7;
-  font-size: 0.95rem; /* Slightly larger font size */
-  color: rgba(255, 255, 255, 0.6); /* Softer copyright text color */
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.6);
 }
 
-/* Scroll to Top Button */
+/* Scroll to Top Button - CORRECTED AND UNIFIED */
 .scroll-to-top {
-  position: absolute; /* Changed to absolute for positioning relative to footer */
-  bottom: 20px;
-  right: 20px;
-  background: linear-gradient(45deg, #ffd700, #ff00cc); /* Gradient background */
-  color: #333; /* Darker color for icon */
+  position: fixed; /* CORREGIDO: Posición fija para que siempre sea visible */
+  bottom: 30px;
+  right: 30px;
   width: 50px;
   height: 50px;
+  background: linear-gradient(45deg, var(--gold-glow), var(--neon-pink)); /* CORREGIDO: Se usaron variables definidas */
+  color: #333;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -896,99 +674,52 @@
   font-size: 1.5rem;
   cursor: pointer;
   box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+  z-index: 1000;
   transition: all 0.3s ease;
-  z-index: 100;
+  opacity: 0; /* Oculto por defecto */
+  visibility: hidden; /* Oculto por defecto */
+}
+
+/* Clase que tu JavaScript puede agregar para mostrar el botón */
+.scroll-to-top.active {
+  opacity: 1;
+  visibility: visible;
 }
 
 .scroll-to-top:hover {
   transform: translateY(-5px) scale(1.05);
   box-shadow: 0 8px 25px rgba(255, 215, 0, 0.6);
-  background: linear-gradient(45deg, #ff00cc, #ff8c00); /* Change gradient on hover */
-  color: white;
 }
 
-/* Responsive Styles */
-@media (max-width: 2100px) {
-  nav { display: none; }
-  .menu-toggle { display: block; }
-
-  .slider-overlay h1 {
-    font-size: 2.5rem;
-  }
-
-  .slider-overlay p {
-    font-size: 1.2rem;
-  }
-}
-
+/* Responsive Footer Styles */
 @media (max-width: 768px) {
-  .image-slider {
-    height: 60vh;
-  }
-
-  .section-title {
-    font-size: 2rem;
-  }
-
-  .card {
-    max-width: 100%;
-  }
-
   .footer-buttons {
-    flex-direction: column; /* Stack buttons vertically */
+    flex-direction: column;
     align-items: center;
   }
 
   .footer-btn {
-    width: 90%; /* Make buttons wider on smaller screens */
-    margin: 8px 0; /* Adjust vertical margin */
-  }
-
-  .scroll-to-top {
-    width: 45px;
-    height: 45px;
-    font-size: 1.3rem;
+    width: 90%;
+    margin: 8px 0;
   }
 }
 
 @media (max-width: 480px) {
-  .image-slider {
-    height: 50vh;
-  }
-
-  .slider-overlay h1 {
-    font-size: 2rem;
-  }
-
-  .slider-overlay p {
-    font-size: 1rem;
-  }
-
-  .products-section {
-    padding: 3rem 1rem;
-  }
-
-  .section-title {
-    font-size: 1.8rem;
-  }
-
   .footer-logo {
-    font-size: 2.2rem; /* Further adjust logo size for mobile */
+    font-size: 2.2rem;
   }
 
   .footer-description {
-    font-size: 1rem; /* Further adjust description font size */
+    font-size: 1rem;
   }
 
   .social-links a {
-    width: 40px; /* Smaller social icon circles */
+    width: 40px;
     height: 40px;
     font-size: 1.2rem;
   }
 
   .scroll-to-top {
-    bottom: 15px;
-    right: 15px;
     width: 40px;
     height: 40px;
     font-size: 1.2rem;
