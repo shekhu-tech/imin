@@ -560,69 +560,35 @@
 
       
 
-    
-    /* Footer Styles with ISME Colors */
-    /* Footer Styles with ISME Colors - CORRECTED */
-footer {
-  background: linear-gradient(135deg, #1a001f, #0c0012);
-  padding: 3rem 2rem;
-  text-align: center;
-  color: var(--white); /* CORREGIDO: Se usó la variable --white definida */
-  position: relative;
-}
-
-.footer-container {
-  max-width: 1200px;
-  margin: 0 auto;
+ /* ===== Navigation Icon Buttons (FINAL - Most Powerful Fix) ===== */
+footer .footer-btn {
+  width: 35px;
+  height: 35px;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 1.5rem;
-}
+  justify-content: center;
 
-.footer-logo {
-  font-size: 2.8rem;
-  font-weight: bold;
-  margin-bottom: 0.5rem;
-  color: #ffd700;
-  text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
-}
-
-.footer-description {
-  max-width: 700px;
-  margin: 0 auto 1.5rem;
-  opacity: 0.9;
-  line-height: 1.8;
-  font-size: 1.1rem;
+  /* SABSE ZAROORI BADLAV */
+  background: linear-gradient(90deg, #ff9000, #ff4b2b) !important;
+  border-radius: 50% !important;
+  color: white !important;
+  
+  text-decoration: none;
+  font-size: 16px;
+  border: none;
+  box-shadow: 0 4px 10px rgba(255, 102, 0, 0.3);
+  padding: 0;
+  transition: all 0.3s ease;
 }
 
 .footer-buttons {
-  margin: 1.5rem 0;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: flex; /* Yeh Flexbox ko on karta hai */
+  justify-content: center; /* Yeh items ko horizontally center karta hai */
+  flex-wrap: wrap; 
   gap: 15px;
 }
 
-.footer-btn {
-  background: linear-gradient(90deg, #ff9000, #ff4b2b);
-  color: white;
-  padding: 12px 25px;
-  text-decoration: none;
-  border-radius: 5px;
-  font-size: 1rem;
-  border: none;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 10px rgba(255, 102, 0, 0.3);
-}
-
-.footer-btn:hover {
-  background: linear-gradient(90deg, #ffd700, #ff00cc);
-  color: #fff;
-  transform: translateY(-5px) scale(1.02);
-  box-shadow: 0 8px 20px rgba(255, 215, 0, 0.4);
-}
-
+/* ===== Original Footer Social Links ===== */
 .social-links {
   margin: 2rem 0;
   display: flex;
@@ -638,7 +604,7 @@ footer {
   height: 45px;
   background: rgba(255, 255, 255, 0.15);
   border-radius: 50%;
-  color: var(--white); /* CORREGIDO: Se usó la variable --white */
+  color: #fff;
   font-size: 1.3rem;
   transition: all 0.3s ease;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
@@ -651,6 +617,45 @@ footer {
   box-shadow: 0 8px 20px rgba(255, 0, 204, 0.4);
 }
 
+/* ===== Sidebar Social Nav Icon Buttons (Corrected) ===== */
+.social-nav {
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.social-icon {
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+  transform: translateY(-3px);
+  opacity: 0.9;
+}
+
+.social-icon.facebook {
+  background-color: #3b5998;
+}
+
+.social-icon.twitter {
+  background-color: #1DA1F2;
+}
+
+.social-icon.instagram {
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
+}
+
+/* ===== Copyright ===== */
 .copyright {
   margin-top: 2.5rem;
   opacity: 0.7;
@@ -658,14 +663,14 @@ footer {
   color: rgba(255, 255, 255, 0.6);
 }
 
-/* Scroll to Top Button - CORRECTED AND UNIFIED */
+/* ===== Scroll to Top Button ===== */
 .scroll-to-top {
-  position: fixed; /* CORREGIDO: Posición fija para que siempre sea visible */
+  position: fixed;
   bottom: 30px;
   right: 30px;
   width: 50px;
   height: 50px;
-  background: linear-gradient(45deg, var(--gold-glow), var(--neon-pink)); /* CORREGIDO: Se usaron variables definidas */
+  background: linear-gradient(45deg, #ffd700, #ff00cc); /* Using gold-glow/neon-pink theme */
   color: #333;
   border-radius: 50%;
   display: flex;
@@ -676,11 +681,10 @@ footer {
   box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
   z-index: 1000;
   transition: all 0.3s ease;
-  opacity: 0; /* Oculto por defecto */
-  visibility: hidden; /* Oculto por defecto */
+  opacity: 0;
+  visibility: hidden;
 }
 
-/* Clase que tu JavaScript puede agregar para mostrar el botón */
 .scroll-to-top.active {
   opacity: 1;
   visibility: visible;
@@ -691,19 +695,36 @@ footer {
   box-shadow: 0 8px 25px rgba(255, 215, 0, 0.6);
 }
 
-/* Responsive Footer Styles */
+/* ===== Sidebar Logo Styles ===== */
+.sidebar-logo {
+  text-align: center;
+  padding: 0px 0;
+  margin-bottom: 0px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-logo img {
+  max-width: auto;
+  height: 45px;
+  transition: all 0.3s ease;
+}
+
+
+/* ============================================= */
+/* ===== RESPONSIVE STYLES ===== */
+/* ============================================= */
+
+/* Medium Screens (Tablets) */
 @media (max-width: 768px) {
   .footer-buttons {
-    flex-direction: column;
-    align-items: center;
+    gap: 12px;
   }
-
-  .footer-btn {
-    width: 90%;
-    margin: 8px 0;
+  .sidebar-logo img {
+    max-width: auto; /* No change needed but keeping for structure */
   }
 }
 
+/* Small Screens (Mobiles) */
 @media (max-width: 480px) {
   .footer-logo {
     font-size: 2.2rem;
@@ -724,100 +745,8 @@ footer {
     height: 40px;
     font-size: 1.2rem;
   }
-}
-
-    /* Scroll to Top Button */
-    .scroll-to-top {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      width: 50px;
-      height: 50px;
-      background: var(--isme-orange);
-      color: var(--isme-white);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 20px;
-      cursor: pointer;
-      opacity: 0;
-      visibility: hidden;
-      transition: all 0.3s ease;
-      z-index: 999;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    }
-
-    .scroll-to-top.active {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .scroll-to-top:hover {
-      background: var(--isme-dark-blue);
-      transform: translateY(-5px);
-    }
-
-        
-    /* Responsive Sidebar Logo */
-.sidebar-logo {
-  text-align: center;
-  padding: 0px 0;
-  margin-bottom: 0px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.sidebar-logo img {
-  max-width: auto;
-  height: 45px;
-  transition: all 0.3s ease;
-}
-
-/* Adjust logo size for different screens */
-@media (max-width: 768px) {
+  
   .sidebar-logo img {
-    max-width: auto;
+    max-width: auto; /* No change needed but keeping for structure */
   }
-}
-
-@media (max-width: 480px) {
-  .sidebar-logo img {
-    max-width: auto;
-  }
-}
-
-
-
-.social-nav {
-  margin-top: 15px;
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-}
-
-.social-icon {
-  text-decoration: none;
-  padding: 8px 12px;
-  border-radius: 5px;
-  color: white;
-  font-weight: bold;
-  font-size: 14px;
-  transition: background 0.3s ease;
-}
-
-.fb {
-  background-color: #e1306c; /* Instagram color */
-}
-
-.tw {
-  background-color: #3b5998; /* Facebook color */
-}
-
-.ln {
-  background-color: #fffc00; /* Snapchat color */
-  color: #000; /* Snapchat uses black text */
-}
-
-.social-icon:hover {
-  opacity: 0.85;
 }
