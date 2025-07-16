@@ -7,7 +7,7 @@ function injectHeader() {
     <header id="main-header">
       <div class="logo">
         <a href="index.html">
-          <img src="sti.png" alt="LuckyWin" />
+          <img src="win.png" alt="LuckyWin" />
         </a>
       </div>
 
