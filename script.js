@@ -263,7 +263,7 @@ function injectProductSection() {
 
   const html = `
     <section class="products-section">
-      <h2 class="section-title">Win-Amazing-Prizes</h2>
+      <h2 class="section-title">Active-Lottery</h2>
       <div class="cards-container1">
         <a href="proone.html" class="card">
           <div class="corner-ribbon"></div>
