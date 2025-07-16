@@ -556,24 +556,33 @@ function injectContainer1() {
             }
         }
 
-        @media (max-width: 480px) {
-            .section-title {
-                font-size: 2rem;
-            }
+        /* For small devices like iPhone 12 Mini and others */
+@media (max-width: 480px) {
+    .features-section .section-title {
+        /* फॉन्ट साइज को पढ़ने लायक बनाया गया */
+        font-size: 2rem; 
+    }
 
-            .feature-card {
-                height: 300px;
-                padding: 25px 20px;
-            }
+    .feature-card {
+        height: auto; /* ऊंचाई को ऑटो किया ताकि कंटेंट फिट हो सके */
+        padding: 25px 20px;
+    }
 
-            .card-icon {
-                font-size: 3.5rem;
-            }
+    .card-icon {
+        font-size: 3rem; /* आइकन को थोड़ा छोटा किया */
+    }
+    
+    .card-content1 h3 {
+        /* सिंटैक्स ठीक किया गया और साइज एडजस्ट किया गया */
+        font-size: 1.1rem; 
+    }
 
-            .card-content1 p {
-                font-size: 1.1rem;
-            }
-        }
+    .card-content1 p {
+        /* फॉन्ट साइज को पढ़ने लायक बनाया गया */
+        font-size: 0.9rem; 
+        line-height: 1.5; /* लाइनों के बीच स्पेस बढ़ाया */
+    }
+}
     </style>
   `;
 
