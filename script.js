@@ -12,17 +12,12 @@ function injectHeader() {
       </div>
 
       <nav>
-        <div class="nav-item"><a href="register.html">Register</a></div>
         <div class="nav-item"><a href="electronics.html">Electronics</a></div>
         <div class="nav-item"><a href="footwear.html">Footwear</a></div>
         <div class="nav-item"><a href="smartphones.html">Smartphones</a></div>
         <div class="nav-item"><a href="pcs.html">Laptops & PCs</a></div>
         <div class="nav-item"><a href="fashion.html">Fashion & Accessories</a></div>
         <div class="nav-item"><a href="appliances.html">Home Appliances</a></div>
-        <div class="nav-item"><a href="gaming.html">Gaming & Entertainment</a></div>
-        <div class="nav-item"><a href="travel.html">Travel & Experiences</a></div>
-        <div class="nav-item"><a href="cash.html">Cash & Gift Cards</a></div>
-        <div class="nav-item"><a href="donate.html" class="donate-btn">Donate</a></div>
       </nav>
 
       <div class="menu-toggle" onclick="toggleSidebar()">
@@ -41,18 +36,12 @@ function injectHeader() {
         </div>
 
         <ul>
-          <li><a class="sidebar-button" href="register.html"><span><i class="fas fa-user-plus"></i> Register</span></a></li>
           <li><a class="sidebar-button" href="electronics.html"><span><i class="fas fa-plug"></i> Electronics</span></a></li>
           <li><a class="sidebar-button" href="footwear.html"><span><i class="fas fa-shoe-prints"></i> Footwear</span></a></li>
           <li><a class="sidebar-button" href="smartphones.html"><span><i class="fas fa-mobile-alt"></i> Smartphones</span></a></li>
           <li><a class="sidebar-button" href="pcs.html"><span><i class="fas fa-laptop-code"></i> Laptops & PCs</span></a></li>
           <li><a class="sidebar-button" href="fashion.html"><span><i class="fas fa-tshirt"></i> Fashion & Accessories</span></a></li>
           <li><a class="sidebar-button" href="appliances.html"><span><i class="fas fa-blender"></i> Home Appliances</span></a></li>
-          <li><a class="sidebar-button" href="gaming.html"><span><i class="fas fa-gamepad"></i> Gaming & Entertainment</span></a></li>
-          <li><a class="sidebar-button" href="travel.html"><span><i class="fas fa-plane-departure"></i> Travel & Experiences</span></a></li>
-          <li><a class="sidebar-button" href="cash.html"><span><i class="fas fa-money-bill-wave"></i> Cash & Gift Cards</span></a></li>
-          <li><a class="sidebar-button" href="donate.html"><span><i class="fas fa-donate"></i> Donate</span></a></li>
-          <li><a class="sidebar-button" href="user.html"><span><i class="fas fa-user"></i> User</span></a></li>
         </ul>
       </div>
     </header>
@@ -78,11 +67,6 @@ function injectFooter() {
           <a href="pcs.html" class="footer-btn">Laptops & PCs</a>
           <a href="fashion.html" class="footer-btn">Fashion & Accessories</a>
           <a href="appliances.html" class="footer-btn">Home Appliances</a>
-          <a href="gaming.html" class="footer-btn">Gaming & Entertainment</a>
-          <a href="travel.html" class="footer-btn">Travel & Experiences</a>
-          <a href="cash.html" class="footer-btn">Cash & Gift Cards</a>
-          <a href="register.html" class="footer-btn">Register</a>
-          <a href="donate.html" class="footer-btn">Donate</a>
           <a href="policy.html" class="footer-btn">Privacy Policy</a>
         </div>
 
@@ -283,11 +267,11 @@ function injectProductSection() {
       <div class="cards-container1">
         <a href="proone.html" class="card">
           <div class="corner-ribbon"></div>
-          <div class="card-category-badge">Gold & Bullion</div>
-          <div class="card-background" style="background-image: url('rn.png');"></div>
+          <div class="card-category-badge">Footwear</div>
+          <div class="card-background" style="background-image: url('dctsh2.jpg');"></div>
           <div class="card-content2">
-            <h3>Activate Yourself</h3>
-            <span class="btn">Stretching</span>
+            <h3>Decathlon Shoes</h3>
+            <span class="btn">Enroll Now</span>
           </div>
         </a>
 
