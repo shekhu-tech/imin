@@ -53,23 +53,213 @@ function injectFooter() {
   const footerContainer = document.getElementById('footer-container');
   if (!footerContainer) return;
 
-  footerContainer.innerHTML = `
+  const style = `
+    <style>
+     /* ===== Navigation Icon Buttons (FINAL - Most Powerful Fix) ===== */
+footer .footer-btn {
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* SABSE ZAROORI BADLAV */
+  background: linear-gradient(90deg, #ff9000, #ff4b2b) !important;
+  border-radius: 50% !important;
+  color: white !important;
+  
+  text-decoration: none;
+  font-size: 16px;
+  border: none;
+  box-shadow: 0 4px 10px rgba(255, 102, 0, 0.3);
+  padding: 0;
+  transition: all 0.3s ease;
+}
+
+.footer-buttons {
+  display: flex; /* Yeh Flexbox ko on karta hai */
+  justify-content: center; /* Yeh items ko horizontally center karta hai */
+  flex-wrap: wrap; 
+  gap: 15px;
+}
+
+/* ===== Original Footer Social Links ===== */
+.social-links {
+  margin: 2rem 0;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.social-links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 45px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  color: #fff;
+  font-size: 1.3rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.social-links a:hover {
+  background: linear-gradient(45deg, #ff00cc, #ffd700);
+  color: #333;
+  transform: translateY(-8px) rotate(5deg);
+  box-shadow: 0 8px 20px rgba(255, 0, 204, 0.4);
+}
+
+/* ===== Sidebar Social Nav Icon Buttons (Corrected) ===== */
+.social-nav {
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.social-icon {
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+  transform: translateY(-3px);
+  opacity: 0.9;
+}
+
+.social-icon.facebook {
+  background-color: #3b5998;
+}
+
+.social-icon.twitter {
+  background-color: #1DA1F2;
+}
+
+.social-icon.instagram {
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
+}
+
+/* ===== Copyright ===== */
+.copyright {
+  margin-top: 2.5rem;
+  opacity: 0.7;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* ===== Scroll to Top Button ===== */
+.scroll-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(45deg, #ffd700, #ff00cc); /* Using gold-glow/neon-pink theme */
+  color: #333;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+  z-index: 1000;
+  transition: all 0.3s ease;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.scroll-to-top.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.scroll-to-top:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 8px 25px rgba(255, 215, 0, 0.6);
+}
+
+/* ===== Sidebar Logo Styles ===== */
+.sidebar-logo {
+  text-align: center;
+  padding: 0px 0;
+  margin-bottom: 0px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-logo img {
+  max-width: auto;
+  height: 45px;
+  transition: all 0.3s ease;
+}
+
+
+/* ============================================= */
+/* ===== RESPONSIVE STYLES ===== */
+/* ============================================= */
+
+/* Medium Screens (Tablets) */
+@media (max-width: 768px) {
+  .footer-buttons {
+    gap: 12px;
+  }
+  .sidebar-logo img {
+    max-width: auto; /* No change needed but keeping for structure */
+  }
+}
+
+/* Small Screens (Mobiles) */
+@media (max-width: 480px) {
+  .footer-logo {
+    font-size: 2.2rem;
+  }
+
+  .footer-description {
+    font-size: 1rem;
+  }
+
+  .social-links a {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+
+  .scroll-to-top {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+  
+  .sidebar-logo img {
+    max-width: auto; /* No change needed but keeping for structure */
+  }
+}
+    </style>
+  `;
+
+  const html = `
     <footer id="site-footer">
       <div class="footer-container">
-        <div class="footer-logo">LivFit.pro</div>
-        <p class="footer-description">
-          Where Wellness Meets Lifestyle. Unlock your healthiest, most vibrant self with LivFit.pro — your ultimate destination for holistic fitness, mindful living, and powerful transformation.
-        </p>
         <div class="footer-buttons">
-          <a href="electronics.html" class="footer-btn">Electronics</a>
-          <a href="footwear.html" class="footer-btn">Footwear</a>
-          <a href="smartphones.html" class="footer-btn">Smartphones</a>
-          <a href="pcs.html" class="footer-btn">Laptops & PCs</a>
-          <a href="fashion.html" class="footer-btn">Fashion & Accessories</a>
-          <a href="appliances.html" class="footer-btn">Home Appliances</a>
-          <a href="policy.html" class="footer-btn">Privacy Policy</a>
+          <a href="electronics.html" class="footer-btn" title="Electronics"><i class="fas fa-tv"></i></a>
+          <a href="footwear.html" class="footer-btn" title="Footwear"><i class="fas fa-shoe-prints"></i></a>
+          <a href="smartphones.html" class="footer-btn" title="Smartphones"><i class="fas fa-mobile-alt"></i></a>
+          <a href="pcs.html" class="footer-btn" title="Laptops & PCs"><i class="fas fa-laptop"></i></a>
+          <a href="fashion.html" class="footer-btn" title="Fashion"><i class="fas fa-tshirt"></i></a>
+          <a href="appliances.html" class="footer-btn" title="Appliances"><i class="fas fa-blender-phone"></i></a>
+          <a href="policy.html" class="footer-btn" title="Policy"><i class="fas fa-shield-alt"></i></a>
         </div>
-
         <div class="social-links">
           <a href="#"><i class="fab fa-facebook-f"></i></a>
           <a href="#"><i class="fab fa-twitter"></i></a>
@@ -78,7 +268,7 @@ function injectFooter() {
           <a href="#"><i class="fab fa-pinterest"></i></a>
         </div>
         <div class="copyright">
-          &copy; ${new Date().getFullYear()} LivFit.pro. All rights reserved.
+          &copy; ${new Date().getFullYear()} LuckyWin.pro. All rights reserved.
         </div>
       </div>
       <div class="scroll-to-top" id="scrollToTop">
@@ -86,6 +276,9 @@ function injectFooter() {
       </div>
     </footer>
   `;
+
+  document.head.insertAdjacentHTML('beforeend', style);
+  footerContainer.innerHTML = html;
 }
 
 // Function to inject product section
