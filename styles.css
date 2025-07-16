@@ -551,7 +551,10 @@
         display: none;
     }
 }
-    
+  @media (max-width: 576px) {
+    .slider-overlay h1 {
+        display: none;
+    }  
     /* Products Section with ISME Colors */
 
 
