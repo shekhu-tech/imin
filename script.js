@@ -55,6 +55,37 @@ function injectFooter() {
 
   const style = `
     <style>
+
+     /* NEW STYLES FOR HEADING AND LINES */
+     .footer-header {
+        text-align: center;
+        margin-bottom: 25px;
+        padding: 0 15px;
+     }
+
+     .footer-heading {
+        font-size: 2.2rem;
+        color: #ffd700; /* Gold color */
+        text-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
+        margin-bottom: 15px;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        background: linear-gradient(to right, #ffd700, #ffaa00);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-align: center;
+     }
+
+     .footer-lines {
+        color: #ffd700;
+        line-height: 1.7;
+        max-width: 600px;
+        margin: 0 auto;
+        font-size: 1.15rem;
+        text-align: center;
+        text-shadow: 0 0 8px rgba(255, 215, 0, 0.5);
+        font-weight: 500;
+     }
      /* ===== Navigation Icon Buttons (FINAL - Most Powerful Fix) ===== */
 footer .footer-btn {
   width: 35px;
@@ -153,10 +184,12 @@ footer .footer-btn {
 /* ===== Copyright ===== */
 .copyright {
   margin-top: 2.5rem;
+  text-align: center;
   opacity: 0.7;
   font-size: 0.95rem;
   color: rgba(255, 255, 255, 0.6);
 }
+
 
 /* ===== Scroll to Top Button ===== */
 .scroll-to-top {
@@ -251,6 +284,13 @@ footer .footer-btn {
   const html = `
     <footer id="site-footer">
       <div class="footer-container">
+    <h2 class="footer-heading">Am</h2>
+<p class="footer-lines">
+  Discover amazing deals across all categories<br>
+  Fast shipping & secure payment options<br>
+  24/7 customer support & easy returns<br>
+  Join millions of satisfied customers today!
+</p>
         <div class="footer-buttons">
           <a href="electronics.html" class="footer-btn" title="Electronics"><i class="fas fa-tv"></i></a>
           <a href="footwear.html" class="footer-btn" title="Footwear"><i class="fas fa-shoe-prints"></i></a>
@@ -280,7 +320,6 @@ footer .footer-btn {
   document.head.insertAdjacentHTML('beforeend', style);
   footerContainer.innerHTML = html;
 }
-
 // Function to inject product section
 function injectProductSection() {
   const container = document.getElementById('product-section');
