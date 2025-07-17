@@ -460,16 +460,36 @@
           </div>
           
           <div class="action-buttons">
-            <!-- PARTICIPATE BUTTON --> 
-<button class="btn btn-primary" id="participate-btn">
-  <i class="fas fa-ticket-alt"></i> Participate Now
-</button>
+  <button class="btn btn-primary" id="participate-btn">
+    <i class="fas fa-ticket-alt"></i> Participate Now
+  </button>
+  <button class="btn btn-secondary" onclick="window.open('https://www.amazon.com/home-gym-equipment/s?k=home+gym+equipment', '_blank')">
+    <i class="fas fa-external-link-alt"></i> View Product on Amazon
+  </button>
+</div>
 
-<!-- ==== POPUP STYLES ==== -->
+<div id="popup-overlay"></div>
+
 <style>
+  /* Style for the background overlay with blur effect */
+  #popup-overlay {
+    display: none; /* Default hidden */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Black with transparency */
+    backdrop-filter: blur(8px); /* The magic blur effect! */
+    -webkit-backdrop-filter: blur(8px); /* For Safari browser support */
+    z-index: 999; /* Below the popup but above everything else */
+  }
+
+  /* Original popup styles - mostly unchanged */
   .popup {
     display: none;
     background: #1a002c;
+    color: #fff; /* Added for better text visibility */
     padding: 25px;
     border-radius: 20px;
     box-shadow: 0 0 30px rgba(255, 0, 255, 0.4);
@@ -482,7 +502,7 @@
     max-width: 500px;
   }
   .popup input,
-  .popup button {
+  .popup button[type="submit"] { /* Targeted submit button specifically */
     width: 100%;
     padding: 12px;
     margin: 10px 0;
@@ -494,11 +514,18 @@
     background: #f5f5f5;
     color: #000;
   }
-  .popup button {
+  .popup button[type="submit"],
+  .popup button#okayBtn { /* Styling the okay button too */
     background: #ff00cc;
     color: white;
     font-weight: bold;
     cursor: pointer;
+    width: 100%;
+    padding: 12px;
+    margin-top: 15px;
+    border-radius: 10px;
+    border: none;
+    font-size: 16px;
   }
   #ticketDisplay {
     font-weight: bold;
@@ -512,6 +539,21 @@
     font-size: 13px;
     display: none;
   }
+
+  /* Style for the new close button */
+  .popup-close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 30px;
+    color: #fff;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0;
+  }
+  
   @media (max-width: 480px) {
     .popup {
       padding: 20px;
@@ -524,8 +566,8 @@
   }
 </style>
 
-<!-- ==== STEP 1: PARTICIPATION FORM ==== -->
 <div class="popup" id="popupForm">
+  <button type="button" class="popup-close-btn">&times;</button>
   <form id="lotteryForm">
     <input type="text" name="field1" required placeholder="Your Name" />
     <input type="text" name="field2" required placeholder="Phone Number" />
@@ -539,38 +581,80 @@
   </form>
 </div>
 
-<!-- ==== STEP 2: PAYMENT POPUP ==== -->
 <div class="popup" id="paymentStep">
+  <button type="button" class="popup-close-btn">&times;</button>
   <p>📲 Scan the QR code below to complete your payment:</p>
-  <img src="qr-code.jpg" alt="UPI QR Code" style="width:200px;" />
+  <img src="qr-code.jpg" alt="UPI QR Code" style="width:200px; display:block; margin: 15px auto;" />
   <p>⏳ Waiting for payment... You have 5 minutes.</p>
 </div>
 
-<!-- ==== STEP 3: TICKET DISPLAY ==== -->
 <div class="popup" id="ticketStep">
+  <button type="button" class="popup-close-btn">&times;</button>
   <p>🎉 Thank you! Your ticket number is:</p>
   <div id="ticketDisplay"></div>
   <p>📸 Please take a screenshot for proof.</p>
-  <button onclick="window.location.href='index.html'">Okay</button>
+  <button id="okayBtn">Okay</button>
 </div>
 
-<!-- ==== SCRIPT ==== -->
 <script>
+  // Popup Elements
   const participateBtn = document.getElementById('participate-btn');
+  const popupOverlay = document.getElementById('popup-overlay');
+  const allPopups = document.querySelectorAll('.popup');
   const popupForm = document.getElementById('popupForm');
   const paymentStep = document.getElementById('paymentStep');
   const ticketStep = document.getElementById('ticketStep');
+  const closeButtons = document.querySelectorAll('.popup-close-btn');
+
+  // Form & Ticket Elements
   const form = document.getElementById('lotteryForm');
   const ticketInput = document.getElementById('ticketCode');
   const ticketDisplay = document.getElementById('ticketDisplay');
+  const okayBtn = document.getElementById('okayBtn');
 
   let generatedTicket = "";
   let paymentTimeout = null;
 
-  // Show form on button click
+  // --- FUNCTIONS TO CONTROL POPUPS (IMPROVED) ---
+
+  // Function to close all popups and the overlay
+  function closeAllPopups() {
+    if (paymentTimeout) {
+      clearTimeout(paymentTimeout); // Stop timer if user closes manually
+      paymentTimeout = null;
+    }
+    popupOverlay.style.display = 'none';
+    allPopups.forEach(p => p.style.display = 'none');
+  }
+
+  // Function to open a specific popup
+  function openPopup(popupElement) {
+    popupOverlay.style.display = 'block';
+    popupElement.style.display = 'block';
+  }
+
+  // --- EVENT LISTENERS ---
+
+  // Show form on "Participate" button click
   participateBtn.addEventListener('click', () => {
-    popupForm.style.display = 'block';
+    openPopup(popupForm);
   });
+
+  // Add close functionality to all close buttons and the overlay
+  closeButtons.forEach(btn => btn.addEventListener('click', closeAllPopups));
+  popupOverlay.addEventListener('click', closeAllPopups);
+
+  // Stop click on popup from closing it (event propagation)
+  allPopups.forEach(p => p.addEventListener('click', (e) => e.stopPropagation()));
+
+  // Close popup and redirect with the "Okay" button
+  okayBtn.addEventListener('click', () => {
+      closeAllPopups();
+      window.location.href='index.html';
+  });
+
+
+  // --- ORIGINAL FORM LOGIC (UNCHANGED) ---
 
   // Ticket generator function
   function generateFormattedTicket(...fields) {
@@ -601,16 +685,12 @@
 
     // Generate ticket
     data.ticket = generateFormattedTicket(
-      data.field1,
-      data.field2,
-      data.field3,
-      data.field4,
-      data.field5
+      data.field1, data.field2, data.field3, data.field4, data.field5
     );
     generatedTicket = data.ticket;
     ticketInput.value = data.ticket;
 
-    // Send data to Google Sheet (or your backend)
+    // Send data to Google Sheet
     const urlEncoded = new URLSearchParams();
     for (const key in data) {
       urlEncoded.append(key, data[key]);
@@ -620,49 +700,48 @@
       "https://script.google.com/macros/s/AKfycbxqzb4Yre9AvKrccxARn3sXZHClj5ghYSh_satCVgBvdDAttmkvueWPaDoOVlac9HEC/exec",
       {
         method: "POST",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded"
-        },
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: urlEncoded
       }
     )
-      .then((res) => res.text())
-      .then((res) => {
-        if (res === "Success") {
-          popupForm.style.display = 'none';
-          paymentStep.style.display = 'block';
+    .then((res) => res.text())
+    .then((res) => {
+      if (res === "Success") {
+        // Switch from form to payment popup (overlay remains visible)
+        popupForm.style.display = 'none';
+        paymentStep.style.display = 'block';
 
-          // Set payment timeout (5 minutes)
-          paymentTimeout = setTimeout(() => {
-            alert("⏰ Payment time expired. Redirecting to main page.");
-            window.location.href = 'index.html';
-          }, 5 * 60 * 1000);
+        paymentTimeout = setTimeout(() => {
+          alert("⏰ Payment time expired. Redirecting to main page.");
+          window.location.href = 'index.html';
+        }, 5 * 60 * 1000);
 
-          // Simulated success after 10s (replace with real verification logic)
-          setTimeout(paymentSuccess, 10000);
-        } else {
-          alert("❌ Submission failed: " + res);
-        }
-      })
-      .catch((err) => {
-        alert("❌ Error: " + err.message);
-      });
+        // Simulated success after 10s (replace with real verification)
+        setTimeout(paymentSuccess, 10000);
+      } else {
+        alert("❌ Submission failed: " + res);
+      }
+    })
+    .catch((err) => {
+      alert("❌ Error: " + err.message);
+    });
   });
 
   // After payment success
   function paymentSuccess() {
-    clearTimeout(paymentTimeout);
+    if (paymentTimeout) {
+        clearTimeout(paymentTimeout);
+        paymentTimeout = null;
+    }
+    // Switch from payment to ticket popup (overlay remains visible)
     paymentStep.style.display = 'none';
     ticketStep.style.display = 'block';
     ticketDisplay.textContent = generatedTicket;
   }
 </script>
-            <button class="btn btn-secondary" onclick="window.open('https://www.amazon.com/home-gym-equipment/s?k=home+gym+equipment', '_blank')">
-              <i class="fas fa-external-link-alt"></i> View Product on Amazon
-            </button>
-          </div>
         </div>
       </div>
+    </div>
       <!-- Lottery Stats -->
     <div class="lottery-stats">
       <div class="stat-card">
