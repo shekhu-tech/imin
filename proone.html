@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="styles.css">
   <style>
+    /* CSS Variables for consistent theming */
     :root {
       --primary: #4a148c;
       --secondary: #7b1fa2;
@@ -20,6 +21,7 @@
       --transition: all 0.3s ease;
     }
 
+    /* Universal box-sizing and font family */
     * {
       margin: 0;
       padding: 0;
@@ -27,20 +29,22 @@
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
+    /* Body styling for background and text color */
     body {
       background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
       color: var(--light);
       line-height: 1.6;
-      overflow-x: hidden;
+      overflow-x: hidden; /* Prevent horizontal scroll */
     }
 
+    /* Hidden H1 for SEO purposes */
     .hidden-h1 {
       position: absolute;
       left: -9999px;
       visibility: hidden;
     }
 
-    /* Main Content */
+    /* Main content area styling */
     main {
       padding-top: 100px;
       max-width: 1700px;
@@ -48,7 +52,7 @@
       padding: 100px 20px 50px;
     }
 
-    /* Slider Styles */
+    /* Image Slider Styles */
     .image-slider {
       position: relative;
       width: 100%;
@@ -125,7 +129,7 @@
       background: var(--accent);
     }
 
-    /* Lottery Stats */
+    /* Lottery Stats Section */
     .lottery-stats {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -161,7 +165,7 @@
       color: var(--light);
     }
 
-    /* Product Section */
+    /* Product Section Styling */
     .product-section {
       background: rgba(255, 255, 255, 0.05);
       border-radius: 15px;
@@ -345,6 +349,7 @@
     }
 
     @media (max-width: 768px) {
+      /* Navigation styles for smaller screens */
       .nav-links {
         display: none;
         position: absolute;
@@ -408,17 +413,167 @@
         justify-content: center;
       }
     }
+
+    /* Styles for the background overlay with blur effect */
+    #popup-overlay {
+      display: none; /* Default hidden */
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.6); /* Black with transparency */
+      backdrop-filter: blur(8px); /* The magic blur effect! */
+      -webkit-backdrop-filter: blur(8px); /* For Safari browser support */
+      z-index: 999; /* Below the popup but above everything else */
+    }
+
+    /* Core popup styles to center them on the screen */
+    .popup {
+      display: none;
+      background: #1a002c;
+      color: #fff; /* Added for better text visibility */
+      padding: 25px;
+      border-radius: 20px;
+      box-shadow: 0 0 30px rgba(255, 0, 255, 0.4);
+      position: fixed; /* Positions relative to the viewport */
+      top: 50%;        /* Aligns top edge to the middle of the viewport */
+      left: 50%;       /* Aligns left edge to the middle of the viewport */
+      transform: translate(-50%, -50%); /* Moves element back by half its width/height to truly center */
+      z-index: 1000;   /* Above the overlay */
+      width: 90%;      /* Responsive width */
+      max-width: 500px; /* Maximum width for larger screens */
+    }
+
+    /* Form and button styling within popups */
+    .popup input,
+    .popup button[type="submit"] {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 10px;
+      border: none;
+      font-size: 16px;
+    }
+    .popup input {
+      background: #f5f5f5;
+      color: #000;
+    }
+    .popup button[type="submit"] { /* Styling for the submit button specifically */
+      background: linear-gradient(90deg, var(--accent), #ff4081);
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      width: 100%;
+      padding: 12px;
+      margin-top: 15px;
+      border-radius: 10px;
+      border: none;
+      font-size: 16px;
+    }
+
+    .popup button#okayBtn { /* Styling for the 'Okay' button in ticket step */
+        background: linear-gradient(90deg, var(--accent), #ff4081);
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        width: 100%;
+        padding: 12px;
+        margin-top: 15px;
+        border-radius: 10px;
+        border: none;
+        font-size: 16px;
+    }
+    /* Specific style for the simulate button to make it distinct */
+    #simulatePaymentSuccessBtn {
+        background-color: var(--success); /* Green for success simulation */
+        margin-top: 20px;
+        /* Inherit common button styles */
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        width: 100%;
+        padding: 12px;
+        border-radius: 10px;
+        border: none;
+        font-size: 16px;
+    }
+
+    #ticketDisplay {
+      font-weight: bold;
+      color: #00ffcc;
+      font-size: 20px;
+      word-break: break-word;
+      text-align: center;
+    }
+    #serialNumberDisplay {
+        font-weight: bold;
+        color: #f0f; /* A distinct color for the serial number */
+        font-size: 1.1rem;
+        text-align: center;
+        margin-top: 5px;
+    }
+
+    #countryError {
+      color: red;
+      font-size: 13px;
+      display: none;
+      margin-top: -5px;
+      margin-bottom: 10px;
+    }
+
+    /* Message for submitting form */
+    #submitMessage {
+        color: #00ffcc;
+        font-size: 1.1rem;
+        text-align: center;
+        margin-top: 10px;
+        display: none; /* Hidden by default */
+    }
+
+    /* Style for the new close button */
+    .popup-close-btn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      background: none;
+      border: none;
+      font-size: 30px;
+      color: #fff;
+      cursor: pointer;
+      line-height: 1;
+      padding: 0;
+    }
+    
+    #timerDisplay {
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: var(--accent);
+        text-align: center;
+        margin-top: 15px;
+    }
+
+    /* Responsive adjustments for popups */
+    @media (max-width: 480px) {
+      .popup {
+        padding: 20px;
+      }
+      .popup input,
+      .popup button {
+        font-size: 14px;
+        padding: 10px;
+      }
+    }
   </style>
 </head>
 <body>
   
-<!-- Header Injection Target -->
+  <!-- Header Injection Target -->
   <div id="header-container"></div>
   <!-- Hidden H1 for SEO -->
 
   <!-- Main Content -->
   <main>
-    
     
     <!-- Product Section -->
     <section class="product-section">
@@ -426,18 +581,30 @@
         <h2> Shoes</h2>
       </div>
       <!-- Image Slider -->
-    <div class="image-slider" id="slider">
-      <div class="slider-background">
-        <img src="dctsh1.jpg" alt="Lottery Ticket" class="active" loading="lazy">
-        <img src="dctsh2.jpg" alt="Winning Numbers" loading="lazy">
-        <img src="dctsh3.jpg" alt="Prize Celebration" loading="lazy">
+      <div class="image-slider" id="slider">
+        <div class="slider-background">
+          <!-- Using placeholder images as original image URLs are not available. Replace with your actual image paths. -->
+          <img src="https://placehold.co/800x500/A020F0/FFFFFF?text=Shoe+Image+1" alt="Lottery Prize Shoe 1" class="active" loading="lazy">
+          <img src="https://placehold.co/800x500/A020F0/FFFFFF?text=Shoe+Image+2" alt="Lottery Prize Shoe 2" loading="lazy">
+          <img src="https://placehold.co/800x500/A020F0/FFFFFF?text=Shoe+Image+3" alt="Lottery Prize Shoe 3" loading="lazy">
+        </div>
+        <!-- Slider controls - ensure these elements exist in your original header if you use them -->
+        <div class="slider-controls">
+            <button id="prev-slide"><i class="fas fa-chevron-left"></i></button>
+            <button id="next-slide"><i class="fas fa-chevron-right"></i></button>
+        </div>
       </div>
-    </div>
+
       <div class="product-content">
+        <div class="product-image">
+            <img src="https://placehold.co/400x300/A020F0/FFFFFF?text=Main+Shoe+Image" alt="Decathlon Kiprun KD900 Shoes">
         </div>
         <div class="product-details">
           <h3>Decathlon Kiprun KD900</h3>
-        <p>These premium running shoes are designed for maximum performance and comfort...</p>
+          <p>These premium running shoes are designed for maximum performance and comfort,
+             perfect for athletes and fitness enthusiasts. Experience superior cushioning and
+             a lightweight feel with every stride.
+          </p>
           
           <div class="price-container">
             <div class="original-price">Original Price: ₹8000</div>
@@ -445,301 +612,79 @@
           </div>
           
           <div class="features">
-          <h3>Key Features:</h3>
-          <ul>
-            <li>Advanced cushioning technology</li>
-            <li>Breathable mesh upper</li>
-            <li>Durable rubber outsole</li>
-            <li>Lightweight design</li>
-            <li>Ergonomic comfort</li>
-            <li>Multi-surface use</li>
-          </ul>
+            <h3>Key Features:</h3>
+            <ul>
+              <li>Advanced cushioning technology for impact absorption</li>
+              <li>Breathable mesh upper for ventilation and comfort</li>
+              <li>Durable rubber outsole for excellent grip and longevity</li>
+              <li>Lightweight design for effortless running</li>
+              <li>Ergonomic comfort for a snug and supportive fit</li>
+              <li>Multi-surface use suitable for various terrains</li>
+            </ul>
           </div>
           
           <div class="action-buttons">
-  <button class="btn btn-primary" id="participate-btn">
-    <i class="fas fa-ticket-alt"></i> Participate Now
-  </button>
-  <button class="btn btn-secondary" onclick="window.open('https://www.amazon.com/home-gym-equipment/s?k=home+gym+equipment', '_blank')">
-    <i class="fas fa-external-link-alt"></i> View Product on Amazon
-  </button>
-</div>
-
-<div id="popup-overlay"></div>
-
-<style>
-  /* Style for the background overlay with blur effect */
-  #popup-overlay {
-    display: none; /* Default hidden */
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.6); /* Black with transparency */
-    backdrop-filter: blur(8px); /* The magic blur effect! */
-    -webkit-backdrop-filter: blur(8px); /* For Safari browser support */
-    z-index: 999; /* Below the popup but above everything else */
-  }
-
-  /* Original popup styles - mostly unchanged */
-  .popup {
-    display: none;
-    background: #1a002c;
-    color: #fff; /* Added for better text visibility */
-    padding: 25px;
-    border-radius: 20px;
-    box-shadow: 0 0 30px rgba(255, 0, 255, 0.4);
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 1000;
-    width: 90%;
-    max-width: 500px;
-  }
-  .popup input,
-  .popup button[type="submit"] { /* Targeted submit button specifically */
-    width: 100%;
-    padding: 12px;
-    margin: 10px 0;
-    border-radius: 10px;
-    border: none;
-    font-size: 16px;
-  }
-  .popup input {
-    background: #f5f5f5;
-    color: #000;
-  }
-  .popup button[type="submit"],
-  .popup button#okayBtn { /* Styling the okay button too */
-    background: #ff00cc;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-    width: 100%;
-    padding: 12px;
-    margin-top: 15px;
-    border-radius: 10px;
-    border: none;
-    font-size: 16px;
-  }
-  #ticketDisplay {
-    font-weight: bold;
-    color: #00ffcc;
-    font-size: 20px;
-    word-break: break-word;
-    text-align: center;
-  }
-  #countryError {
-    color: red;
-    font-size: 13px;
-    display: none;
-  }
-
-  /* Style for the new close button */
-  .popup-close-btn {
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    background: none;
-    border: none;
-    font-size: 30px;
-    color: #fff;
-    cursor: pointer;
-    line-height: 1;
-    padding: 0;
-  }
-  
-  @media (max-width: 480px) {
-    .popup {
-      padding: 20px;
-    }
-    .popup input,
-    .popup button {
-      font-size: 14px;
-      padding: 10px;
-    }
-  }
-</style>
-
-<div class="popup" id="popupForm">
-  <button type="button" class="popup-close-btn">&times;</button>
-  <form id="lotteryForm">
-    <input type="text" name="field1" required placeholder="Your Name" />
-    <input type="text" name="field2" required placeholder="Phone Number" />
-    <input type="email" name="field3" required placeholder="Email" />
-    <input type="date" name="field4" required />
-    <input type="text" name="field5" required placeholder="Place" />
-    <input type="text" name="field6" required placeholder="Country" />
-    <span id="countryError">Please enter your country.</span>
-    <input type="hidden" name="ticket" id="ticketCode" />
-    <button type="submit">Submit</button>
-  </form>
-</div>
-
-<div class="popup" id="paymentStep">
-  <button type="button" class="popup-close-btn">&times;</button>
-  <p>📲 Scan the QR code below to complete your payment:</p>
-  <img src="qr-code.jpg" alt="UPI QR Code" style="width:200px; display:block; margin: 15px auto;" />
-  <p>⏳ Waiting for payment... You have 5 minutes.</p>
-</div>
-
-<div class="popup" id="ticketStep">
-  <button type="button" class="popup-close-btn">&times;</button>
-  <p>🎉 Thank you! Your ticket number is:</p>
-  <div id="ticketDisplay"></div>
-  <p>📸 Please take a screenshot for proof.</p>
-  <button id="okayBtn">Okay</button>
-</div>
-
-<script>
-  // Popup Elements
-  const participateBtn = document.getElementById('participate-btn');
-  const popupOverlay = document.getElementById('popup-overlay');
-  const allPopups = document.querySelectorAll('.popup');
-  const popupForm = document.getElementById('popupForm');
-  const paymentStep = document.getElementById('paymentStep');
-  const ticketStep = document.getElementById('ticketStep');
-  const closeButtons = document.querySelectorAll('.popup-close-btn');
-
-  // Form & Ticket Elements
-  const form = document.getElementById('lotteryForm');
-  const ticketInput = document.getElementById('ticketCode');
-  const ticketDisplay = document.getElementById('ticketDisplay');
-  const okayBtn = document.getElementById('okayBtn');
-
-  let generatedTicket = "";
-  let paymentTimeout = null;
-
-  // --- FUNCTIONS TO CONTROL POPUPS (IMPROVED) ---
-
-  // Function to close all popups and the overlay
-  function closeAllPopups() {
-    if (paymentTimeout) {
-      clearTimeout(paymentTimeout); // Stop timer if user closes manually
-      paymentTimeout = null;
-    }
-    popupOverlay.style.display = 'none';
-    allPopups.forEach(p => p.style.display = 'none');
-  }
-
-  // Function to open a specific popup
-  function openPopup(popupElement) {
-    popupOverlay.style.display = 'block';
-    popupElement.style.display = 'block';
-  }
-
-  // --- EVENT LISTENERS ---
-
-  // Show form on "Participate" button click
-  participateBtn.addEventListener('click', () => {
-    openPopup(popupForm);
-  });
-
-  // Add close functionality to all close buttons and the overlay
-  closeButtons.forEach(btn => btn.addEventListener('click', closeAllPopups));
-  popupOverlay.addEventListener('click', closeAllPopups);
-
-  // Stop click on popup from closing it (event propagation)
-  allPopups.forEach(p => p.addEventListener('click', (e) => e.stopPropagation()));
-
-  // Close popup and redirect with the "Okay" button
-  okayBtn.addEventListener('click', () => {
-      closeAllPopups();
-      window.location.href='index.html';
-  });
-
-
-  // --- ORIGINAL FORM LOGIC (UNCHANGED) ---
-
-  // Ticket generator function
-  function generateFormattedTicket(...fields) {
-    const base = btoa(fields.join('')).replace(/[^A-Z0-9]/gi, '').toUpperCase();
-    let raw = base.padEnd(20, 'X').substring(0, 20);
-    return raw.match(/.{1,4}/g).join('-');
-  }
-
-  // Handle form submission
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
-
-    const data = {
-      field1: form.field1.value,
-      field2: form.field2.value,
-      field3: form.field3.value,
-      field4: form.field4.value,
-      field5: form.field5.value,
-      field6: form.field6.value
-    };
-
-    if (!data.field6.trim()) {
-      document.getElementById('countryError').style.display = 'block';
-      return;
-    } else {
-      document.getElementById('countryError').style.display = 'none';
-    }
-
-    // Generate ticket
-    data.ticket = generateFormattedTicket(
-      data.field1, data.field2, data.field3, data.field4, data.field5
-    );
-    generatedTicket = data.ticket;
-    ticketInput.value = data.ticket;
-
-    // Send data to Google Sheet
-    const urlEncoded = new URLSearchParams();
-    for (const key in data) {
-      urlEncoded.append(key, data[key]);
-    }
-
-    fetch(
-      "https://script.google.com/macros/s/AKfycbxqzb4Yre9AvKrccxARn3sXZHClj5ghYSh_satCVgBvdDAttmkvueWPaDoOVlac9HEC/exec",
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: urlEncoded
-      }
-    )
-    .then((res) => res.text())
-    .then((res) => {
-      if (res === "Success") {
-        // Switch from form to payment popup (overlay remains visible)
-        popupForm.style.display = 'none';
-        paymentStep.style.display = 'block';
-
-        paymentTimeout = setTimeout(() => {
-          alert("⏰ Payment time expired. Redirecting to main page.");
-          window.location.href = 'index.html';
-        }, 5 * 60 * 1000);
-
-        // Simulated success after 10s (replace with real verification)
-        setTimeout(paymentSuccess, 10000);
-      } else {
-        alert("❌ Submission failed: " + res);
-      }
-    })
-    .catch((err) => {
-      alert("❌ Error: " + err.message);
-    });
-  });
-
-  // After payment success
-  function paymentSuccess() {
-    if (paymentTimeout) {
-        clearTimeout(paymentTimeout);
-        paymentTimeout = null;
-    }
-    // Switch from payment to ticket popup (overlay remains visible)
-    paymentStep.style.display = 'none';
-    ticketStep.style.display = 'block';
-    ticketDisplay.textContent = generatedTicket;
-  }
-</script>
+            <button class="btn btn-primary" id="participate-btn">
+              <i class="fas fa-ticket-alt"></i> Participate Now
+            </button>
+            <button class="btn btn-secondary" onclick="window.open('https://www.amazon.com/home-gym-equipment/s?k=home+gym+equipment', '_blank')">
+              <i class="fas fa-external-link-alt"></i> View Product on Amazon
+            </button>
+          </div>
         </div>
       </div>
+    </section>
+
+    <!-- Overlay for popups -->
+    <div id="popup-overlay"></div>
+
+    <!-- Participation Form Popup -->
+    <div class="popup" id="popupForm">
+      <button type="button" class="popup-close-btn">&times;</button>
+      <h2>Participate in the Lottery!</h2> <!-- Heading for Step 1 -->
+      <form id="lotteryForm">
+        <input type="text" name="field1" required placeholder="Your Name" autocomplete="name" />
+        <input type="tel" name="field2" required placeholder="Phone Number" autocomplete="tel" />
+        <input type="email" name="field3" required placeholder="Email" autocomplete="email" />
+        <input type="date" name="field4" required />
+        <input type="text" name="field5" required placeholder="City/Place" autocomplete="address-level2" />
+        <input type="text" name="field6" required placeholder="address" autocomplete="country-name" />
+        <span id="countryError">Please enter your country.</span>
+        <input type="hidden" name="ticket" id="ticketCode" />
+        <button type="submit">Submit</button>
+        <span id="submitMessage">Submitting... Please wait</span> <!-- Submitting message -->
+      </form>
     </div>
-      <!-- Lottery Stats -->
+
+    <!-- Payment Step Popup -->
+    <div class="popup" id="paymentStep">
+      <button type="button" class="popup-close-btn">&times;</button>
+      <h2>Complete Your Payment</h2> <!-- Heading for Step 2 -->
+      <p>You will be redirected to Instamojo shortly to complete your payment. Please wait.</p>
+      <!-- Using a placeholder QR code image. This would ideally be replaced by the Instamojo redirect. -->
+      <img src="https://placehold.co/200x200/4CAF50/FFFFFF?text=QR+Code" alt="UPI QR Code" style="width:200px; display:block; margin: 15px auto;" />
+      <p id="timerDisplay">Time remaining: 05:00</p>
+      <p style="margin-top: 10px; font-size: 0.9em; color: #ccc;">
+        After payment, please wait for automatic verification. Do not close this window.
+      </p>
+      <!-- This button is for testing only. In a real app, payment confirmation would come from a server. -->
+      <button id="simulatePaymentSuccessBtn">
+        Simulate Payment Success (For Testing)
+      </button>
+    </div>
+
+    <!-- Ticket Display Popup -->
+    <div class="popup" id="ticketStep">
+      <button type="button" class="popup-close-btn">&times;</button>
+      <h2>🎉 Congratulations! Your Ticket is Ready! 🎉</h2> <!-- Heading for Step 3 -->
+      <p>Your ticket number is:</p>
+      <div id="ticketDisplay"></div>
+      <div id="serialNumberDisplay" style="font-weight: bold; color: #00ffcc; font-size: 1.1rem; text-align: center; margin-top: 10px;"></div>
+      <p style="margin-top: 15px;">📸 Please take a screenshot for proof and reference.</p>
+      <button id="okayBtn">Okay, Got It!</button>
+    </div>
+
+    <!-- Lottery Stats Section -->
     <div class="lottery-stats">
       <div class="stat-card">
         <h3>Current Jackpot</h3>
@@ -758,38 +703,290 @@
         <p>4.2M</p>
       </div>
     </div>
-    </section>
+    
     <!-- Product Section Injection Target -->
     <div id="product-section"></div>
   </main>
   
- <!-- Footer Injection Target -->
+  <!-- Footer Injection Target -->
   <div id="footer-container"></div>
   
-  
-  
   <script>
-    // DOM Elements
+    // Popup Elements
+    const participateBtn = document.getElementById('participate-btn');
+    const popupOverlay = document.getElementById('popup-overlay');
+    const allPopups = document.querySelectorAll('.popup');
+    const popupForm = document.getElementById('popupForm');
+    const paymentStep = document.getElementById('paymentStep');
+    const ticketStep = document.getElementById('ticketStep');
+    const closeButtons = document.querySelectorAll('.popup-close-btn');
+    const timerDisplay = document.getElementById('timerDisplay');
+    const simulatePaymentSuccessBtn = document.getElementById('simulatePaymentSuccessBtn'); // New button
+    const submitMessage = document.getElementById('submitMessage'); // Submitting message element
+
+    // Form & Ticket Elements
+    const form = document.getElementById('lotteryForm');
+    const ticketInput = document.getElementById('ticketCode');
+    const ticketDisplay = document.getElementById('ticketDisplay');
+    const serialNumberDisplay = document.getElementById('serialNumberDisplay'); // New serial number display element
+    const okayBtn = document.getElementById('okayBtn');
+
+    let generatedTicket = "";
+    let paymentTimeout = null;
+    let countdownInterval = null;
+    const PAYMENT_TIME_LIMIT = 5 * 60; // 5 minutes in seconds
+
+    // Serial number starts from 0 for the first ticket to be 000001
+    // This is a client-side counter, it will reset if the browser session ends.
+    // For a globally persistent serial number, this would need to be managed by a backend.
+    let currentSerialNumber = 0; 
+
+    // --- FUNCTIONS TO CONTROL POPUPS ---
+
+    // Function to close all popups and the overlay
+    function closeAllPopups() {
+      clearTimers(); // Clear any running timers
+      popupOverlay.style.display = 'none';
+      allPopups.forEach(p => p.style.display = 'none');
+      document.body.style.overflow = 'auto'; // Re-enable background scrolling
+      // Hide submitting message when popups close
+      submitMessage.style.display = 'none';
+    }
+
+    // Function to open a specific popup
+    function openPopup(popupElement) {
+      document.body.style.overflow = 'hidden'; // Disable background scrolling
+      popupOverlay.style.display = 'block';
+      popupElement.style.display = 'block';
+    }
+
+    // Function to clear payment-related timers
+    function clearTimers() {
+        if (paymentTimeout) {
+            clearTimeout(paymentTimeout);
+            paymentTimeout = null;
+        }
+        if (countdownInterval) {
+            clearInterval(countdownInterval);
+            countdownInterval = null;
+        }
+    }
+
+    // --- EVENT LISTENERS ---
+
+    // Show form on "Participate" button click
+    participateBtn.addEventListener('click', () => {
+      openPopup(popupForm);
+    });
+
+    // Add close functionality to all close buttons
+    closeButtons.forEach(btn => btn.addEventListener('click', closeAllPopups));
+
+    // IMPORTANT: Prevent clicks anywhere on the screen from closing popups
+    // This ensures popups only close via their explicit close buttons.
+    // Clicks inside the popup still won't bubble up to the overlay.
+    allPopups.forEach(p => p.addEventListener('click', (e) => e.stopPropagation())); 
+
+    // Close popup and redirect with the "Okay" button
+    okayBtn.addEventListener('click', () => {
+        closeAllPopups();
+        window.location.href='index.html'; // Redirects to homepage after user acknowledges ticket
+    });
+
+    // Simulate payment success (for development/testing)
+    simulatePaymentSuccessBtn.addEventListener('click', paymentSuccess);
+
+    // --- FORM SUBMISSION & PAYMENT LOGIC ---
+
+    // Ticket generator function
+    function generateFormattedTicket(...fields) {
+      // Add a timestamp to the fields array to ensure uniqueness for every submission
+      const uniqueFields = [...fields, Date.now()]; 
+      const base = btoa(uniqueFields.join('')).replace(/[^A-Z0-9]/gi, '').toUpperCase();
+      let raw = base.padEnd(20, 'X').substring(0, 20);
+      return raw.match(/.{1,4}/g).join('-');
+    }
+
+    // Handle form submission
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const data = {
+        field1: form.field1.value,
+        field2: form.field2.value,
+        field3: form.field3.value,
+        field4: form.field4.value,
+        field5: form.field5.value,
+        field6: form.field6.value
+      };
+
+      if (!data.field6.trim()) {
+        document.getElementById('countryError').style.display = 'block';
+        return;
+      } else {
+        document.getElementById('countryError').style.display = 'none';
+      }
+
+      // Show submitting message
+      submitMessage.style.display = 'block';
+      // Disable the submit button to prevent multiple submissions
+      form.querySelector('button[type="submit"]').disabled = true;
+
+
+      // Generate ticket with unique identifier
+      data.ticket = generateFormattedTicket(
+        data.field1, data.field2, data.field3, data.field4, data.field5, data.field6 // Pass all relevant fields
+      );
+      generatedTicket = data.ticket;
+      ticketInput.value = data.ticket;
+
+      // Increment serial number for this submission
+      currentSerialNumber++;
+      data.serialNumber = String(currentSerialNumber).padStart(6, '0'); // Add serial number to data sent to Google Sheet
+
+      // Send data to Google Sheet (or your backend)
+      const urlEncoded = new URLSearchParams();
+      for (const key in data) {
+        urlEncoded.append(key, data[key]);
+      }
+
+      fetch(
+        "https://script.google.com/macros/s/AKfycbxqzb4Yre9AvKrccxARn3sXZHClj5ghYSh_satCVgBvdDAttmkvueWPaDoOVlac9HEC/exec",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: urlEncoded
+        }
+      )
+      .then((res) => res.text())
+      .then((res) => {
+        // Hide submitting message and re-enable button regardless of success/failure
+        submitMessage.style.display = 'none';
+        form.querySelector('button[type="submit"]').disabled = false;
+
+        if (res === "Success") {
+          // Switch from form to payment popup
+          popupForm.style.display = 'none';
+          openPopup(paymentStep); // Ensure overlay is active
+
+          startPaymentTimer(); // Start the 5-minute payment timer
+
+          // ***************************************************************
+          // INSTAMOJO INTEGRATION CONCEPTUAL AREA:
+          // Here you would typically initiate an Instamojo payment.
+          // This involves making a request to YOUR BACKEND,
+          // which then communicates with Instamojo APIs to create a payment order/link.
+          // Instamojo would then redirect the user to their payment page.
+          //
+          // Example (Requires Backend):
+          // fetch('/api/initiate-instamojo-payment', {
+          //     method: 'POST',
+          //     headers: { 'Content-Type': 'application/json' },
+          //     body: JSON.stringify({
+          //         amount: 10,
+          //         purpose: 'Lottery Ticket',
+          //         buyer_name: data.field1, // Use consistent field names for Instamojo
+          //         email: data.field3,
+          //         phone: data.field2,
+          //         redirect_url: 'YOUR_SUCCESS_URL_AFTER_INSTAMOJO_PAYMENT',
+          //         webhook_url: 'YOUR_BACKEND_WEBHOOK_URL_FOR_INSTAMOJO_NOTIFICATIONS'
+          //     })
+          // })
+          // .then(response => response.json())
+          // .then(instamojoData => {
+          //     if (instamojoData.payment_request && instamojoData.payment_request.longurl) {
+          //         window.location.href = instamojoData.payment_request.longurl; // Redirect to Instamojo
+          //     } else {
+          //         console.error('Instamojo initiation failed: Invalid response', instamojoData);
+          //         // Implement custom message box instead of alert
+          //         closeAllPopups();
+          //     }
+          // })
+          // .catch(error => {
+          //     console.error('Instamojo initiation failed:', error);
+          //     // Implement custom message box instead of alert
+          //     closeAllPopups();
+          // });
+          //
+          // For this frontend-only example, we continue to the 'paymentStep'
+          // which simulates waiting for a payment callback, which can be triggered
+          // by the 'Simulate Payment Success' button.
+          // ***************************************************************
+
+        } else {
+          console.error("Submission failed: " + res);
+        }
+      })
+      .catch((err) => {
+        // Hide submitting message and re-enable button
+        submitMessage.style.display = 'none';
+        form.querySelector('button[type="submit"]').disabled = false;
+        console.error("Error: " + err.message);
+      });
+    });
+
+    // Start the 5-minute payment countdown
+    function startPaymentTimer() {
+        let timeLeft = PAYMENT_TIME_LIMIT; // 5 minutes in seconds
+
+        function updateTimerDisplay() {
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
+            timerDisplay.textContent = `Time remaining: ${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+
+            if (timeLeft <= 0) {
+                clearTimers();
+                // Implement custom message box instead of alert
+                window.location.href = 'index.html';
+            } else {
+                timeLeft--;
+            }
+        }
+
+        updateTimerDisplay(); // Display immediately
+        countdownInterval = setInterval(updateTimerDisplay, 1000); // Update every second
+
+        // This timeout ensures the payment process is aborted after 5 minutes if no success callback is received.
+        paymentTimeout = setTimeout(() => {
+            if (paymentTimeout) { // Check if it hasn't been cleared by successful payment
+                clearTimers();
+                // Implement custom message box instead of alert
+                window.location.href = 'index.html';
+            }
+        }, PAYMENT_TIME_LIMIT * 1000);
+    }
+
+    // Function called after successful payment verification (from Instamojo webhook/callback)
+    function paymentSuccess() {
+      clearTimers(); // Stop any running timers
+
+      // Switch from payment to ticket popup
+      paymentStep.style.display = 'none';
+      openPopup(ticketStep); // Ensure overlay is active and ticket step is shown
+      ticketDisplay.textContent = generatedTicket;
+      // Display the serial number
+      serialNumberDisplay.textContent = `Serial Number: ${String(currentSerialNumber).padStart(6, '0')}`;
+    }
+
+    // ----------------------------------------------------------------------
+    // Slider Logic - Keep as is, ensuring elements like prevBtn/nextBtn exist
+    // ----------------------------------------------------------------------
     const slider = document.getElementById('slider');
-    const prevBtn = document.getElementById('prev-slide');
-    const nextBtn = document.getElementById('next-slide');
+    const prevBtn = document.getElementById('prev-slide'); 
+    const nextBtn = document.getElementById('next-slide'); 
     const images = slider.querySelectorAll('img');
    
-    // Slider functionality
     let currentSlide = 0;
     const totalSlides = images.length;
     let slideInterval;
     
     function showSlide(index) {
-      // Reset all images
       images.forEach(img => img.classList.remove('active'));
       
-      // Handle index boundaries
       if (index >= totalSlides) currentSlide = 0;
       else if (index < 0) currentSlide = totalSlides - 1;
       else currentSlide = index;
       
-      // Show current slide
       images[currentSlide].classList.add('active');
     }
     
@@ -809,58 +1006,35 @@
     showSlide(0);
     startSlider();
     
-    // Event listeners for slider controls
-    nextBtn.addEventListener('click', () => {
-      clearInterval(slideInterval);
-      nextSlide();
-      startSlider();
-    });
+    // Event listeners for slider controls - added checks for element existence
+    if (nextBtn) {
+        nextBtn.addEventListener('click', () => {
+            clearInterval(slideInterval);
+            nextSlide();
+            startSlider();
+        });
+    }
     
-    prevBtn.addEventListener('click', () => {
-      clearInterval(slideInterval);
-      prevSlide();
-      startSlider();
-    });
+    if (prevBtn) {
+        prevBtn.addEventListener('click', () => {
+            clearInterval(slideInterval);
+            prevSlide();
+            startSlider();
+        });
+    }
     
-    // Mobile menu toggle
-    hamburger.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
-    });
-    
-    // Modal functionality
-    participateBtn.addEventListener('click', () => {
-      participationModal.classList.add('active');
-      document.body.style.overflow = 'hidden'; // Prevent background scrolling
-    });
-    
-    closeModals.forEach(btn => {
-      btn.addEventListener('click', () => {
-        participationModal.classList.remove('active');
-        paymentModal.classList.remove('active');
-        successModal.classList.remove('active');
-        document.body.style.overflow = 'auto'; // Re-enable scrolling
-      });
-    });
-    
-    // Close modals when clicking outside
-    window.addEventListener('click', (e) => {
-      if (e.target === participationModal) {
-        participationModal.classList.remove('active');
-        document.body.style.overflow = 'auto';
-      }
-      if (e.target === paymentModal) {
-        paymentModal.classList.remove('active');
-        document.body.style.overflow = 'auto';
-      }
-      if (e.target === successModal) {
-        successModal.classList.remove('active');
-        document.body.style.overflow = 'auto';
-      }
-    });
-    
+    // Mobile menu toggle (assuming 'hamburger' and 'navLinks' elements exist elsewhere)
+    // You would need to ensure these elements and their related CSS are present in your 'styles.css'
+    const hamburger = document.querySelector('.hamburger'); 
+    const navLinks = document.querySelector('.nav-links');   
+    if (hamburger && navLinks) {
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    }
   </script>
 
-<!-- Load Injectors -->
+<!-- Load Injectors - assuming script.js exists for header/footer injection -->
   <script src="script.js" defer></script>
 </body>
 </html>
