@@ -415,6 +415,7 @@
     }
 
     /* Styles for the background overlay with blur effect */
+   /* Styles for the background overlay with blur effect */
     #popup-overlay {
       display: none; /* Default hidden */
       position: fixed;
@@ -447,7 +448,7 @@
 
     /* Form and button styling within popups */
     .popup input,
-    .popup button[type="submit"] {
+    .popup button {
       width: 100%;
       padding: 12px;
       margin: 10px 0;
@@ -459,7 +460,9 @@
       background: #f5f5f5;
       color: #000;
     }
-    .popup button[type="submit"] { /* Styling for the submit button specifically */
+    .popup button[type="submit"],
+    .popup button#okayBtn,
+    #razorpay-payment-btn { /* Combined styles for main action buttons */
       background: linear-gradient(90deg, var(--accent), #ff4081);
       color: white;
       font-weight: bold;
@@ -471,34 +474,7 @@
       border: none;
       font-size: 16px;
     }
-
-    .popup button#okayBtn { /* Styling for the 'Okay' button in ticket step */
-        background: linear-gradient(90deg, var(--accent), #ff4081);
-        color: white;
-        font-weight: bold;
-        cursor: pointer;
-        width: 100%;
-        padding: 12px;
-        margin-top: 15px;
-        border-radius: 10px;
-        border: none;
-        font-size: 16px;
-    }
-    /* Specific style for the simulate button to make it distinct */
-    #simulatePaymentSuccessBtn {
-        background-color: var(--success); /* Green for success simulation */
-        margin-top: 20px;
-        /* Inherit common button styles */
-        color: white;
-        font-weight: bold;
-        cursor: pointer;
-        width: 100%;
-        padding: 12px;
-        border-radius: 10px;
-        border: none;
-        font-size: 16px;
-    }
-
+    
     #ticketDisplay {
       font-weight: bold;
       color: #00ffcc;
@@ -529,20 +505,6 @@
         text-align: center;
         margin-top: 10px;
         display: none; /* Hidden by default */
-    }
-
-    /* Style for the new close button */
-    .popup-close-btn {
-      position: absolute;
-      top: 10px;
-      right: 15px;
-      background: none;
-      border: none;
-      font-size: 30px;
-      color: #fff;
-      cursor: pointer;
-      line-height: 1;
-      padding: 0;
     }
     
     #timerDisplay {
@@ -636,50 +598,48 @@
     <div id="popup-overlay"></div>
 
     <!-- Participation Form Popup -->
-    <div class="popup" id="popupForm">
-      <button type="button" class="popup-close-btn">&times;</button>
-      <h2>Participate in the Lottery!</h2> <!-- Heading for Step 1 -->
+    <div class="action-buttons">
+        <button class="btn btn-primary" id="participate-btn">
+          <i class="fas fa-ticket-alt"></i> Participate Now
+        </button>
+        <button class="btn btn-secondary" onclick="window.open('https://www.amazon.com/home-gym-equipment/s?k=home+gym+equipment', '_blank')">
+          <i class="fas fa-external-link-alt"></i> View Product on Amazon
+        </button>
+      </div>
+  </main>
+
+  <div id="popup-overlay"></div>
+  <div class="popup" id="popupForm">
+   <h2 style="text-align: center;">Don't refresh And Closs!</h2>
       <form id="lotteryForm">
-        <input type="text" name="field1" required placeholder="Your Name" autocomplete="name" />
-        <input type="tel" name="field2" required placeholder="Phone Number" autocomplete="tel" />
-        <input type="email" name="field3" required placeholder="Email" autocomplete="email" />
-        <input type="date" name="field4" required />
-        <input type="text" name="field5" required placeholder="City/Place" autocomplete="address-level2" />
-        <input type="text" name="field6" required placeholder="address" autocomplete="country-name" />
-        <span id="countryError">Please enter your country.</span>
-        <input type="hidden" name="ticket" id="ticketCode" />
-        <button type="submit">Submit</button>
-        <span id="submitMessage">Submitting... Please wait</span> <!-- Submitting message -->
-      </form>
-    </div>
+      <input type="text" name="field1" required placeholder="Your Name" autocomplete="name" />
+      <input type="tel" name="field2" required placeholder="Phone Number" autocomplete="tel" />
+      <input type="email" name="field3" required placeholder="Email" autocomplete="email" />
+      <input type="date" name="field4" required />
+      <input type="text" name="field5" required placeholder="City/Place" autocomplete="address-level2" />
+      <input type="text" name="field6" required placeholder="Address" autocomplete="country-name" />
+      <span id="countryError">Please enter your country.</span>
+      <input type="hidden" name="ticket" id="ticketCode" />
+      <button type="submit">Submit</button>
+      <span id="submitMessage">Submitting... Please wait</span> </form>
+  </div>
 
-    <!-- Payment Step Popup -->
-    <div class="popup" id="paymentStep">
-      <button type="button" class="popup-close-btn">&times;</button>
-      <h2>Complete Your Payment</h2> <!-- Heading for Step 2 -->
-      <p>You will be redirected to Instamojo shortly to complete your payment. Please wait.</p>
-      <!-- Using a placeholder QR code image. This would ideally be replaced by the Instamojo redirect. -->
-      <img src="https://placehold.co/200x200/4CAF50/FFFFFF?text=QR+Code" alt="UPI QR Code" style="width:200px; display:block; margin: 15px auto;" />
-      <p id="timerDisplay">Time remaining: 05:00</p>
-      <p style="margin-top: 10px; font-size: 0.9em; color: #ccc;">
-        After payment, please wait for automatic verification. Do not close this window.
-      </p>
-      <!-- This button is for testing only. In a real app, payment confirmation would come from a server. -->
-      <button id="simulatePaymentSuccessBtn">
-        Simulate Payment Success (For Testing)
-      </button>
-    </div>
+  <div class="popup" id="paymentStep">
+    <h2>Complete Your Payment</h2> <p>Please complete the payment to finalize your ticket. Click the button below.</p>
+    <div id="timerDisplay">Time remaining: 05:00</div>
+    <button id="razorpay-payment-btn">Pay with Razorpay</button>
+    <p style="margin-top: 10px; font-size: 0.9em; color: #ccc;">
+      After payment, please wait for automatic verification. Do not close this window.
+    </p>
+  </div>
 
-    <!-- Ticket Display Popup -->
-    <div class="popup" id="ticketStep">
-      <button type="button" class="popup-close-btn">&times;</button>
-      <h2>🎉 Congratulations! Your Ticket is Ready! 🎉</h2> <!-- Heading for Step 3 -->
-      <p>Your ticket number is:</p>
-      <div id="ticketDisplay"></div>
-      <div id="serialNumberDisplay" style="font-weight: bold; color: #00ffcc; font-size: 1.1rem; text-align: center; margin-top: 10px;"></div>
-      <p style="margin-top: 15px;">📸 Please take a screenshot for proof and reference.</p>
-      <button id="okayBtn">Okay, Got It!</button>
-    </div>
+  <div class="popup" id="ticketStep">
+    <h2>🎉 Congratulations! Your Ticket is Ready! 🎉</h2> <p>Your ticket number is:</p>
+    <div id="ticketDisplay"></div>
+    <div id="serialNumberDisplay"></div>
+    <p style="margin-top: 15px;">📸 Please take a screenshot for proof and reference.</p>
+    <button id="okayBtn">Okay, Got It!</button>
+  </div>
 
     <!-- Lottery Stats Section -->
     <div class="lottery-stats">
@@ -718,94 +678,64 @@
     const ticketStep = document.getElementById('ticketStep');
     const closeButtons = document.querySelectorAll('.popup-close-btn');
     const timerDisplay = document.getElementById('timerDisplay');
-    const simulatePaymentSuccessBtn = document.getElementById('simulatePaymentSuccessBtn'); // New button
-    const submitMessage = document.getElementById('submitMessage'); // Submitting message element
+    const razorpayBtn = document.getElementById('razorpay-payment-btn');
+    const submitMessage = document.getElementById('submitMessage');
 
     // Form & Ticket Elements
     const form = document.getElementById('lotteryForm');
     const ticketInput = document.getElementById('ticketCode');
     const ticketDisplay = document.getElementById('ticketDisplay');
-    const serialNumberDisplay = document.getElementById('serialNumberDisplay'); // New serial number display element
+    const serialNumberDisplay = document.getElementById('serialNumberDisplay');
     const okayBtn = document.getElementById('okayBtn');
 
     let generatedTicket = "";
     let paymentTimeout = null;
     let countdownInterval = null;
     const PAYMENT_TIME_LIMIT = 5 * 60; // 5 minutes in seconds
-
-    // Serial number starts from 0 for the first ticket to be 000001
-    // This is a client-side counter, it will reset if the browser session ends.
-    // For a globally persistent serial number, this would need to be managed by a backend.
-    let currentSerialNumber = 0; 
+    let currentSerialNumber = 0; // In production, this should be managed by a backend.
 
     // --- FUNCTIONS TO CONTROL POPUPS ---
-
-    // Function to close all popups and the overlay
     function closeAllPopups() {
-      clearTimers(); // Clear any running timers
+      clearTimers();
       popupOverlay.style.display = 'none';
       allPopups.forEach(p => p.style.display = 'none');
-      document.body.style.overflow = 'auto'; // Re-enable background scrolling
-      // Hide submitting message when popups close
+      document.body.style.overflow = 'auto';
       submitMessage.style.display = 'none';
     }
 
-    // Function to open a specific popup
     function openPopup(popupElement) {
-      document.body.style.overflow = 'hidden'; // Disable background scrolling
+      document.body.style.overflow = 'hidden';
       popupOverlay.style.display = 'block';
       popupElement.style.display = 'block';
     }
 
-    // Function to clear payment-related timers
     function clearTimers() {
-        if (paymentTimeout) {
-            clearTimeout(paymentTimeout);
-            paymentTimeout = null;
-        }
-        if (countdownInterval) {
-            clearInterval(countdownInterval);
-            countdownInterval = null;
-        }
+      if (paymentTimeout) clearTimeout(paymentTimeout);
+      if (countdownInterval) clearInterval(countdownInterval);
+      paymentTimeout = null;
+      countdownInterval = null;
     }
 
     // --- EVENT LISTENERS ---
-
-    // Show form on "Participate" button click
-    participateBtn.addEventListener('click', () => {
-      openPopup(popupForm);
-    });
-
-    // Add close functionality to all close buttons
+    participateBtn.addEventListener('click', () => openPopup(popupForm));
     closeButtons.forEach(btn => btn.addEventListener('click', closeAllPopups));
-
-    // IMPORTANT: Prevent clicks anywhere on the screen from closing popups
-    // This ensures popups only close via their explicit close buttons.
-    // Clicks inside the popup still won't bubble up to the overlay.
-    allPopups.forEach(p => p.addEventListener('click', (e) => e.stopPropagation())); 
-
-    // Close popup and redirect with the "Okay" button
+    allPopups.forEach(p => p.addEventListener('click', e => e.stopPropagation()));
     okayBtn.addEventListener('click', () => {
-        closeAllPopups();
-        window.location.href='index.html'; // Redirects to homepage after user acknowledges ticket
+      closeAllPopups();
+      window.location.href = 'index.html';
     });
-
-    // Simulate payment success (for development/testing)
-    simulatePaymentSuccessBtn.addEventListener('click', paymentSuccess);
+    
+    razorpayBtn.addEventListener('click', handleRazorpayPayment);
 
     // --- FORM SUBMISSION & PAYMENT LOGIC ---
-
-    // Ticket generator function
     function generateFormattedTicket(...fields) {
-      // Add a timestamp to the fields array to ensure uniqueness for every submission
-      const uniqueFields = [...fields, Date.now()]; 
+      const uniqueFields = [...fields, Date.now()];
       const base = btoa(uniqueFields.join('')).replace(/[^A-Z0-9]/gi, '').toUpperCase();
       let raw = base.padEnd(20, 'X').substring(0, 20);
       return raw.match(/.{1,4}/g).join('-');
     }
 
-    // Handle form submission
-    form.addEventListener('submit', function (e) {
+    form.addEventListener('submit', function(e) {
       e.preventDefault();
 
       const data = {
@@ -820,151 +750,128 @@
       if (!data.field6.trim()) {
         document.getElementById('countryError').style.display = 'block';
         return;
-      } else {
-        document.getElementById('countryError').style.display = 'none';
       }
+      document.getElementById('countryError').style.display = 'none';
 
-      // Show submitting message
       submitMessage.style.display = 'block';
-      // Disable the submit button to prevent multiple submissions
       form.querySelector('button[type="submit"]').disabled = true;
 
-
-      // Generate ticket with unique identifier
-      data.ticket = generateFormattedTicket(
-        data.field1, data.field2, data.field3, data.field4, data.field5, data.field6 // Pass all relevant fields
-      );
+      data.ticket = generateFormattedTicket(...Object.values(data));
       generatedTicket = data.ticket;
       ticketInput.value = data.ticket;
 
-      // Increment serial number for this submission
       currentSerialNumber++;
-      data.serialNumber = String(currentSerialNumber).padStart(6, '0'); // Add serial number to data sent to Google Sheet
+      data.serialNumber = String(currentSerialNumber).padStart(6, '0');
 
-      // Send data to Google Sheet (or your backend)
-      const urlEncoded = new URLSearchParams();
-      for (const key in data) {
-        urlEncoded.append(key, data[key]);
-      }
+      const urlEncoded = new URLSearchParams(data);
 
       fetch(
-        "https://script.google.com/macros/s/AKfycbxqzb4Yre9AvKrccxARn3sXZHClj5ghYSh_satCVgBvdDAttmkvueWPaDoOVlac9HEC/exec",
-        {
+        "https://script.google.com/macros/s/AKfycbxqzb4Yre9AvKrccxARn3sXZHClj5ghYSh_satCVgBvdDAttmkvueWPaDoOVlac9HEC/exec", {
           method: "POST",
           headers: { "Content-Type": "application/x-www-form-urlencoded" },
           body: urlEncoded
         }
-      )
-      .then((res) => res.text())
-      .then((res) => {
-        // Hide submitting message and re-enable button regardless of success/failure
+      ).then(res => res.text()).then(res => {
         submitMessage.style.display = 'none';
         form.querySelector('button[type="submit"]').disabled = false;
 
         if (res === "Success") {
-          // Switch from form to payment popup
           popupForm.style.display = 'none';
-          openPopup(paymentStep); // Ensure overlay is active
-
-          startPaymentTimer(); // Start the 5-minute payment timer
-
-          // ***************************************************************
-          // INSTAMOJO INTEGRATION CONCEPTUAL AREA:
-          // Here you would typically initiate an Instamojo payment.
-          // This involves making a request to YOUR BACKEND,
-          // which then communicates with Instamojo APIs to create a payment order/link.
-          // Instamojo would then redirect the user to their payment page.
-          //
-          // Example (Requires Backend):
-          // fetch('/api/initiate-instamojo-payment', {
-          //     method: 'POST',
-          //     headers: { 'Content-Type': 'application/json' },
-          //     body: JSON.stringify({
-          //         amount: 10,
-          //         purpose: 'Lottery Ticket',
-          //         buyer_name: data.field1, // Use consistent field names for Instamojo
-          //         email: data.field3,
-          //         phone: data.field2,
-          //         redirect_url: 'YOUR_SUCCESS_URL_AFTER_INSTAMOJO_PAYMENT',
-          //         webhook_url: 'YOUR_BACKEND_WEBHOOK_URL_FOR_INSTAMOJO_NOTIFICATIONS'
-          //     })
-          // })
-          // .then(response => response.json())
-          // .then(instamojoData => {
-          //     if (instamojoData.payment_request && instamojoData.payment_request.longurl) {
-          //         window.location.href = instamojoData.payment_request.longurl; // Redirect to Instamojo
-          //     } else {
-          //         console.error('Instamojo initiation failed: Invalid response', instamojoData);
-          //         // Implement custom message box instead of alert
-          //         closeAllPopups();
-          //     }
-          // })
-          // .catch(error => {
-          //     console.error('Instamojo initiation failed:', error);
-          //     // Implement custom message box instead of alert
-          //     closeAllPopups();
-          // });
-          //
-          // For this frontend-only example, we continue to the 'paymentStep'
-          // which simulates waiting for a payment callback, which can be triggered
-          // by the 'Simulate Payment Success' button.
-          // ***************************************************************
-
+          openPopup(paymentStep);
+          startPaymentTimer();
         } else {
           console.error("Submission failed: " + res);
+          alert("There was an error submitting your form. Please try again.");
         }
-      })
-      .catch((err) => {
-        // Hide submitting message and re-enable button
+      }).catch(err => {
         submitMessage.style.display = 'none';
         form.querySelector('button[type="submit"]').disabled = false;
         console.error("Error: " + err.message);
+        alert("An unexpected error occurred. Please check your connection and try again.");
       });
     });
-
-    // Start the 5-minute payment countdown
-    function startPaymentTimer() {
-        let timeLeft = PAYMENT_TIME_LIMIT; // 5 minutes in seconds
-
-        function updateTimerDisplay() {
-            const minutes = Math.floor(timeLeft / 60);
-            const seconds = timeLeft % 60;
-            timerDisplay.textContent = `Time remaining: ${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-
-            if (timeLeft <= 0) {
-                clearTimers();
-                // Implement custom message box instead of alert
-                window.location.href = 'index.html';
-            } else {
-                timeLeft--;
+    
+    // --- RAZORPAY PAYMENT HANDLING ---
+    function handleRazorpayPayment() {
+        const options = {
+            "key": "rzp_test_ILzWEv9wI8fL1O", // **IMPORTANT: Replace with your actual Razorpay Key ID**
+            "amount": "1000", // Amount in the smallest currency unit (e.g., 1000 paise = ₹10)
+            "currency": "INR",
+            "name": "Lottery Participation",
+            "description": "Payment for Lottery Ticket",
+            "image": "https://example.com/your_logo.png", //Optional: a link to your logo
+            "handler": function (response){
+                // This function is called after a successful payment
+                console.log("Payment successful:", response);
+                console.log("Razorpay Payment ID:", response.razorpay_payment_id);
+                // Proceed to show the ticket
+                paymentSuccess();
+            },
+            "prefill": {
+                "name": form.field1.value,
+                "email": form.field3.value,
+                "contact": form.field2.value
+            },
+            "notes": {
+                "address": `${form.field5.value}, ${form.field6.value}`
+            },
+            "theme": {
+                "color": "#4a148c" // Corresponds to your --primary color
+            },
+            "modal": {
+                "ondismiss": function(){
+                    console.log('Razorpay checkout modal closed.');
+                    // The user is returned to the paymentStep popup where the timer is still running.
+                    // They can choose to try paying again or close the popup.
+                }
             }
-        }
+        };
 
-        updateTimerDisplay(); // Display immediately
-        countdownInterval = setInterval(updateTimerDisplay, 1000); // Update every second
-
-        // This timeout ensures the payment process is aborted after 5 minutes if no success callback is received.
-        paymentTimeout = setTimeout(() => {
-            if (paymentTimeout) { // Check if it hasn't been cleared by successful payment
-                clearTimers();
-                // Implement custom message box instead of alert
-                window.location.href = 'index.html';
-            }
-        }, PAYMENT_TIME_LIMIT * 1000);
+        const rzp1 = new Razorpay(options);
+        rzp1.on('payment.failed', function (response){
+            console.error("Payment Failed:", response.error);
+            alert(`Payment Failed: ${response.error.description} (Code: ${response.error.code})`);
+        });
+        rzp1.open();
     }
 
-    // Function called after successful payment verification (from Instamojo webhook/callback)
-    function paymentSuccess() {
-      clearTimers(); // Stop any running timers
 
-      // Switch from payment to ticket popup
+    function startPaymentTimer() {
+      let timeLeft = PAYMENT_TIME_LIMIT;
+      updateTimerDisplay(); // Initial display
+
+      function updateTimerDisplay() {
+        const minutes = Math.floor(timeLeft / 60);
+        const seconds = timeLeft % 60;
+        timerDisplay.textContent = `Time remaining: ${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+      }
+
+      countdownInterval = setInterval(() => {
+        timeLeft--;
+        updateTimerDisplay();
+        if (timeLeft <= 0) {
+          clearInterval(countdownInterval);
+          alert("Payment time expired. Please try again.");
+          window.location.href = 'index.html';
+        }
+      }, 1000);
+
+      paymentTimeout = setTimeout(() => {
+        if (paymentTimeout) {
+          clearTimers();
+          alert("Payment timed out. Redirecting to homepage.");
+          window.location.href = 'index.html';
+        }
+      }, PAYMENT_TIME_LIMIT * 1000);
+    }
+
+    function paymentSuccess() {
+      clearTimers();
       paymentStep.style.display = 'none';
-      openPopup(ticketStep); // Ensure overlay is active and ticket step is shown
+      openPopup(ticketStep);
       ticketDisplay.textContent = generatedTicket;
-      // Display the serial number
       serialNumberDisplay.textContent = `Serial Number: ${String(currentSerialNumber).padStart(6, '0')}`;
     }
-
     // ----------------------------------------------------------------------
     // Slider Logic - Keep as is, ensuring elements like prevBtn/nextBtn exist
     // ----------------------------------------------------------------------
