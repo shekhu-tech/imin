@@ -31,7 +31,7 @@ function injectHeader() {
 
         <div class="sidebar-logo">
           <a href="index.html">
-            <img src="sti.png" alt="LuckyWin Logo" />
+            <img src="win.png" alt="LuckyWin Logo" />
           </a>
         </div>
 
