@@ -512,7 +512,7 @@ function injectProductSection() {
           <div class="card-category-badge">Women's Handwear</div>
           <div class="card-background" style="background-image: url('w1.jpg');"></div>
           <div class="card-content2">
-            <h3>Activate Yourself</h3>
+            <h3>Win This Titan Raga Girls Watch!!</h3>
             <span class="btn">Enroll Now</span>
           </div>
         </a>
@@ -532,7 +532,7 @@ function injectProductSection() {
           <div class="card-category-badge">Men's Handwear</div>
           <div class="card-background" style="background-image: url('mw1.png');"></div>
           <div class="card-content2">
-            <h3>Activate Yourself</h3>
+            <h3>Win This OLEVS Men's Watch!</h3>
             <span class="btn">Enroll Now</span>
           </div>
         </a>
