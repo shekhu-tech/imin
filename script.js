@@ -12,12 +12,12 @@ function injectHeader() {
       </div>
 
       <nav>
-        <div class="nav-item"><a href="electronics.html">Electronics</a></div>
-        <div class="nav-item"><a href="footwear.html">Footwear</a></div>
-        <div class="nav-item"><a href="smartphones.html">Smartphones</a></div>
-        <div class="nav-item"><a href="pcs.html">Laptops & PCs</a></div>
-        <div class="nav-item"><a href="fashion.html">Fashion & Accessories</a></div>
-        <div class="nav-item"><a href="appliances.html">Home Appliances</a></div>
+        <div class="nav-item"><a href="proone.html">Footwear</a></div>
+        <div class="nav-item"><a href="protwo.html">Handwear</a></div>
+        <div class="nav-item"><a href="prothree.html">Smartaccessory</a></div>
+        <div class="nav-item"><a href="profour.html">Laptops & PCs</a></div>
+        <div class="nav-item"><a href="profive.html">Fashion & Accessories</a></div>
+        <div class="nav-item"><a href="prosix.html">Home Appliances</a></div>
       </nav>
 
       <div class="menu-toggle" onclick="toggleSidebar()">
@@ -36,12 +36,12 @@ function injectHeader() {
         </div>
 
         <ul>
-          <li><a class="sidebar-button" href="electronics.html"><span><i class="fas fa-plug"></i> Electronics</span></a></li>
-          <li><a class="sidebar-button" href="footwear.html"><span><i class="fas fa-shoe-prints"></i> Footwear</span></a></li>
-          <li><a class="sidebar-button" href="smartphones.html"><span><i class="fas fa-mobile-alt"></i> Smartphones</span></a></li>
-          <li><a class="sidebar-button" href="pcs.html"><span><i class="fas fa-laptop-code"></i> Laptops & PCs</span></a></li>
-          <li><a class="sidebar-button" href="fashion.html"><span><i class="fas fa-tshirt"></i> Fashion & Accessories</span></a></li>
-          <li><a class="sidebar-button" href="appliances.html"><span><i class="fas fa-blender"></i> Home Appliances</span></a></li>
+          <li><a class="sidebar-button" href="proone.html"><span><i class="fas fa-plug"></i> Electronics</span></a></li>
+          <li><a class="sidebar-button" href="protwo.html"><span><i class="fas fa-shoe-prints"></i> Footwear</span></a></li>
+          <li><a class="sidebar-button" href="prothree.html"><span><i class="fas fa-mobile-alt"></i> Smartphones</span></a></li>
+          <li><a class="sidebar-button" href="profour.html"><span><i class="fas fa-laptop-code"></i> Laptops & PCs</span></a></li>
+          <li><a class="sidebar-button" href="profive.html"><span><i class="fas fa-tshirt"></i> Fashion & Accessories</span></a></li>
+          <li><a class="sidebar-button" href="prosix.html"><span><i class="fas fa-blender"></i> Home Appliances</span></a></li>
         </ul>
       </div>
     </header>
@@ -292,12 +292,12 @@ footer .footer-btn {
   Join millions of satisfied customers today!
 </p>
         <div class="footer-buttons">
-          <a href="electronics.html" class="footer-btn" title="Electronics"><i class="fas fa-tv"></i></a>
-          <a href="footwear.html" class="footer-btn" title="Footwear"><i class="fas fa-shoe-prints"></i></a>
-          <a href="smartphones.html" class="footer-btn" title="Smartphones"><i class="fas fa-mobile-alt"></i></a>
-          <a href="pcs.html" class="footer-btn" title="Laptops & PCs"><i class="fas fa-laptop"></i></a>
-          <a href="fashion.html" class="footer-btn" title="Fashion"><i class="fas fa-tshirt"></i></a>
-          <a href="appliances.html" class="footer-btn" title="Appliances"><i class="fas fa-blender-phone"></i></a>
+          <a href="proone.html" class="footer-btn" title="Electronics"><i class="fas fa-tv"></i></a>
+          <a href="protwo.html" class="footer-btn" title="Footwear"><i class="fas fa-shoe-prints"></i></a>
+          <a href="prothree.html" class="footer-btn" title="Smartphones"><i class="fas fa-mobile-alt"></i></a>
+          <a href="profour.html" class="footer-btn" title="Laptops & PCs"><i class="fas fa-laptop"></i></a>
+          <a href="profive.html" class="footer-btn" title="Fashion"><i class="fas fa-tshirt"></i></a>
+          <a href="prosix.html" class="footer-btn" title="Appliances"><i class="fas fa-blender-phone"></i></a>
           <a href="policy.html" class="footer-btn" title="Policy"><i class="fas fa-shield-alt"></i></a>
         </div>
         <div class="social-links">
@@ -507,7 +507,27 @@ function injectProductSection() {
           </div>
         </a>
 
-        <a href="gold.html" class="card">
+        <a href="protwo.html" class="card">
+          <div class="corner-ribbon"></div>
+          <div class="card-category-badge">Gold & Bullion</div>
+          <div class="card-background" style="background-image: url('w1.jpg');"></div>
+          <div class="card-content2">
+            <h3>Activate Yourself</h3>
+            <span class="btn">Stretching</span>
+          </div>
+        </a>
+
+        <a href="prothree.html" class="card">
+          <div class="corner-ribbon"></div>
+          <div class="card-category-badge">Gold & Bullion</div>
+          <div class="card-background" style="background-image: url('app1.png');"></div>
+          <div class="card-content2">
+            <h3>Activate Yourself</h3>
+            <span class="btn">Stretching</span>
+          </div>
+        </a>
+
+        <a href="profour.html" class="card">
           <div class="corner-ribbon"></div>
           <div class="card-category-badge">Gold & Bullion</div>
           <div class="card-background" style="background-image: url('rn.png');"></div>
@@ -517,7 +537,7 @@ function injectProductSection() {
           </div>
         </a>
 
-        <a href="gold.html" class="card">
+        <a href="profive.html" class="card">
           <div class="corner-ribbon"></div>
           <div class="card-category-badge">Gold & Bullion</div>
           <div class="card-background" style="background-image: url('rn.png');"></div>
@@ -527,27 +547,7 @@ function injectProductSection() {
           </div>
         </a>
 
-        <a href="gold.html" class="card">
-          <div class="corner-ribbon"></div>
-          <div class="card-category-badge">Gold & Bullion</div>
-          <div class="card-background" style="background-image: url('rn.png');"></div>
-          <div class="card-content2">
-            <h3>Activate Yourself</h3>
-            <span class="btn">Stretching</span>
-          </div>
-        </a>
-
-        <a href="gold.html" class="card">
-          <div class="corner-ribbon"></div>
-          <div class="card-category-badge">Gold & Bullion</div>
-          <div class="card-background" style="background-image: url('rn.png');"></div>
-          <div class="card-content2">
-            <h3>Activate Yourself</h3>
-            <span class="btn">Stretching</span>
-          </div>
-        </a>
-
-        <a href="gold.html" class="card">
+        <a href="prosix.html" class="card">
           <div class="corner-ribbon"></div>
           <div class="card-category-badge">Gold & Bullion</div>
           <div class="card-background" style="background-image: url('rn.png');"></div>
