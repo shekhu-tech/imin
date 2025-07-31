@@ -13,9 +13,9 @@ function injectHeader() {
 
       <nav>
         <div class="nav-item"><a href="proone.html">Footwear</a></div>
-        <div class="nav-item"><a href="protwo.html">Handwear</a></div>
+        <div class="nav-item"><a href="protwo.html">Whadnwear</a></div>
         <div class="nav-item"><a href="prothree.html">Smartaccessory</a></div>
-        <div class="nav-item"><a href="profour.html">Laptops & PCs</a></div>
+        <div class="nav-item"><a href="profour.html">Mhandwear</a></div>
         <div class="nav-item"><a href="profive.html">Fashion & Accessories</a></div>
         <div class="nav-item"><a href="prosix.html">Home Appliances</a></div>
       </nav>
@@ -36,12 +36,12 @@ function injectHeader() {
         </div>
 
         <ul>
-          <li><a class="sidebar-button" href="proone.html"><span><i class="fas fa-plug"></i> Electronics</span></a></li>
-          <li><a class="sidebar-button" href="protwo.html"><span><i class="fas fa-shoe-prints"></i> Footwear</span></a></li>
+          <li><a class="sidebar-button" href="proone.html"><span><i class="fas fa-plug"></i>Footwear</span></a></li>
+          <li><a class="sidebar-button" href="protwo.html"><span><i class="fas fa-shoe-prints"></i>Whandwear</span></a></li>
           <li><a class="sidebar-button" href="prothree.html"><span><i class="fas fa-mobile-alt"></i> Smartphones</span></a></li>
-          <li><a class="sidebar-button" href="profour.html"><span><i class="fas fa-laptop-code"></i> Laptops & PCs</span></a></li>
-          <li><a class="sidebar-button" href="profive.html"><span><i class="fas fa-tshirt"></i> Fashion & Accessories</span></a></li>
-          <li><a class="sidebar-button" href="prosix.html"><span><i class="fas fa-blender"></i> Home Appliances</span></a></li>
+          <li><a class="sidebar-button" href="profour.html"><span><i class="fas fa-laptop-code"></i>Mhandwear</span></a></li>
+          <li><a class="sidebar-button" href="profive.html"><span><i class="fas fa-tshirt"></i> Fashion </span></a></li>
+          <li><a class="sidebar-button" href="prosix.html"><span><i class="fas fa-blender"></i> </span></a></li>
         </ul>
       </div>
     </header>
@@ -509,31 +509,31 @@ function injectProductSection() {
 
         <a href="protwo.html" class="card">
           <div class="corner-ribbon"></div>
-          <div class="card-category-badge">Gold & Bullion</div>
+          <div class="card-category-badge">Women's Handwear</div>
           <div class="card-background" style="background-image: url('w1.jpg');"></div>
           <div class="card-content2">
             <h3>Activate Yourself</h3>
-            <span class="btn">Stretching</span>
+            <span class="btn">Enroll Now</span>
           </div>
         </a>
 
         <a href="prothree.html" class="card">
           <div class="corner-ribbon"></div>
-          <div class="card-category-badge">Gold & Bullion</div>
+          <div class="card-category-badge">Smart Accessory</div>
           <div class="card-background" style="background-image: url('app1.png');"></div>
           <div class="card-content2">
-            <h3>Activate Yourself</h3>
-            <span class="btn">Stretching</span>
+           <h3>Apple AirPods 4 (ANC)</h3>
+           <span class="btn">Enroll Now</span>
           </div>
         </a>
 
         <a href="profour.html" class="card">
           <div class="corner-ribbon"></div>
-          <div class="card-category-badge">Gold & Bullion</div>
-          <div class="card-background" style="background-image: url('rn.png');"></div>
+          <div class="card-category-badge">Men's Handwear</div>
+          <div class="card-background" style="background-image: url('mw1.png');"></div>
           <div class="card-content2">
             <h3>Activate Yourself</h3>
-            <span class="btn">Stretching</span>
+            <span class="btn">Enroll Now</span>
           </div>
         </a>
 
@@ -543,7 +543,7 @@ function injectProductSection() {
           <div class="card-background" style="background-image: url('rn.png');"></div>
           <div class="card-content2">
             <h3>Activate Yourself</h3>
-            <span class="btn">Stretching</span>
+            <span class="btn">Enroll Now</span>
           </div>
         </a>
 
@@ -553,7 +553,7 @@ function injectProductSection() {
           <div class="card-background" style="background-image: url('rn.png');"></div>
           <div class="card-content2">
             <h3>Activate Yourself</h3>
-            <span class="btn">Stretching</span>
+           <span class="btn">Enroll Now</span>
           </div>
         </a>
       </div>
