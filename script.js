@@ -502,7 +502,7 @@ function injectProductSection() {
           <div class="card-category-badge">Footwear</div>
           <div class="card-background" style="background-image: url('dctsh2.jpg');"></div>
           <div class="card-content2">
-            <h3>Decathlon Shoes</h3>
+            <h3>Win Decathlon Shoes</h3>
             <span class="btn">Enroll Now</span>
           </div>
         </a>
@@ -512,7 +512,7 @@ function injectProductSection() {
           <div class="card-category-badge">Women's Handwear</div>
           <div class="card-background" style="background-image: url('w1.jpg');"></div>
           <div class="card-content2">
-            <h3>Win This Titan Raga Girls Watch!!</h3>
+            <h3>Win Titan Raga Girls Watch!</h3>
             <span class="btn">Enroll Now</span>
           </div>
         </a>
@@ -522,7 +522,7 @@ function injectProductSection() {
           <div class="card-category-badge">Smart Accessory</div>
           <div class="card-background" style="background-image: url('app1.png');"></div>
           <div class="card-content2">
-           <h3>Apple AirPods 4 (ANC)</h3>
+           <h3>Win Apple AirPods 4 (ANC)</h3>
            <span class="btn">Enroll Now</span>
           </div>
         </a>
@@ -532,7 +532,7 @@ function injectProductSection() {
           <div class="card-category-badge">Men's Handwear</div>
           <div class="card-background" style="background-image: url('mw1.png');"></div>
           <div class="card-content2">
-            <h3>Win This OLEVS Men's Watch!</h3>
+            <h3>Win OLEVS Men's Watch!</h3>
             <span class="btn">Enroll Now</span>
           </div>
         </a>
