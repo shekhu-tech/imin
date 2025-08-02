@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>LivFit Lottery - Win Amazing Prizes!</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
   <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
   <style>
     /* CSS Variables for consistent theming */
@@ -761,6 +762,7 @@
     const PAYMENT_TIME_LIMIT = 5 * 60; // 5 minutes in seconds
     const TICKET_PRICE = 10; // ₹10 per ticket
     let selectedQuantity = 1;
+    let allowClose = false; // Flag to control when popup can be closed
 
     // Initialize quantity selector
     function initQuantitySelector() {
@@ -826,17 +828,21 @@
 
     // --- FUNCTIONS TO CONTROL POPUPS ---
     function closeAllPopups() {
+      if (!allowClose) return; // Only close if allowed
+      
       clearTimers();
       popupOverlay.style.display = 'none';
       allPopups.forEach(p => p.style.display = 'none');
       document.body.style.overflow = 'auto';
       submitMessage.style.display = 'none';
+      allowClose = false; // Reset the flag
     }
 
     function openPopup(popupElement) {
       document.body.style.overflow = 'hidden';
       popupOverlay.style.display = 'block';
       popupElement.style.display = 'block';
+      allowClose = false; // Don't allow closing when opening a new popup
     }
 
     function clearTimers() {
@@ -854,9 +860,21 @@
     
     ticketQuantity.addEventListener('change', updateTotalPrice);
     
-    popupOverlay.addEventListener('click', closeAllPopups);
+    // Modified overlay click handler
+    popupOverlay.addEventListener('click', function(e) {
+      if (allowClose) {
+        closeAllPopups();
+      } else {
+        // Show a message that the form must be completed
+        alert("Please complete the form or payment process before closing.");
+      }
+    });
+    
     allPopups.forEach(p => p.addEventListener('click', e => e.stopPropagation()));
-    okayBtn.addEventListener('click', closeAllPopups);
+    okayBtn.addEventListener('click', function() {
+      allowClose = true; // Allow closing when user clicks "Okay"
+      closeAllPopups();
+    });
     
     razorpayBtn.addEventListener('click', handleRazorpayPayment);
     downloadTicketsBtn.addEventListener('click', downloadTickets);
@@ -1010,6 +1028,7 @@
         if (timeLeft <= 0) {
           clearInterval(countdownInterval);
           alert("Payment time expired. Please try again.");
+          allowClose = true; // Allow closing after timeout
           closeAllPopups();
         }
       }, 1000);
@@ -1018,6 +1037,7 @@
         if (paymentTimeout) {
           clearTimers();
           alert("Payment timed out. Please try again.");
+          allowClose = true; // Allow closing after timeout
           closeAllPopups();
         }
       }, PAYMENT_TIME_LIMIT * 1000);
@@ -1031,6 +1051,9 @@
       // Display all tickets
       ticketDisplay.textContent = generatedTickets.join('\n\n');
       ticketCountDisplay.textContent = `${selectedQuantity} ticket${selectedQuantity > 1 ? 's' : ''}`;
+      
+      // Allow closing only from the ticket step
+      allowClose = false;
     }
     
     // ----------------------------------------------------------------------
