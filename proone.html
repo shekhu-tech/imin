@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crapd.in - Product One!</title>
+    <title>Crapd.in</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-     <link rel="stylesheet" href="styles.css">
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <link rel="stylesheet" href="styles.css">
     <style>
         /* CSS Variables for consistent theming */
         :root {
@@ -40,49 +40,14 @@
 
         /* Main content area styling */
         main {
-            padding-top: 100px; /* To account for fixed header */
+            padding-top: 100px;
             max-width: 1700px;
             margin: 0 auto;
             padding: 100px 20px 50px;
         }
 
-       
-
         /* Lottery Stats Section */
-        .lottery-stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin-bottom: 3rem;
-        }
-
-        .stat-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
-            padding: 1.5rem;
-            text-align: center;
-            backdrop-filter: blur(10px);
-            transition: var(--transition);
-            border: 1px solid rgba(123, 31, 162, 0.2);
-        }
-
-        .stat-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow);
-            border-color: var(--secondary);
-        }
-
-        .stat-card h3 {
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-            color: #bb86fc;
-        }
-
-        .stat-card p {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--light);
-        }
+        /* This section is removed for an e-commerce-style page */
 
         /* Product Section Styling */
         .product-section {
@@ -109,8 +74,20 @@
             display: flex;
             flex-wrap: wrap;
             padding: 2rem;
-            align-items: center; /* Vertically align image and details */
+            align-items: center;
             justify-content: center;
+        }
+
+        .product-image {
+            flex: 1;
+            min-width: 300px;
+            padding: 1rem;
+        }
+
+        .product-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
         }
 
         .product-details {
@@ -173,8 +150,8 @@
             display: flex;
             align-items: center;
             gap: 8px;
-            text-decoration: none; /* For button links */
-            justify-content: center; /* Center content in buttons */
+            text-decoration: none;
+            justify-content: center;
         }
 
         .btn-primary {
@@ -197,73 +174,57 @@
             background: rgba(123, 31, 162, 0.2);
         }
 
-        /* Ticket Cards Section (if needed, currently not used in main content) */
-        .ticket-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin-top: 3rem;
-        }
-
-        .ticket-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 15px;
-            overflow: hidden;
-            backdrop-filter: blur(10px);
-            transition: var(--transition);
-            border: 1px solid rgba(123, 31, 162, 0.2);
-        }
-
-        .ticket-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-            border-color: var(--secondary);
-        }
-
-        .card-header {
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            padding: 1.2rem;
-            text-align: center;
-            font-weight: 600;
-        }
-
-        .card-body {
-            padding: 1.5rem;
-        }
-
-        .card-body p {
-            margin: 0.8rem 0;
-            color: #e0e0e0;
-        }
-
-        .card-value {
-            font-weight: 700;
-            color: var(--accent);
-            font-size: 1.2rem;
-        }
-
-        .card-footer {
-            padding: 1.2rem;
-            text-align: center;
-            background: rgba(0, 0, 0, 0.1);
-        }
-
         /* Responsive Styles */
         @media (max-width: 992px) {
-            .slider-overlay h2 {
-                font-size: 2rem;
-            }
-            
             .product-content {
                 flex-direction: column;
             }
+
             .product-image {
-                max-width: 80%; /* Adjust max-width for smaller screens */
+                max-width: 80%;
             }
         }
 
-        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: rgba(26, 26, 46, 0.95);
+                flex-direction: column;
+                align-items: center;
+                padding: 1rem 0;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+            }
 
+            .nav-links.active {
+                display: flex;
+            }
+
+            .hamburger {
+                display: block;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .price-container {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+        
         /* Popup Styles */
         #popup-overlay {
             display: none;
@@ -307,24 +268,24 @@
             border: none;
             font-size: 16px;
         }
-        
+
         .popup input,
         .popup textarea {
             background: #f5f5f5;
             color: #000;
         }
-        
+
         .popup textarea {
             min-height: 100px;
             resize: vertical;
         }
-        
+
         .popup label {
             display: block;
             margin-bottom: 5px;
             color: #bb86fc;
         }
-        
+
         .popup button[type="submit"],
         .popup button#okayBtn,
         #razorpay-payment-btn,
@@ -340,7 +301,7 @@
             border: none;
             font-size: 16px;
         }
-        
+
         #ticketDisplay {
             font-weight: bold;
             color: #00ffcc;
@@ -350,7 +311,7 @@
             max-height: 200px;
             overflow-y: auto;
             padding: 10px;
-            background: rgba(0,0,0,0.2);
+            background: rgba(0, 0, 0, 0.2);
             border-radius: 10px;
             margin: 10px 0;
         }
@@ -370,7 +331,7 @@
             margin-top: 10px;
             display: none;
         }
-        
+
         #timerDisplay {
             font-size: 1.2rem;
             font-weight: bold;
@@ -382,13 +343,13 @@
         .quantity-selector {
             margin: 15px 0;
         }
-        
+
         .quantity-selector label {
             display: block;
             margin-bottom: 8px;
             color: #bb86fc;
         }
-        
+
         .quantity-info {
             display: flex;
             justify-content: space-between;
@@ -396,7 +357,7 @@
             font-size: 0.9rem;
             color: #ccc;
         }
-        
+
         .total-price {
             font-size: 1.2rem;
             font-weight: bold;
@@ -420,121 +381,91 @@
     </style>
 </head>
 <body>
-   <!-- Header Injection Target -->
-  <div id="header-container"></div>
 
-    <!-- Main Content -->
+    <div id="header-container"></div>
+    <h1 class="hidden-h1">Crapd.in</h1>
+
     <main>
-        
-        <!-- Product Section -->
+
         <section class="product-section">
             <div class="product-header">
-                <h2>Decathlon Kiprun KD900 Running Shoes</h2>
+                <h2>Titan Watch</h2>
             </div>
-
             <div class="product-content">
-                <div class="product-image">
-                </div>
+                
                 <div class="product-details">
-                    <h3>Decathlon Kiprun KD900</h3>
-                    <p>These premium running shoes are designed for maximum performance and comfort,
-                        perfect for athletes and fitness enthusiasts. Experience superior cushioning and
-                        a lightweight feel with every stride.
-                    </p>
-                    
+                    <h3>Titan Raga Showstopper Quartz Analog Champagne Dial Watch</h3>
+                    <p>This elegant women's watch features a champagne dial, sleek metal strap, and quartz analog movement. Its luxurious look is perfect for special occasions or stylish everyday wear.</p>
                     <div class="price-container">
-                        <div class="original-price">Original Price: ₹8000</div>
-                        <div class="lottery-price">Access Fee: ₹21 per entry</div>
+                        <div class="original-price">Original Price: ₹7,095</div>
+                        <div class="lottery-price">Access Fee: ₹31 per entry</div>
                     </div>
-                    
                     <div class="features">
                         <h3>Key Features:</h3>
                         <ul>
-                            <li>Advanced cushioning technology for impact absorption</li>
-                            <li>Breathable mesh upper for ventilation and comfort</li>
-                            <li>Durable rubber outsole for excellent grip and longevity</li>
-                            <li>Lightweight design for effortless running</li>
-                            <li>Ergonomic comfort for a snug and supportive fit</li>
-                            <li>Multi-surface use suitable for various terrains</li>
+                            <li>Champagne color dial with analog display</li>
+                            <li>Stylish metal strap for durability</li>
+                            <li>Water-resistant construction</li>
+                            <li>Quartz movement for accuracy</li>
+                            <li>Premium Titan Raga styling</li>
+                            <li>Jewelled embellishments around the dial</li>
+                            <li>Secure clasp with skin-friendly finish</li>
+                            <li>Perfect for both casual and formal occasions</li>
+                            <li>Backed by 2-year manufacturer warranty</li>
                         </ul>
                     </div>
-                    
                     <div class="action-buttons">
                         <button class="btn btn-primary" id="participate-btn">
                             <i class="fas fa-ticket-alt"></i> Get Access
                         </button>
-                        <button class="btn btn-secondary" onclick="window.open('https://www.amazon.com/home-gym-equipment/s?k=home+gym+equipment', '_blank')">
-                            <i class="fas fa-external-link-alt"></i> View Product on Amazon
+                        <button class="btn btn-secondary" onclick="window.open('https://www.titan.co.in/product/titan-raga-showstopper-quartz-analog-champagne-dial-metal-strap-watch-for-women-95350ym01.html', '_blank')">
+                            <i class="fas fa-external-link-alt"></i> View Product on Titan
                         </button>
                     </div>
                 </div>
             </div>
         </section>
-
-        <!-- Lottery Stats Section -->
-        <div class="lottery-stats">
-            <div class="stat-card">
-                <h3>Total Members</h3>
-                <p>42,000+</p>
-            </div>
-            <div class="stat-card">
-                <h3>Recent Rewards</h3>
-                <p>189 Delivered</p>
-            </div>
-            <div class="stat-card">
-                <h3>Member Savings</h3>
-                <p>Up to 90%</p>
-            </div>
-            <div class="stat-card">
-                <h3>Next Allocation</h3>
-                <p>July 15</p>
-            </div>
-        </div>
     </main>
 
-    <!-- Popup Overlay and Forms -->
     <div id="popup-overlay"></div>
-    
-    <!-- Participation Form Popup -->
+
     <div class="popup" id="popupForm">
         <h2 style="text-align: center;">Get Exclusive Access</h2>
-        <form id="lotteryForm">
+        <form id="accessForm">
             <input type="text" name="field1" required placeholder="Your Full Name (min 10 characters)" autocomplete="name" minlength="10" />
             <input type="tel" name="field2" required placeholder="Phone Number (10 digits)" autocomplete="tel" pattern="[0-9]{10}" />
             <input type="email" name="field3" required placeholder="Email Address" autocomplete="email" />
-            
+
             <div>
                 <label for="dobField">Date of Birth:</label>
                 <input type="date" id="dobField" name="field4" required />
             </div>
-            
+
             <input type="text" name="field5" required placeholder="City/Place (e.g. Mumbai, Delhi)" autocomplete="address-level2" list="cities" />
-            
+
             <textarea name="field6" required placeholder="Complete Address (min 30 characters) - Include street, area, landmark, city, state, and PIN code" autocomplete="street-address" minlength="30" rows="4"></textarea>
-            <span id="countryError">Please enter your complete address with at least 30 characters.</span>
-            
+            <span id="countryError">Please enter a complete address with at least 30 characters.</span>
+
             <div class="quantity-selector">
-                <label for="ticketQuantity">Number of Entry (Max 50):</label>
+                <label for="ticketQuantity">Number of Entries (Max 50):</label>
                 <select id="ticketQuantity" name="ticketQuantity" required>
                     <option value="" disabled selected>Select quantity</option>
-                    <!-- Options will be populated by JavaScript -->
-                </select>
+                    </select>
                 <div class="quantity-info">
-                    <span>₹21 per Entry</span>
+                    <span>₹31 per Entry</span>
                     <span class="total-price">Total: ₹0</span>
                 </div>
             </div>
-            
+
             <input type="hidden" name="ticket" id="ticketCode" />
             <button type="submit">Submit Details</button>
             <span id="submitMessage">Submitting... Please wait</span>
         </form>
     </div>
 
-    <!-- Payment Step Popup -->
     <div class="popup" id="paymentStep">
         <h2>Complete Your Payment</h2>
-        <p>Please complete the payment to finalize your Entry ticket purchase. Click the button below.</p>
+        <p>Please complete the payment to finalize your product access. Click the button below.</p>
         <div id="paymentSummary"></div>
         <div id="timerDisplay">Time remaining: 05:00</div>
         <button id="razorpay-payment-btn">Pay with Razorpay</button>
@@ -543,16 +474,16 @@
         </p>
     </div>
 
-    <!-- Ticket Display Popup -->
     <div class="popup" id="ticketStep">
-        <h2>🎉 Congratulations! Your Entry Ticket are Ready! 🎉</h2>
+        <h2>🎉 Congratulations! Your Access Codes are Ready! 🎉</h2>
         <p>You have purchased <span id="ticketCountDisplay"></span>:</p>
         <div id="ticketDisplay"></div>
-        <button id="downloadTicketsBtn"><i class="fas fa-download"></i> Download Tickets as Text File</button>
+        <button id="downloadTicketsBtn"><i class="fas fa-download"></i> Download Codes as Text File</button>
         <p style="margin-top: 15px;">📸 Please take a screenshot for proof and reference.</p>
         <button id="okayBtn">Okay, Got It!</button>
     </div>
-   <!-- Product Section Injection Target -->
+
+    <!-- Product Section Injection Target -->
     <div id="product-section"></div>
    <!-- Footer Injection Target -->
   <div id="footer-container"></div>
@@ -575,7 +506,7 @@
         const downloadTicketsBtn = document.getElementById('downloadTicketsBtn');
 
         // Form & Ticket Elements
-        const form = document.getElementById('lotteryForm');
+        const form = document.getElementById('accessForm');
         const ticketInput = document.getElementById('ticketCode');
         const ticketDisplay = document.getElementById('ticketDisplay');
         const okayBtn = document.getElementById('okayBtn');
@@ -584,22 +515,22 @@
         let paymentTimeout = null;
         let countdownInterval = null;
         const PAYMENT_TIME_LIMIT = 5 * 60; // 5 minutes in seconds
-        const TICKET_PRICE = 21; // Price per ticket set to ₹21
+        const TICKET_PRICE = 31; // Price per entry set to ₹31
         let selectedQuantity = 1;
-        let allowClose = false; // Flag to control when popup can be closed
+        let allowClose = false;
 
         // Initialize quantity selector
         function initQuantitySelector() {
             const maxTickets = 50;
             ticketQuantity.innerHTML = '<option value="" disabled selected>Select quantity</option>';
-            
+
             for (let i = 1; i <= maxTickets; i++) {
                 const option = document.createElement('option');
                 option.value = i;
-                option.textContent = i + (i === 1 ? ' entry' : ' entries'); // Changed 'ticket' to 'entry' for consistency
+                option.textContent = i + (i === 1 ? ' entry' : ' entries');
                 ticketQuantity.appendChild(option);
             }
-            
+
             // Set default value to 1
             ticketQuantity.value = 1;
             updateTotalPrice();
@@ -616,12 +547,12 @@
         function generateFormattedTickets(...fields) {
             generatedTickets = [];
             const tickets = [];
-            
+
             // Generate a base ticket code
             const uniqueFields = [...fields, Date.now()];
             const base = btoa(uniqueFields.join('')).replace(/[^A-Z0-9]/gi, '').toUpperCase();
-            let raw = base.padEnd(20, 'X').substring(0, 18); // Take first 18 characters to leave room for 2-digit suffix
-            
+            let raw = base.padEnd(20, 'X').substring(0, 18);
+
             // Generate tickets with incrementing last 2 digits
             for (let i = 0; i < selectedQuantity; i++) {
                 // Calculate last 2 digits (starting from 5 and incrementing)
@@ -631,8 +562,8 @@
                 generatedTickets.push(ticket);
                 tickets.push(ticket);
             }
-            
-            return tickets.join(', '); // Return all tickets as comma-separated string
+
+            return tickets.join(', ');
         }
 
         // Download tickets as text file
@@ -640,10 +571,10 @@
             const ticketContent = generatedTickets.join('\n\n');
             const blob = new Blob([ticketContent], { type: 'text/plain' });
             const url = URL.createObjectURL(blob);
-            
+
             const a = document.createElement('a');
             a.href = url;
-            a.download = 'my_lottery_tickets.txt';
+            a.download = 'my_access_codes.txt';
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);
@@ -652,21 +583,21 @@
 
         // --- FUNCTIONS TO CONTROL POPUPS ---
         function closeAllPopups() {
-            if (!allowClose) return; // Only close if allowed
-            
+            if (!allowClose) return;
+
             clearTimers();
             popupOverlay.style.display = 'none';
             allPopups.forEach(p => p.style.display = 'none');
             document.body.style.overflow = 'auto';
             submitMessage.style.display = 'none';
-            allowClose = false; // Reset the flag
+            allowClose = false;
         }
 
         function openPopup(popupElement) {
             document.body.style.overflow = 'hidden';
             popupOverlay.style.display = 'block';
             popupElement.style.display = 'block';
-            allowClose = false; // Don't allow closing when opening a new popup
+            allowClose = false;
         }
 
         function clearTimers() {
@@ -681,16 +612,13 @@
             initQuantitySelector();
             openPopup(popupForm);
         });
-        
+
         ticketQuantity.addEventListener('change', updateTotalPrice);
-        
-        // Modified overlay click handler
+
         popupOverlay.addEventListener('click', function(e) {
             if (allowClose) {
                 closeAllPopups();
             } else {
-                // Show a message that the form must be completed
-                // Using a custom alert for better UX than browser's alert()
                 const messageBox = document.createElement('div');
                 messageBox.style.cssText = `
                     position: fixed;
@@ -710,7 +638,6 @@
                 messageBox.textContent = "Please complete the form or payment process before closing.";
                 document.body.appendChild(messageBox);
 
-                // Define fadeOut animation
                 const styleSheet = document.createElement('style');
                 styleSheet.type = 'text/css';
                 styleSheet.innerText = `
@@ -728,13 +655,13 @@
                 }, 3000);
             }
         });
-        
+
         allPopups.forEach(p => p.addEventListener('click', e => e.stopPropagation()));
         okayBtn.addEventListener('click', function() {
-            allowClose = true; // Allow closing when user clicks "Okay"
+            allowClose = true;
             closeAllPopups();
         });
-        
+
         razorpayBtn.addEventListener('click', handleRazorpayPayment);
         downloadTicketsBtn.addEventListener('click', downloadTickets);
 
@@ -751,38 +678,31 @@
                 quantity: selectedQuantity
             };
 
-            // Validate name (min 10 characters)
             if (data.field1.length < 10) {
-                // Using custom alert for better UX
                 showCustomAlert("Please enter your full name (minimum 10 characters)");
                 return;
             }
 
-            // Validate phone (exactly 10 digits)
             if (!/^\d{10}$/.test(data.field2)) {
                 showCustomAlert("Please enter a valid 10-digit phone number");
                 return;
             }
 
-            // Validate email
             if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.field3)) {
                 showCustomAlert("Please enter a valid email address");
                 return;
             }
 
-            // Validate date of birth
             if (!data.field4) {
                 showCustomAlert("Please select your date of birth");
                 return;
             }
 
-            // Validate city/place
             if (data.field5.length < 3) {
                 showCustomAlert("Please enter a valid city/place name");
                 return;
             }
 
-            // Validate address (min 30 characters)
             if (data.field6.length < 30) {
                 document.getElementById('countryError').style.display = 'block';
                 showCustomAlert("Please enter a complete address with at least 30 characters");
@@ -799,7 +719,7 @@
             const urlEncoded = new URLSearchParams(data);
 
             fetch(
-                "https://script.google.com/macros/s/AKfycbyIlG6pkD7hzP_0tsuk7T4bJnDwOVC1LYazupr-ecZP_4FYwb9hO_H9GZvs53JYGU-0/exec", {
+                "https://script.google.com/macros/s/AKfycbxqzb4Yre9AvKrccxARn3sXZHClj5ghYSh_satCVgBvdDAttmkvueWPaDoOVlac9HEC/exec", {
                     method: "POST",
                     headers: { "Content-Type": "application/x-www-form-urlencoded" },
                     body: urlEncoded
@@ -811,9 +731,8 @@
                 if (res === "Success") {
                     popupForm.style.display = 'none';
                     openPopup(paymentStep);
-                    // Update payment summary
                     paymentSummary.innerHTML = `
-                        <p>You are purchasing ${selectedQuantity} entry${selectedQuantity > 1 ? 's' : ''} at ₹${TICKET_PRICE} each</p>
+                        <p>You are purchasing ${selectedQuantity} access code${selectedQuantity > 1 ? 's' : ''} at ₹${TICKET_PRICE} each</p>
                         <p class="total-price">Total Amount: ₹${selectedQuantity * TICKET_PRICE}</p>
                     `;
                     startPaymentTimer();
@@ -828,8 +747,7 @@
                 showCustomAlert("An unexpected error occurred. Please check your connection and try again.");
             });
         });
-        
-        // Custom Alert Function (replaces browser's alert)
+
         function showCustomAlert(message) {
             const alertBox = document.createElement('div');
             alertBox.style.cssText = `
@@ -837,7 +755,7 @@
                 top: 50%;
                 left: 50%;
                 transform: translate(-50%, -50%);
-                background: #e91e63; /* Accent color for alerts */
+                background: #e91e63;
                 color: white;
                 padding: 20px 30px;
                 border-radius: 10px;
@@ -869,19 +787,16 @@
             }, 4000);
         }
 
-
-        // --- RAZORPAY PAYMENT HANDLING ---
         function handleRazorpayPayment() {
-            const totalAmount = selectedQuantity * TICKET_PRICE * 100; // Convert to paise
-            
+            const totalAmount = selectedQuantity * TICKET_PRICE * 100;
             const options = {
-                "key": "rzp_test_xGe3n7XgxLGqIT", // Replace with your actual Razorpay Key ID
+                "key": "rzp_test_xGe3n7XgxLGqIT",
                 "amount": totalAmount.toString(),
                 "currency": "INR",
-                "name": "LivFit Lottery",
-                "description": `Payment for ${selectedQuantity} Lottery Entry${selectedQuantity > 1 ? 's' : ''}`,
-                "image": "https://placehold.co/100x100/4a148c/ffffff?text=LF", // Placeholder logo
-                "handler": function (response){
+                "name": "Crapd.in",
+                "description": `Payment for Titan Watch Access`,
+                "image": "https://placehold.co/100x100/4a148c/ffffff?text=Crapd",
+                "handler": function(response) {
                     console.log("Payment successful:", response);
                     console.log("Razorpay Payment ID:", response.razorpay_payment_id);
                     paymentSuccess();
@@ -899,14 +814,14 @@
                     "color": "#4a148c"
                 },
                 "modal": {
-                    "ondismiss": function(){
+                    "ondismiss": function() {
                         console.log('Razorpay checkout modal closed.');
                     }
                 }
             };
 
             const rzp1 = new Razorpay(options);
-            rzp1.on('payment.failed', function (response){
+            rzp1.on('payment.failed', function(response) {
                 console.error("Payment Failed:", response.error);
                 showCustomAlert(`Payment Failed: ${response.error.description} (Code: ${response.error.code})`);
             });
@@ -915,7 +830,7 @@
 
         function startPaymentTimer() {
             let timeLeft = PAYMENT_TIME_LIMIT;
-            updateTimerDisplay(); // Initial display
+            updateTimerDisplay();
 
             function updateTimerDisplay() {
                 const minutes = Math.floor(timeLeft / 60);
@@ -929,7 +844,7 @@
                 if (timeLeft <= 0) {
                     clearInterval(countdownInterval);
                     showCustomAlert("Payment time expired. Please try again.");
-                    allowClose = true; // Allow closing after timeout
+                    allowClose = true;
                     closeAllPopups();
                 }
             }, 1000);
@@ -938,7 +853,7 @@
                 if (paymentTimeout) {
                     clearTimers();
                     showCustomAlert("Payment timed out. Please try again.");
-                    allowClose = true; // Allow closing after timeout
+                    allowClose = true;
                     closeAllPopups();
                 }
             }, PAYMENT_TIME_LIMIT * 1000);
@@ -948,72 +863,13 @@
             clearTimers();
             paymentStep.style.display = 'none';
             openPopup(ticketStep);
-            
-            // Display all tickets
+
             ticketDisplay.textContent = generatedTickets.join('\n\n');
-            ticketCountDisplay.textContent = `${selectedQuantity} entry${selectedQuantity > 1 ? 's' : ''}`;
-            
-            // Allow closing only from the ticket step
+            ticketCountDisplay.textContent = `${selectedQuantity} access code${selectedQuantity > 1 ? 's' : ''}`;
+
             allowClose = false;
         }
-        
-        // ----------------------------------------------------------------------
-        // Slider Logic
-        // ----------------------------------------------------------------------
-        const slider = document.getElementById('slider');
-        const prevBtn = document.getElementById('prev-slide');
-        const nextBtn = document.getElementById('next-slide');
-        const images = slider ? slider.querySelectorAll('img') : []; // Check if slider exists
 
-        let currentSlide = 0;
-        const totalSlides = images.length;
-        let slideInterval;
-        
-        function showSlide(index) {
-            images.forEach(img => img.classList.remove('active'));
-            
-            if (index >= totalSlides) currentSlide = 0;
-            else if (index < 0) currentSlide = totalSlides - 1;
-            else currentSlide = index;
-            
-            images[currentSlide].classList.add('active');
-        }
-        
-        function nextSlide() {
-            showSlide(currentSlide + 1);
-        }
-        
-        function prevSlide() {
-            showSlide(currentSlide - 1);
-        }
-        
-        function startSlider() {
-            slideInterval = setInterval(nextSlide, 7000);
-        }
-        
-        // Initialize slider if images are present
-        if (totalSlides > 0) {
-            showSlide(0);
-            startSlider();
-        }
-        
-        // Event listeners for slider controls
-        if (nextBtn) {
-            nextBtn.addEventListener('click', () => {
-                clearInterval(slideInterval);
-                nextSlide();
-                startSlider();
-            });
-        }
-        
-        if (prevBtn) {
-            prevBtn.addEventListener('click', () => {
-                clearInterval(slideInterval);
-                prevSlide();
-                startSlider();
-            });
-        }
-        
         // Mobile menu toggle
         const hamburger = document.querySelector('.hamburger');
         const navLinks = document.querySelector('.nav-links');
@@ -1023,7 +879,6 @@
             });
         }
     </script>
-    <!-- Load Injectors -->
-  <script src="script.js" defer></script>
+    <script src="script.js" defer></script>
 </body>
 </html>
