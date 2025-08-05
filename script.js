@@ -1,4 +1,3 @@
-
 // Function to inject header
 function injectHeader() {
   const headerContainer = document.getElementById('header-container');
@@ -958,8 +957,7 @@ function initializeSite() {
 document.addEventListener('DOMContentLoaded', () => {
   injectHeader();
   injectFooter();
-  injectProductSection();
-  injectContainer1();
+  injectProductSection(); // This function was missing from the DOMContentLoaded listener
+  injectContainer1();     // This function was missing from the DOMContentLoaded listener
   initializeSite();
 });
-
