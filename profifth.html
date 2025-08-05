@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -385,40 +384,40 @@
 
         <section class="product-section">
             <div class="product-header">
-                <h2>Apple MacBook Pro 14" (M3)</h2>
+                <h2>ASUS TUF Gaming F15</h2>
             </div>
             <div class="product-content">
                 <div class="product-image">
-                    <img src="mbp1.png" alt="Apple MacBook Pro 14 inch">
+                    <img src="gaminglaptop.png" alt="ASUS TUF Gaming F15">
                 </div>
                 <div class="product-details">
-                    <h3>Apple MacBook Pro 14" with M3 Chip</h3>
-                    <p>Experience unparalleled power and performance with the MacBook Pro, featuring the revolutionary M3 chip, a stunning Liquid Retina XDR display, and an all-day battery life. Designed for pros who demand the best.</p>
+                    <h3>ASUS TUF Gaming F15, Intel Core i5-11400H, GeForce RTX 2050</h3>
+                    <p>Unleash powerful gaming performance with the ASUS TUF F15, featuring a robust Intel Core i5 processor, a dedicated GeForce RTX 2050 graphics card, and an ultra-fast 144Hz display to keep you in the action.</p>
                     <div class="price-container">
-                        <div class="original-price">Original Price: ₹1,69,900</div>
-                        <div class="lottery-price">Access Fee: ₹51 per entry</div>
+                        <div class="original-price">Original Price: ₹54,990</div>
+                        <div class="lottery-price">Access Fee: ₹79 per entry</div>
                     </div>
                     <div class="features">
                         <h3>Key Features:</h3>
                         <ul>
-                            <li>🚀 Powered by the Apple M3 chip for incredible speed and efficiency</li>
-                            <li>💻 14.2-inch Liquid Retina XDR display with ProMotion technology</li>
-                            <li>🔋 Up to 22 hours of battery life on a single charge</li>
-                            <li>📸 1080p FaceTime HD camera and high-fidelity six-speaker sound system</li>
-                            <li>⌨️ Magic Keyboard with Touch ID for secure login and payments</li>
-                            <li>🌐 Wi-Fi 6E and Bluetooth 5.3 for super-fast connectivity</li>
-                            <li>🔌 Thunderbolt / USB 4, HDMI, SDXC card slot, and MagSafe 3 port</li>
-                            <li>💾 8 GB Unified Memory and 512 GB SSD storage</li>
-                            <li>📦 Comes with a 70W USB-C Power Adapter and USB-C to MagSafe 3 Cable</li>
-                            <li>🎨 Available in Space Grey and Silver finishes</li>
+                            <li>🎮 **Processor:** Intel Core i5-11400H</li>
+                            <li>🚀 **Graphics:** NVIDIA GeForce RTX 2050 Laptop GPU</li>
+                            <li>💾 **Memory & Storage:** 16GB DDR4 RAM, 512GB PCIe Gen3 SSD</li>
+                            <li>🖥️ **Display:** 15.6-inch FHD (1920x1080) 144Hz IPS-level display</li>
+                            <li>💨 **Cooling:** Efficient cooling system with multiple heat pipes and fans</li>
+                            <li>🔋 **Battery:** 48WHrs, 3S1P, 3-cell Li-ion for extended gaming sessions</li>
+                            <li>⌨️ **Keyboard:** RGB backlit keyboard with customizable lighting</li>
+                            <li>🔊 **Audio:** DTS Audio with AI Noise-Canceling Technology</li>
+                            <li>🌐 **Connectivity:** Wi-Fi 6 (802.11ax), Bluetooth 5.2</li>
+                            <li>📦 **Operating System:** Windows 11 Home pre-installed</li>
                         </ul>
                     </div>
                     <div class="action-buttons">
                         <button class="btn btn-primary" id="participate-btn">
                             <i class="fas fa-ticket-alt"></i> Get Access
                         </button>
-                        <button class="btn btn-secondary" onclick="window.open('https://www.apple.com/in/macbook-pro/', '_blank')">
-                            <i class="fas fa-external-link-alt"></i> View on Apple
+                        <button class="btn btn-secondary" onclick="window.open('https://www.amazon.in/ASUS-Gaming-F15-15-6-inch-90NR0785-M008E0/dp/B0B68L5H1Z/', '_blank')">
+                            <i class="fas fa-external-link-alt"></i> View on Amazon
                         </button>
                     </div>
                 </div>
@@ -452,7 +451,7 @@
                     <option value="" disabled selected>Select quantity</option>
                     </select>
                 <div class="quantity-info">
-                    <span>₹51 per Entry</span>
+                    <span>₹79 per Entry</span>
                     <span class="total-price">Total: ₹0</span>
                 </div>
             </div>
@@ -483,7 +482,10 @@
         <button id="okayBtn">Okay, Got It!</button>
     </div>
 
-    <div id="footer-container"></div>
+    <!-- Product Section Injection Target -->
+    <div id="product-section"></div>
+   <!-- Footer Injection Target -->
+  <div id="footer-container"></div>
 
     <script>
         // Popup Elements
@@ -512,7 +514,7 @@
         let paymentTimeout = null;
         let countdownInterval = null;
         const PAYMENT_TIME_LIMIT = 5 * 60; // 5 minutes in seconds
-        const TICKET_PRICE = 51; // Price per entry set to ₹51
+        const TICKET_PRICE = 79; // Price per entry set to ₹79
         let selectedQuantity = 1;
         let allowClose = false;
 
@@ -789,7 +791,7 @@
                 "amount": totalAmount.toString(),
                 "currency": "INR",
                 "name": "Crapd.in",
-                "description": `Payment for MacBook Pro Access`,
+                "description": `Payment for ASUS TUF Gaming F15 Access`,
                 "image": "https://placehold.co/100x100/4a148c/ffffff?text=Crapd",
                 "handler": function(response) {
                     console.log("Payment successful:", response);
@@ -877,4 +879,3 @@
     <script src="script.js" defer></script>
 </body>
 </html>
-```
