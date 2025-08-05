@@ -7,17 +7,17 @@ function injectHeader() {
     <header id="main-header">
       <div class="logo">
         <a href="index.html">
-          <img src="win.png" alt="LuckyWin" />
+          <img src="logo.png" alt="ShopEase" />
         </a>
       </div>
 
       <nav>
-        <div class="nav-item"><a href="proone.html">Footwear</a></div>
-        <div class="nav-item"><a href="protwo.html">Whadnwear</a></div>
-        <div class="nav-item"><a href="prothree.html">Smartaccessory</a></div>
-        <div class="nav-item"><a href="profour.html">Mhandwear</a></div>
-        <div class="nav-item"><a href="profive.html">Fashion & Accessories</a></div>
-        <div class="nav-item"><a href="prosix.html">Home Appliances</a></div>
+        <div class="nav-item"><a href="footwear.html">Footwear</a></div>
+        <div class="nav-item"><a href="watches.html">Watches</a></div>
+        <div class="nav-item"><a href="accessories.html">Accessories</a></div>
+        <div class="nav-item"><a href="fashion.html">Fashion</a></div>
+        <div class="nav-item"><a href="appliances.html">Appliances</a></div>
+        <div class="nav-item"><a href="deals.html">Today's Deals</a></div>
       </nav>
 
       <div class="menu-toggle" onclick="toggleSidebar()">
@@ -31,17 +31,17 @@ function injectHeader() {
 
         <div class="sidebar-logo">
           <a href="index.html">
-            <img src="win.png" alt="LuckyWin Logo" />
+            <img src="logo.png" alt="ShopEase Logo" />
           </a>
         </div>
 
         <ul>
-          <li><a class="sidebar-button" href="proone.html"><span><i class="fas fa-plug"></i>Footwear</span></a></li>
-          <li><a class="sidebar-button" href="protwo.html"><span><i class="fas fa-shoe-prints"></i>Whandwear</span></a></li>
-          <li><a class="sidebar-button" href="prothree.html"><span><i class="fas fa-mobile-alt"></i> Smartphones</span></a></li>
-          <li><a class="sidebar-button" href="profour.html"><span><i class="fas fa-laptop-code"></i>Mhandwear</span></a></li>
-          <li><a class="sidebar-button" href="profive.html"><span><i class="fas fa-tshirt"></i> Fashion </span></a></li>
-          <li><a class="sidebar-button" href="prosix.html"><span><i class="fas fa-blender"></i> </span></a></li>
+          <li><a class="sidebar-button" href="footwear.html"><span><i class="fas fa-shoe-prints"></i>Footwear</span></a></li>
+          <li><a class="sidebar-button" href="watches.html"><span><i class="fas fa-clock"></i>Watches</span></a></li>
+          <li><a class="sidebar-button" href="accessories.html"><span><i class="fas fa-headphones"></i>Accessories</span></a></li>
+          <li><a class="sidebar-button" href="fashion.html"><span><i class="fas fa-tshirt"></i>Fashion</span></a></li>
+          <li><a class="sidebar-button" href="appliances.html"><span><i class="fas fa-blender"></i>Appliances</span></a></li>
+          <li><a class="sidebar-button" href="deals.html"><span><i class="fas fa-tag"></i>Today's Deals</span></a></li>
         </ul>
       </div>
     </header>
@@ -55,17 +55,15 @@ function injectFooter() {
 
   const style = `
     <style>
-
-     /* NEW STYLES FOR HEADING AND LINES */
-     .footer-header {
+      .footer-header {
         text-align: center;
         margin-bottom: 25px;
         padding: 0 15px;
-     }
+      }
 
-     .footer-heading {
+      .footer-heading {
         font-size: 2.2rem;
-        color: #ffd700; /* Gold color */
+        color: #ffd700;
         text-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
         margin-bottom: 15px;
         font-weight: 700;
@@ -74,9 +72,9 @@ function injectFooter() {
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         text-align: center;
-     }
+      }
 
-     .footer-lines {
+      .footer-lines {
         color: #ffd700;
         line-height: 1.7;
         max-width: 600px;
@@ -85,219 +83,203 @@ function injectFooter() {
         text-align: center;
         text-shadow: 0 0 8px rgba(255, 215, 0, 0.5);
         font-weight: 500;
-     }
-     /* ===== Navigation Icon Buttons (FINAL - Most Powerful Fix) ===== */
-footer .footer-btn {
-  width: 35px;
-  height: 35px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+      }
 
-  /* SABSE ZAROORI BADLAV */
-  background: linear-gradient(90deg, #ff9000, #ff4b2b) !important;
-  border-radius: 50% !important;
-  color: white !important;
-  
-  text-decoration: none;
-  font-size: 16px;
-  border: none;
-  box-shadow: 0 4px 10px rgba(255, 102, 0, 0.3);
-  padding: 0;
-  transition: all 0.3s ease;
-}
+      footer .footer-btn {
+        width: 35px;
+        height: 35px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(90deg, #ff9000, #ff4b2b) !important;
+        border-radius: 50% !important;
+        color: white !important;
+        text-decoration: none;
+        font-size: 16px;
+        border: none;
+        box-shadow: 0 4px 10px rgba(255, 102, 0, 0.3);
+        padding: 0;
+        transition: all 0.3s ease;
+      }
 
-.footer-buttons {
-  display: flex; /* Yeh Flexbox ko on karta hai */
-  justify-content: center; /* Yeh items ko horizontally center karta hai */
-  flex-wrap: wrap; 
-  gap: 15px;
-}
+      .footer-buttons {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap; 
+        gap: 15px;
+      }
 
-/* ===== Original Footer Social Links ===== */
-.social-links {
-  margin: 2rem 0;
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-}
+      .social-links {
+        margin: 2rem 0;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+      }
 
-.social-links a {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 45px;
-  height: 45px;
-  background: rgba(255, 255, 255, 0.15);
-  border-radius: 50%;
-  color: #fff;
-  font-size: 1.3rem;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-}
+      .social-links a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 45px;
+        height: 45px;
+        background: rgba(255, 255, 255, 0.15);
+        border-radius: 50%;
+        color: #fff;
+        font-size: 1.3rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+      }
 
-.social-links a:hover {
-  background: linear-gradient(45deg, #ff00cc, #ffd700);
-  color: #333;
-  transform: translateY(-8px) rotate(5deg);
-  box-shadow: 0 8px 20px rgba(255, 0, 204, 0.4);
-}
+      .social-links a:hover {
+        background: linear-gradient(45deg, #ff00cc, #ffd700);
+        color: #333;
+        transform: translateY(-8px) rotate(5deg);
+        box-shadow: 0 8px 20px rgba(255, 0, 204, 0.4);
+      }
 
-/* ===== Sidebar Social Nav Icon Buttons (Corrected) ===== */
-.social-nav {
-  margin-top: 15px;
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-}
+      .social-nav {
+        margin-top: 15px;
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+      }
 
-.social-icon {
-  width: 35px;
-  height: 35px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  color: white;
-  font-size: 16px;
-  border-radius: 50%;
-  transition: all 0.3s ease;
-}
+      .social-icon {
+        width: 35px;
+        height: 35px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        color: white;
+        font-size: 16px;
+        border-radius: 50%;
+        transition: all 0.3s ease;
+      }
 
-.social-icon:hover {
-  transform: translateY(-3px);
-  opacity: 0.9;
-}
+      .social-icon:hover {
+        transform: translateY(-3px);
+        opacity: 0.9;
+      }
 
-.social-icon.facebook {
-  background-color: #3b5998;
-}
+      .social-icon.facebook {
+        background-color: #3b5998;
+      }
 
-.social-icon.twitter {
-  background-color: #1DA1F2;
-}
+      .social-icon.twitter {
+        background-color: #1DA1F2;
+      }
 
-.social-icon.instagram {
-  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
-}
+      .social-icon.instagram {
+        background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
+      }
 
-/* ===== Copyright ===== */
-.copyright {
-  margin-top: 2.5rem;
-  text-align: center;
-  opacity: 0.7;
-  font-size: 0.95rem;
-  color: rgba(255, 255, 255, 0.6);
-}
+      .copyright {
+        margin-top: 2.5rem;
+        text-align: center;
+        opacity: 0.7;
+        font-size: 0.95rem;
+        color: rgba(255, 255, 255, 0.6);
+      }
 
+      .scroll-to-top {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 50px;
+        height: 50px;
+        background: linear-gradient(45deg, #ffd700, #ff00cc);
+        color: #333;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        cursor: pointer;
+        box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+        z-index: 1000;
+        transition: all 0.3s ease;
+        opacity: 0;
+        visibility: hidden;
+      }
 
-/* ===== Scroll to Top Button ===== */
-.scroll-to-top {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  width: 50px;
-  height: 50px;
-  background: linear-gradient(45deg, #ffd700, #ff00cc); /* Using gold-glow/neon-pink theme */
-  color: #333;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.5rem;
-  cursor: pointer;
-  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
-  z-index: 1000;
-  transition: all 0.3s ease;
-  opacity: 0;
-  visibility: hidden;
-}
+      .scroll-to-top.active {
+        opacity: 1;
+        visibility: visible;
+      }
 
-.scroll-to-top.active {
-  opacity: 1;
-  visibility: visible;
-}
+      .scroll-to-top:hover {
+        transform: translateY(-5px) scale(1.05);
+        box-shadow: 0 8px 25px rgba(255, 215, 0, 0.6);
+      }
 
-.scroll-to-top:hover {
-  transform: translateY(-5px) scale(1.05);
-  box-shadow: 0 8px 25px rgba(255, 215, 0, 0.6);
-}
+      .sidebar-logo {
+        text-align: center;
+        padding: 0px 0;
+        margin-bottom: 0px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
 
-/* ===== Sidebar Logo Styles ===== */
-.sidebar-logo {
-  text-align: center;
-  padding: 0px 0;
-  margin-bottom: 0px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
+      .sidebar-logo img {
+        max-width: auto;
+        height: 45px;
+        transition: all 0.3s ease;
+      }
 
-.sidebar-logo img {
-  max-width: auto;
-  height: 45px;
-  transition: all 0.3s ease;
-}
+      @media (max-width: 768px) {
+        .footer-buttons {
+          gap: 12px;
+        }
+        .sidebar-logo img {
+          max-width: auto;
+        }
+      }
 
+      @media (max-width: 480px) {
+        .footer-logo {
+          font-size: 2.2rem;
+        }
 
-/* ============================================= */
-/* ===== RESPONSIVE STYLES ===== */
-/* ============================================= */
+        .footer-description {
+          font-size: 1rem;
+        }
 
-/* Medium Screens (Tablets) */
-@media (max-width: 768px) {
-  .footer-buttons {
-    gap: 12px;
-  }
-  .sidebar-logo img {
-    max-width: auto; /* No change needed but keeping for structure */
-  }
-}
+        .social-links a {
+          width: 40px;
+          height: 40px;
+          font-size: 1.2rem;
+        }
 
-/* Small Screens (Mobiles) */
-@media (max-width: 480px) {
-  .footer-logo {
-    font-size: 2.2rem;
-  }
-
-  .footer-description {
-    font-size: 1rem;
-  }
-
-  .social-links a {
-    width: 40px;
-    height: 40px;
-    font-size: 1.2rem;
-  }
-
-  .scroll-to-top {
-    width: 40px;
-    height: 40px;
-    font-size: 1.2rem;
-  }
-  
-  .sidebar-logo img {
-    max-width: auto; /* No change needed but keeping for structure */
-  }
-}
+        .scroll-to-top {
+          width: 40px;
+          height: 40px;
+          font-size: 1.2rem;
+        }
+        
+        .sidebar-logo img {
+          max-width: auto;
+        }
+      }
     </style>
   `;
 
   const html = `
     <footer id="site-footer">
       <div class="footer-container">
-    <h2 class="footer-heading">Am</h2>
-<p class="footer-lines">
-  Discover amazing deals across all categories<br>
-  Fast shipping & secure payment options<br>
-  24/7 customer support & easy returns<br>
-  Join millions of satisfied customers today!
-</p>
+        <h2 class="footer-heading">ShopEase</h2>
+        <p class="footer-lines">
+          Premium products across all categories<br>
+          Fast shipping & secure payment options<br>
+          24/7 customer support & easy returns<br>
+          Join millions of satisfied customers today!
+        </p>
         <div class="footer-buttons">
-          <a href="proone.html" class="footer-btn" title="Electronics"><i class="fas fa-tv"></i></a>
-          <a href="protwo.html" class="footer-btn" title="Footwear"><i class="fas fa-shoe-prints"></i></a>
-          <a href="prothree.html" class="footer-btn" title="Smartphones"><i class="fas fa-mobile-alt"></i></a>
-          <a href="profour.html" class="footer-btn" title="Laptops & PCs"><i class="fas fa-laptop"></i></a>
-          <a href="profive.html" class="footer-btn" title="Fashion"><i class="fas fa-tshirt"></i></a>
-          <a href="prosix.html" class="footer-btn" title="Appliances"><i class="fas fa-blender-phone"></i></a>
+          <a href="footwear.html" class="footer-btn" title="Footwear"><i class="fas fa-shoe-prints"></i></a>
+          <a href="watches.html" class="footer-btn" title="Watches"><i class="fas fa-clock"></i></a>
+          <a href="accessories.html" class="footer-btn" title="Accessories"><i class="fas fa-headphones"></i></a>
+          <a href="fashion.html" class="footer-btn" title="Fashion"><i class="fas fa-tshirt"></i></a>
+          <a href="appliances.html" class="footer-btn" title="Appliances"><i class="fas fa-blender"></i></a>
+          <a href="deals.html" class="footer-btn" title="Deals"><i class="fas fa-tag"></i></a>
           <a href="policy.html" class="footer-btn" title="Policy"><i class="fas fa-shield-alt"></i></a>
         </div>
         <div class="social-links">
@@ -308,7 +290,7 @@ footer .footer-btn {
           <a href="#"><i class="fab fa-pinterest"></i></a>
         </div>
         <div class="copyright">
-          &copy; ${new Date().getFullYear()} LuckyWin.pro. All rights reserved.
+          &copy; ${new Date().getFullYear()} ShopEase.pro. All rights reserved.
         </div>
       </div>
       <div class="scroll-to-top" id="scrollToTop">
@@ -320,30 +302,28 @@ footer .footer-btn {
   document.head.insertAdjacentHTML('beforeend', style);
   footerContainer.innerHTML = html;
 }
-// Function to inject product section
+
+// Function to inject product section with 10 cards
 function injectProductSection() {
   const container = document.getElementById('product-section');
   if (!container) return;
 
   const style = `
     <style>
-      /* ======= Main Section ======= */
       .products-section {
         padding: 4rem 2rem;
         text-align: center;
         background: linear-gradient(135deg, #000000, #1a001f, #0c0012);
       }
 
-      /* ======= Title Gradient ======= */
       .section-title {
-        font-size: 2.5rem;
+        font-size: 1.5rem;
         margin-bottom: 3rem;
         background: linear-gradient(90deg, #ffd700, #ff4b2b, #ff00cc);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
       }
 
-      /* ======= Card Layout ======= */
       .cards-container1 {
         display: flex;
         flex-wrap: wrap;
@@ -359,7 +339,6 @@ function injectProductSection() {
         text-decoration: none;
       }
 
-      /* ======= Card Styling ======= */
       .card {
         position: relative;
         border-radius: 20px;
@@ -382,9 +361,8 @@ function injectProductSection() {
         box-shadow: 0 0 40px #ffd700, 0 0 15px #ff0080;
       }
 
-      /* ======= Background Image Area ======= */
       .card-background {
-        height: 65%;
+        height: 50%;
         width: 100%;
         background-size: cover;
         background-position: center;
@@ -393,9 +371,8 @@ function injectProductSection() {
         background-color: #000;
       }
 
-      /* ======= Card Content ======= */
       .card-content2 {
-        height: 35%;
+        height: 45%;
         background: linear-gradient(to right, #190033, #0d001a);
         color: white;
         padding: 0.6rem 1rem;
@@ -415,7 +392,13 @@ function injectProductSection() {
         letter-spacing: 0.5px;
       }
 
-      /* ======= Button Style ======= */
+      .price-tag {
+        font-size: 1.1rem;
+        color: #ffd700;
+        margin-bottom: 8px;
+        font-weight: bold;
+      }
+
       .btn {
         display: block;
         width: 100%;
@@ -437,7 +420,6 @@ function injectProductSection() {
         box-shadow: 0 0 24px #ffd700;
       }
 
-      /* ======= Top Corner Ribbon ======= */
       .corner-ribbon {
         position: absolute;
         top: 0;
@@ -447,7 +429,6 @@ function injectProductSection() {
         z-index: 10;
       }
 
-      /* ======= Top Badge ======= */
       .card-category-badge {
         position: absolute;
         top: 12px;
@@ -462,18 +443,19 @@ function injectProductSection() {
         box-shadow: 0 2px 8px rgba(255, 200, 0, 0.5);
       }
 
-      /* ======= Tablet ======= */
       @media (max-width: 1024px) {
         .cards-container1 > .card {
-          width: 100%;
-          max-width: 90%;
-        }
-        .card {
-          height: 270px;
+          width: calc(50% - 1rem);
         }
       }
 
-      /* ======= Mobile ======= */
+      @media (max-width: 768px) {
+        .cards-container1 > .card {
+          width: 100%;
+          max-width: 400px;
+        }
+      }
+
       @media (max-width: 480px) {
         .products-section {
           padding: 2rem 1rem;
@@ -493,69 +475,34 @@ function injectProductSection() {
     </style>
   `;
 
+  const products = [
+    { id: 1, price: 21, value: 2100, category: "Footwear", name: "Decathlon Sports Shoes", image: "dctsh2.jpg" },
+    { id: 2, price: 31, value: 3100, category: "Watches", name: "Titan Raga Women's Watch", image: "w1.jpg" },
+    { id: 3, price: 41, value: 4100, category: "Accessories", name: "Apple AirPods 4 (ANC)", image: "app1.png" },
+    { id: 4, price: 51, value: 5100, category: "Watches", name: "OLEVS Men's Chronograph Watch", image: "mw1.png" },
+    { id: 5, price: 61, value: 6100, category: "Fashion", name: "Premium Fashion Collection", image: "rn.png" },
+    { id: 6, price: 71, value: 7100, category: "Appliances", name: "Smart Home Appliances", image: "rn.png" },
+    { id: 7, price: 81, value: 8100, category: "Footwear", name: "Nike Running Shoes", image: "dctsh2.jpg" },
+    { id: 8, price: 91, value: 9100, category: "Accessories", name: "Sony Wireless Headphones", image: "app1.png" },
+    { id: 9, price: 101, value: 10100, category: "Fashion", name: "Designer Handbag Collection", image: "rn.png" },
+  ];
+
   const html = `
     <section class="products-section">
-      <h2 class="section-title">Active-Lottery</h2>
+      <h2 class="section-title">Featured Products</h2>
       <div class="cards-container1">
-        <a href="proone.html" class="card">
-          <div class="corner-ribbon"></div>
-          <div class="card-category-badge">Footwear</div>
-          <div class="card-background" style="background-image: url('dctsh2.jpg');"></div>
-          <div class="card-content2">
-            <h3>Win Decathlon Shoes</h3>
-            <span class="btn">Enroll Now</span>
-          </div>
-        </a>
-
-        <a href="protwo.html" class="card">
-          <div class="corner-ribbon"></div>
-          <div class="card-category-badge">Women's Handwear</div>
-          <div class="card-background" style="background-image: url('w1.jpg');"></div>
-          <div class="card-content2">
-            <h3>Win Titan Raga Girls Watch!</h3>
-            <span class="btn">Enroll Now</span>
-          </div>
-        </a>
-
-        <a href="prothree.html" class="card">
-          <div class="corner-ribbon"></div>
-          <div class="card-category-badge">Smart Accessory</div>
-          <div class="card-background" style="background-image: url('app1.png');"></div>
-          <div class="card-content2">
-           <h3>Win Apple AirPods 4 (ANC)</h3>
-           <span class="btn">Enroll Now</span>
-          </div>
-        </a>
-
-        <a href="profour.html" class="card">
-          <div class="corner-ribbon"></div>
-          <div class="card-category-badge">Men's Handwear</div>
-          <div class="card-background" style="background-image: url('mw1.png');"></div>
-          <div class="card-content2">
-            <h3>Win OLEVS Men's Watch!</h3>
-            <span class="btn">Enroll Now</span>
-          </div>
-        </a>
-
-        <a href="profive.html" class="card">
-          <div class="corner-ribbon"></div>
-          <div class="card-category-badge">Gold & Bullion</div>
-          <div class="card-background" style="background-image: url('rn.png');"></div>
-          <div class="card-content2">
-            <h3>Activate Yourself</h3>
-            <span class="btn">Enroll Now</span>
-          </div>
-        </a>
-
-        <a href="prosix.html" class="card">
-          <div class="corner-ribbon"></div>
-          <div class="card-category-badge">Gold & Bullion</div>
-          <div class="card-background" style="background-image: url('rn.png');"></div>
-          <div class="card-content2">
-            <h3>Activate Yourself</h3>
-           <span class="btn">Enroll Now</span>
-          </div>
-        </a>
+        ${products.map(product => `
+          <a href="${product.category.toLowerCase()}proone.html" class="card">
+            <div class="corner-ribbon"></div>
+            <div class="card-category-badge">${product.category}</div>
+            <div class="card-background" style="background-image: url('${product.image}');"></div>
+            <div class="card-content2">
+              <h3>${product.name}</h3>
+              <div class="price-tag">₹${product.price} for ₹${product.value}</div>
+              <span class="btn">Buy Now</span>
+            </div>
+          </a>
+        `).join('')}
       </div>
     </section>
   `;
@@ -582,7 +529,6 @@ function injectContainer1() {
             color: #fff;
         }
 
-        /* Section Title Styling */
         .section-title {
             font-size: 2.2rem;
             margin-bottom: 50px;
@@ -609,7 +555,6 @@ function injectContainer1() {
             border-radius: 3px;
         }
 
-        /* Features Section */
         .features-section {
             padding: 60px 0;
         }
@@ -623,7 +568,6 @@ function injectContainer1() {
             justify-content: center;
         }
 
-        /* Feature Card Styling */
         .feature-card {
             background: rgba(255, 255, 255, 0.08);
             border-radius: 20px;
@@ -646,7 +590,6 @@ function injectContainer1() {
             background: rgba(26, 26, 46, 0.6);
         }
 
-        /* Card Icon Styling */
         .card-icon {
             font-size: 4.5rem;
             color: #FFD700;
@@ -673,7 +616,6 @@ function injectContainer1() {
             border-radius: 3px;
         }
 
-        /* Card Content */
         .card-content1 {
             padding: 20px 0;
             color: #fff;
@@ -701,7 +643,6 @@ function injectContainer1() {
             margin: 0 auto;
         }
 
-        /* Glowing Effect */
         .feature-card:before {
             content: '';
             position: absolute;
@@ -720,8 +661,7 @@ function injectContainer1() {
             opacity: 0.4;
         }
 
-        /* Jackpot Badge */
-        .jackpot-badge {
+        .highlight-badge {
             position: absolute;
             top: 20px;
             right: 20px;
@@ -737,7 +677,6 @@ function injectContainer1() {
             letter-spacing: 1px;
         }
 
-        /* Responsive Design */
         @media (max-width: 1200px) {
             .cards-container {
                 gap: 30px;
@@ -788,33 +727,29 @@ function injectContainer1() {
             }
         }
 
-        /* For small devices like iPhone 12 Mini and others */
-@media (max-width: 480px) {
-    .features-section .section-title {
-        /* फॉन्ट साइज को पढ़ने लायक बनाया गया */
-        font-size: 2rem; 
-    }
+        @media (max-width: 480px) {
+            .features-section .section-title {
+                font-size: 2rem; 
+            }
 
-    .feature-card {
-        height: auto; /* ऊंचाई को ऑटो किया ताकि कंटेंट फिट हो सके */
-        padding: 25px 20px;
-    }
+            .feature-card {
+                height: auto;
+                padding: 25px 20px;
+            }
 
-    .card-icon {
-        font-size: 3rem; /* आइकन को थोड़ा छोटा किया */
-    }
-    
-    .card-content1 h3 {
-        /* सिंटैक्स ठीक किया गया और साइज एडजस्ट किया गया */
-        font-size: 1.1rem; 
-    }
+            .card-icon {
+                font-size: 3rem;
+            }
+            
+            .card-content1 h3 {
+                font-size: 1.1rem; 
+            }
 
-    .card-content1 p {
-        /* फॉन्ट साइज को पढ़ने लायक बनाया गया */
-        font-size: 0.9rem; 
-        line-height: 1.5; /* लाइनों के बीच स्पेस बढ़ाया */
-    }
-}
+            .card-content1 p {
+                font-size: 0.9rem; 
+                line-height: 1.5;
+            }
+        }
     </style>
   `;
 
@@ -824,68 +759,68 @@ function injectContainer1() {
             <h2 class="section-title">Why Choose Us?</h2>
             <div class="cards-container">
                 <div class="feature-card">
-                    <span class="jackpot-badge">Top Rated</span>
+                    <span class="highlight-badge">Secure</span>
                     <div class="card-icon">
                         <i class="fas fa-shield-alt"></i>
                     </div>
                     <div class="card-content1">
-                        <h3>Trusted & Secure</h3>
-                        <p>Licensed and regulated lottery platform with bank-level security to protect your transactions and personal information. Your safety is our top priority.</p>
+                        <h3>Secure Payments</h3>
+                        <p>All transactions protected with 256-bit SSL encryption and verified payment gateways for complete security.</p>
                     </div>
                 </div>
 
                 <div class="feature-card">
-                    <span class="jackpot-badge">Massive Wins</span>
+                    <span class="highlight-badge">Popular</span>
                     <div class="card-icon">
-                        <i class="fas fa-trophy"></i>
+                        <i class="fas fa-star"></i>
                     </div>
                     <div class="card-content1">
-                        <h3>Life-Changing Jackpots</h3>
-                        <p>We offer the biggest jackpots in the industry with record-breaking prizes. Join millions of players chasing life-changing winnings every day.</p>
+                        <h3>Top Rated Products</h3>
+                        <p>We offer only the highest quality products with verified customer reviews and ratings for your peace of mind.</p>
                     </div>
                 </div>
 
                 <div class="feature-card">
-                    <span class="jackpot-badge">Fast Cash</span>
+                    <span class="highlight-badge">Fast</span>
                     <div class="card-icon">
-                        <i class="fas fa-bolt"></i>
+                        <i class="fas fa-shipping-fast"></i>
                     </div>
                     <div class="card-content1">
-                        <h3>Instant Payouts</h3>
-                        <p>Get your winnings instantly with our lightning-fast payment system. No waiting periods - your money is transferred within minutes of winning!</p>
+                        <h3>Fast Delivery</h3>
+                        <p>Get your orders delivered quickly with our nationwide logistics network. Most orders arrive within 2-3 days!</p>
                     </div>
                 </div>
 
                 <div class="feature-card">
-                    <span class="jackpot-badge">Endless Fun</span>
+                    <span class="highlight-badge">Variety</span>
                     <div class="card-icon">
-                        <i class="fas fa-dice"></i>
+                        <i class="fas fa-boxes"></i>
                     </div>
                     <div class="card-content1">
-                        <h3>Endless Game Variety</h3>
-                        <p>From daily draws to massive jackpot games, scratch cards to number games - we offer the widest selection of lottery games anywhere.</p>
+                        <h3>Wide Selection</h3>
+                        <p>From electronics to fashion, home appliances to accessories - we offer the widest selection of products anywhere.</p>
                     </div>
                 </div>
 
                 <div class="feature-card">
-                    <span class="jackpot-badge">Play Anywhere</span>
+                    <span class="highlight-badge">Mobile</span>
                     <div class="card-icon">
                         <i class="fas fa-mobile-alt"></i>
                     </div>
                     <div class="card-content1">
-                        <h3>Seamless Mobile Play</h3>
-                        <p>Play your favorite lottery games anywhere, anytime with our award-winning mobile app. Never miss a draw with push notifications.</p>
+                        <h3>Mobile Friendly</h3>
+                        <p>Shop anywhere, anytime with our mobile-optimized website and app. Never miss a deal with push notifications.</p>
                     </div>
                 </div>
 
                 <div class="feature-card">
-                    <span class="jackpot-badge">24/7 Support</span>
+                    <span class="highlight-badge">Support</span>
                     <div class="card-icon">
                         <i class="fas fa-headset"></i>
                     </div>
                     <div class="card-content1">
-                        <h3>Dedicated Support</h3>
-                        <p>Our lottery experts are available 24/7 to answer your questions. Get instant help via live chat, phone, or email whenever you need it.</p>
+                        <h3>24/7 Support</h3>
+                        <p>Our customer service team is available round the clock to answer your questions and resolve any issues.</p>
                     </div>
                 </div>
             </div>
@@ -938,6 +873,21 @@ function initializeSite() {
     });
   });
 
+  // Show scroll-to-top button when scrolling
+  window.addEventListener('scroll', () => {
+    const scrollToTop = document.getElementById('scrollToTop');
+    if (scrollToTop) {
+      if (window.scrollY > 300) {
+        scrollToTop.classList.add('active');
+      } else {
+        scrollToTop.classList.remove('active');
+      }
+    }
+  });
+
+  // Add floating register button
+  
+
   document.head.appendChild(buttonStyle);
 
   const button = document.createElement('a');
@@ -946,7 +896,7 @@ function initializeSite() {
 
   const innerDiv = document.createElement('div');
   innerDiv.className = 'register-button-inner';
-  innerDiv.textContent = 'Register';
+  innerDiv.textContent = 'Sign Up';
 
   button.appendChild(innerDiv);
   document.body.appendChild(button);
@@ -957,6 +907,6 @@ document.addEventListener('DOMContentLoaded', () => {
   injectHeader();
   injectFooter();
   injectProductSection();
-  injectContainer1(); // This line was corrected/added
+  injectContainer1();
   initializeSite();
 });
