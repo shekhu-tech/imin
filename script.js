@@ -303,242 +303,299 @@ function injectFooter() {
   footerContainer.innerHTML = html;
 }
 
-// Function to inject product section with 10 cards
+// Function to inject product section
 function injectProductSection() {
   const container = document.getElementById('product-section');
   if (!container) return;
 
   const style = `
-    <style>
-      .products-section {
-        padding: 4rem 2rem;
-        text-align: center;
-        background: linear-gradient(135deg, #000000, #1a001f, #0c0012);
-      }
+     <style>
+    .products-section {
+      padding: 4rem 2rem;
+      text-align: center;
+      background: linear-gradient(135deg, #000000, #1a001f, #0c0012);
+    }
 
-      .section-title {
-        font-size: 2.5rem;
-        font-weight: 800;
-        margin-bottom: 3rem;
-        background: linear-gradient(90deg, #ffd700, #ff4b2b, #ff00cc);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        text-transform: uppercase;
-      }
+    .section-title {
+      font-size: 1.8rem;
+      margin-bottom: 3rem;
+      background: linear-gradient(90deg, #ffd700, #ff4b2b, #ff00cc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
 
-      .cards-container1 {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 2rem;
-        max-width: 1200px;
-        margin: 0 auto;
-      }
+    .cards-container1 {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
 
-      .cards-container1 > .card {
-        width: calc(33.333% - 1.34rem);
-        box-sizing: border-box;
-        text-decoration: none;
-      }
+    .cards-container1 > .card {
+      width: calc(33.333% - 1.34rem);
+      box-sizing: border-box;
+      text-decoration: none;
+    }
 
-      .card {
-        position: relative;
-        border-radius: 20px;
-        overflow: hidden;
-        display: flex;
-        flex-direction: column;
-        height: 270px;
-        max-width: 399px;
-        width: 100%;
-        background: linear-gradient(145deg, #1a001f, #0d0d0d);
-        border: 2px solid rgba(255, 215, 0, 0.2);
-        box-shadow: 0 0 25px rgba(255, 215, 0, 0.15), 0 0 10px #ff4b2b33;
-        transition: transform 0.4s ease, box-shadow 0.4s ease;
-        backdrop-filter: blur(10px);
-      }
+    .card {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      height: 270px;
+      max-width: 399px;
+      width: 100%;
+      background: linear-gradient(145deg, #1a001f, #0d0d0d);
+      border: 2px solid rgba(255, 215, 0, 0.2);
+      box-shadow: 0 0 25px rgba(255, 215, 0, 0.15), 0 0 10px #ff4b2b33;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      backdrop-filter: blur(10px);
+    }
 
-      .card:hover {
-        transform: scale(1.07);
-        border-color: #ffd700;
-        box-shadow: 0 0 40px #ffd700, 0 0 15px #ff0080;
-      }
+    .card:hover {
+      transform: scale(1.07);
+      border-color: #ffd700;
+      box-shadow: 0 0 40px #ffd700, 0 0 15px #ff0080;
+    }
 
-      .card-background {
-        height: 50%;
-        width: 100%;
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        opacity: 0.85;
-        background-color: #000;
-      }
+    .card-background {
+      height: 50%;
+      width: 100%;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      opacity: 0.85;
+      background-color: #000;
+    }
 
-      .card-content2 {
-        height: 45%;
-        background: linear-gradient(to right, #190033, #0d001a);
-        color: white;
-        padding: 0.6rem 1rem;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        border-top: 1px solid #ff00cc;
-        text-align: center;
-      }
+    .card-content2 {
+      height: 45%;
+      background: linear-gradient(to right, #190033, #0d001a);
+      color: white;
+      padding: 0.6rem 1rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border-top: 1px solid #ff00cc;
+      text-align: center;
+    }
 
-      .card-content2 h3 {
-        font-size: 1.2rem;
-        margin-bottom: 6px;
-        color: #ffffff;
-        text-shadow: 0 0 8px rgba(255, 0, 255, 0.2);
-        letter-spacing: 0.5px;
-      }
-
-      .price-tag {
-        font-size: 1.1rem;
-        color: #ffd700;
-        margin-bottom: 8px;
-        font-weight: bold;
-      }
-
-      .btn {
-        display: block;
-        width: 100%;
-        font-size: 0.95rem;
-        padding: 10px 0;
-        border-radius: 999px;
-        background: linear-gradient(90deg, #ff9000, #ff4b2b, #ff0080);
-        color: white;
-        font-weight: bold;
-        text-align: center;
-        text-decoration: none;
-        box-shadow: 0 0 18px rgba(255, 105, 180, 0.4);
-        transition: all 0.3s ease;
-      }
-
-      .btn:hover {
-        background: linear-gradient(90deg, #ffd700, #ff0080);
-        color: #000;
-        box-shadow: 0 0 24px #ffd700;
-      }
-
-      .corner-ribbon {
-        position: absolute;
-        top: 0;
-        left: 0;
-        border-top: 60px solid #ff00cc;
-        border-right: 60px solid transparent;
-        z-index: 10;
-      }
-
-      .card-category-badge {
-        position: absolute;
-        top: 12px;
-        right: 12px;
-        background: linear-gradient(135deg, #ffd700, #ff8c00);
-        color: #000;
-        font-weight: bold;
-        padding: 6px 14px;
-        border-radius: 999px;
-        font-size: 0.9rem;
-        z-index: 10;
-        box-shadow: 0 2px 8px rgba(255, 200, 0, 0.5);
-      }
-
-      @media (max-width: 1024px) {
-        .cards-container1 > .card {
-          width: calc(50% - 1rem);
-        }
-      }
-
-      @media (max-width: 768px) {
-        .cards-container1 > .card {
-          width: 100%;
-          max-width: 400px;
-        }
-      }
-
-      @media (max-width: 480px) {
-        .products-section {
-          padding: 2rem 1rem;
-        }
-        .section-title {
-          font-size: 1.8rem;
-        }
-        .corner-ribbon {
-          border-top: 40px solid #ff00cc;
-          border-right: 40px solid transparent;
-        }
-        .btn {
-          font-size: 0.85rem;
-          padding: 8px 0;
-        }
-      }
-    </style>
-  `;
-
-  // Define products and links
-  const products = [
-    { price: 21, value: 2100, category: "Footwear", name: "Decathlon Sports Shoes", image: "dctsh2.jpg" },
-    { price: 31, value: 3100, category: "Watches", name: "Titan Raga Women's Watch", image: "w1.jpg" },
-    { price: 41, value: 4100, category: "Accessories", name: "Apple AirPods 4 (ANC)", image: "app1.png" },
-    { price: 51, value: 5100, category: "Watches", name: "OLEVS Men's Chronograph Watch", image: "mw1.png" },
-    { price: 61, value: 6100, category: "Fashion", name: "Premium Fashion Collection", image: "rn.png" },
-    { price: 71, value: 7100, category: "Appliances", name: "Smart Home Appliances", image: "rn.png" },
-    { price: 81, value: 8100, category: "Footwear", name: "Nike Running Shoes", image: "dctsh2.jpg" },
-    { price: 91, value: 9100, category: "Accessories", name: "Sony Wireless Headphones", image: "app1.png" },
-    { price: 101, value: 10100, category: "Fashion", name: "Designer Handbag Collection", image: "rn.png" },
-  ];
-  
-  const pageLinks = [
-    "proone.html",
-    "protwo.html",
-    "prothree.html",
-    "profour.html",
-    "profive.html",
-    "prosix.html",
-    "proseven.html",
-    "proeight.html",
-    "pronine.html"
-  ];
-  
-  // Add the CSS to the document head
-  document.head.insertAdjacentHTML('beforeend', style);
-
-  // Create the main HTML structure for the product section
-  let productSectionHTML = `
-    <section class="products-section">
-      <h2 class="section-title">Exclusive Products Just For You!</h2>
-      <div class="cards-container1">
-  `;
-
-  // Generate HTML for each product card
-  products.forEach((product, index) => {
-    const cardHtml = `
-      <a href="${pageLinks[index]}" class="card">
-        <div class="card-background" style="background-image: url('${product.image}');"></div>
-        <div class="card-content2">
-          <h3>${product.name}</h3>
-          <p class="price-tag">Price: ₹${product.value}</p>
-          <a href="${pageLinks[index]}" class="btn">View Product</a>
-        </div>
-        <span class="card-category-badge">${product.category}</span>
-        <div class="corner-ribbon"></div>
-      </a>
-    `;
-    productSectionHTML += cardHtml;
-  });
-
-  // Close the containers
-  productSectionHTML += `
-      </div>
-    </section>
-  `;
-
-  // Inject the final HTML into the DOM
-  container.innerHTML = productSectionHTML;
+    .card-content2 h3 {
+      font-size: 1.2rem;
+      margin-bottom: 6px;
+      color: #ffffff;
+      text-shadow: 0 0 8px rgba(255, 0, 255, 0.2);
+      letter-spacing: 0.5px;
+    }
+      .card-content2 h2 {
+  color: #ffd700; /* bright golden */
+  font-size: 1.1rem;
+  margin: 6px 0;
+  font-weight: bold;
+  text-shadow: 0 0 8px rgba(255, 215, 0, 0.6);
 }
 
+    .price-tag {
+     font-size: 1.1rem;
+     color: goldenrod;
+     text-shadow: 0 0 8px rgba(255, 215, 0, 0.6);
+      margin-bottom: 8px;
+      font-weight: bold;
+     }
+
+    .btn {
+      display: block;
+      width: 100%;
+      font-size: 0.95rem;
+      padding: 10px 0;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #ff9000, #ff4b2b, #ff0080);
+      color: white;
+      font-weight: bold;
+      text-align: center;
+      text-decoration: none;
+      box-shadow: 0 0 18px rgba(255, 105, 180, 0.4);
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+      background: linear-gradient(90deg, #ffd700, #ff0080);
+      color: #000;
+      box-shadow: 0 0 24px #ffd700;
+    }
+
+    .corner-ribbon {
+      position: absolute;
+      top: 0;
+      left: 0;
+      border-top: 60px solid #ff00cc;
+      border-right: 60px solid transparent;
+      z-index: 10;
+    }
+
+    .card-category-badge {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: linear-gradient(135deg, #ffd700, #ff8c00);
+      color: #000;
+      font-weight: bold;
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      z-index: 10;
+      box-shadow: 0 2px 8px rgba(255, 200, 0, 0.5);
+    }
+
+    @media (max-width: 1024px) {
+      .cards-container1 > .card {
+        width: calc(50% - 1rem);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .cards-container1 > .card {
+        width: 100%;
+        max-width: 400px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .products-section {
+        padding: 2rem 1rem;
+      }
+      .section-title {
+        font-size: 1.8rem;
+      }
+      .corner-ribbon {
+        border-top: 40px solid #ff00cc;
+        border-right: 40px solid transparent;
+      }
+      .btn {
+        font-size: 0.85rem;
+        padding: 8px 0;
+      }
+    }
+  </style>
+  `;
+
+  const html = `
+    <section class="products-section">
+  <h2 class="section-title">Our Products</h2>
+  <div class="cards-container1">
+
+    <a href="proone.html" class="card">
+      <div class="corner-ribbon"></div>
+      <div class="card-category-badge">Footwear</div>
+      <div class="card-background" style="background-image: url('dctsh2.jpg');"></div>
+      <div class="card-content2">
+        <h3>Decathlon Sports Shoes</h3>
+        <h2>₹21 for ₹2100</h2>
+        <span class="btn">Participate Now</span>
+      </div>
+    </a>
+
+    <a href="protwo.html" class="card">
+      <div class="corner-ribbon"></div>
+      <div class="card-category-badge">Watches</div>
+      <div class="card-background" style="background-image: url('w1.jpg');"></div>
+      <div class="card-content2">
+        <h3>Titan Raga Women's Watch</h3>
+        <h2>₹31 for ₹3100</h2>
+        <span class="btn">Participate Now</span>
+      </div>
+    </a>
+
+    <a href="prothree.html" class="card">
+      <div class="corner-ribbon"></div>
+      <div class="card-category-badge">Accessories</div>
+      <div class="card-background" style="background-image: url('app1.png');"></div>
+      <div class="card-content2">
+        <h3>Apple AirPods 4 (ANC)</h3>
+        <h2>₹41 for ₹4100</h2>
+        <span class="btn">Participate Now</span>
+      </div>
+    </a>
+
+    <a href="profour.html" class="card">
+      <div class="corner-ribbon"></div>
+      <div class="card-category-badge">Watches</div>
+      <div class="card-background" style="background-image: url('mw1.png');"></div>
+      <div class="card-content2">
+        <h3>OLEVS Men's Chronograph Watch</h3>
+        <h2>₹51 for ₹5100</h2>
+        <span class="btn">Participate Now</span>
+      </div>
+    </a>
+
+    <a href="profive.html" class="card">
+      <div class="corner-ribbon"></div>
+      <div class="card-category-badge">Fashion</div>
+      <div class="card-background" style="background-image: url('rn.png');"></div>
+      <div class="card-content2">
+        <h3>Premium Fashion Collection</h3>
+        <h2>₹61 for ₹6100</h2>
+        <span class="btn">Participate Now</span>
+      </div>
+    </a>
+
+    <a href="prosix.html" class="card">
+      <div class="corner-ribbon"></div>
+      <div class="card-category-badge">Appliances</div>
+      <div class="card-background" style="background-image: url('rn.png');"></div>
+      <div class="card-content2">
+        <h3>Smart Home Appliances</h3>
+        <h2>₹71 for ₹7100</h2>
+        <span class="btn">Participate Now</span>
+      </div>
+    </a>
+
+    <a href="proseven.html" class="card">
+      <div class="corner-ribbon"></div>
+      <div class="card-category-badge">Footwear</div>
+      <div class="card-background" style="background-image: url('dctsh2.jpg');"></div>
+      <div class="card-content2">
+        <h3>Nike Running Shoes</h3>
+        <h2>₹81 for ₹8100</h2>
+        <span class="btn">Participate Now</span>
+      </div>
+    </a>
+
+    <a href="proeight.html" class="card">
+      <div class="corner-ribbon"></div>
+      <div class="card-category-badge">Accessories</div>
+      <div class="card-background" style="background-image: url('app1.png');"></div>
+      <div class="card-content2">
+        <h3>Sony Wireless Headphones</h3>
+        <h2>₹91 for ₹9100</h2>
+        <span class="btn">Participate Now</span>
+      </div>
+    </a>
+
+    <a href="pronine.html" class="card">
+      <div class="corner-ribbon"></div>
+      <div class="card-category-badge">Fashion</div>
+      <div class="card-background" style="background-image: url('rn.png');"></div>
+      <div class="card-content2">
+        <h3>Designer Handbag Collection</h3>
+        <h2>₹101 for ₹10100</h2>
+        <span class="btn">Participate Now</span>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+
+  `;
+
+  document.head.insertAdjacentHTML('beforeend', style);
+  container.innerHTML = html;
+}
 // Function to inject Container1
 function injectContainer1() {
   const container = document.getElementById('Container1');
@@ -916,28 +973,7 @@ function initializeSite() {
   // Add floating register button
   const buttonStyle = document.createElement('style');
   buttonStyle.textContent = `
-    .floating-register-button {
-      position: fixed;
-      bottom: 30px;
-      left: 30px;
-      z-index: 1000;
-      text-decoration: none;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .register-button-inner {
-      background: linear-gradient(90deg, #00C9FF, #92FE9D);
-      border: none;
-      border-radius: 999px;
-      color: #fff;
-      font-weight: bold;
-      padding: 12px 24px;
-      box-shadow: 0 4px 15px rgba(0, 201, 255, 0.4);
-      cursor: pointer;
-    }
-    .floating-register-button:hover {
-      transform: translateY(-5px) scale(1.05);
-      box-shadow: 0 8px 20px rgba(0, 201, 255, 0.6);
-    }
+  
   `;
   document.head.appendChild(buttonStyle);
 
