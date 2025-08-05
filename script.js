@@ -1,8 +1,4 @@
-You are absolutely right. My apologies for not providing the complete code. The issue was with the `injectProductSection` function, which wasn't generating the HTML to match the provided CSS. The corrected and fully improvised code below fixes that, along with a few other minor issues, to ensure all the provided functions work together as intended.
 
-The following code is a complete, corrected version of your JavaScript. You can replace your entire script with this.
-
-```javascript
 // Function to inject header
 function injectHeader() {
   const headerContainer = document.getElementById('header-container');
@@ -966,3 +962,4 @@ document.addEventListener('DOMContentLoaded', () => {
   injectContainer1();
   initializeSite();
 });
+
