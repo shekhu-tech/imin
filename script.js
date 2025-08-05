@@ -532,7 +532,7 @@ function injectProductSection() {
       </div>
     </a>
 
-    <a href="profive.html" class="card">
+    <a href="profifth.html" class="card">
       <div class="corner-ribbon"></div>
       <div class="card-category-badge">Fashion</div>
       <div class="card-background" style="background-image: url('rn.png');"></div>
@@ -543,7 +543,7 @@ function injectProductSection() {
       </div>
     </a>
 
-    <a href="prosix.html" class="card">
+    <a href="prosixth.html" class="card">
       <div class="corner-ribbon"></div>
       <div class="card-category-badge">Appliances</div>
       <div class="card-background" style="background-image: url('rn.png');"></div>
@@ -997,3 +997,4 @@ document.addEventListener('DOMContentLoaded', () => {
   injectContainer1();     // This function was missing from the DOMContentLoaded listener
   initializeSite();
 });
+
