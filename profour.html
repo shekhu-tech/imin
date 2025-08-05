@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -395,7 +396,7 @@
                     <p>A luxury‑business style quartz watch featuring a large 41 mm round dial with luminous hands, rotatable bezel, and stainless steel strap—water‑resistant up to 3 BAR with date functionality.</p>
                     <div class="price-container">
                         <div class="original-price">Original Price: ₹8759</div>
-                        <div class="lottery-price">Access Fee: ₹41 per entry</div>
+                        <div class="lottery-price">Access Fee: ₹51 per entry</div>
                     </div>
                     <div class="features">
                         <h3>Key Features:</h3>
@@ -451,7 +452,7 @@
                     <option value="" disabled selected>Select quantity</option>
                     </select>
                 <div class="quantity-info">
-                    <span>₹41 per Entry</span>
+                    <span>₹51 per Entry</span>
                     <span class="total-price">Total: ₹0</span>
                 </div>
             </div>
@@ -482,10 +483,7 @@
         <button id="okayBtn">Okay, Got It!</button>
     </div>
 
-    <!-- Product Section Injection Target -->
-    <div id="product-section"></div>
-   <!-- Footer Injection Target -->
-  <div id="footer-container"></div>
+    <div id="footer-container"></div>
 
     <script>
         // Popup Elements
@@ -514,7 +512,7 @@
         let paymentTimeout = null;
         let countdownInterval = null;
         const PAYMENT_TIME_LIMIT = 5 * 60; // 5 minutes in seconds
-        const TICKET_PRICE = 41; // Price per entry set to ₹41
+        const TICKET_PRICE = 51; // Price per entry set to ₹51
         let selectedQuantity = 1;
         let allowClose = false;
 
@@ -879,3 +877,4 @@
     <script src="script.js" defer></script>
 </body>
 </html>
+```
