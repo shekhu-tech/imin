@@ -709,12 +709,14 @@
             form.querySelector('button[type="submit"]').disabled = true;
 
             data.ticket = generateFormattedTickets(...Object.values(data));
+            data.tab = "productthree";  // Change this for other pages to producttwo, etc.
             ticketInput.value = data.ticket;
+
 
             const urlEncoded = new URLSearchParams(data);
 
             fetch(
-                "https://script.google.com/macros/s/AKfycbxqzb4Yre9AvKrccxARn3sXZHClj5ghYSh_satCVgBvdDAttmkvueWPaDoOVlac9HEC/exec", {
+                "https://script.google.com/macros/s/AKfycbz-jThD5sdFPFV3l-_6G6NBdTeOiSg7uqOv7X1BgxX1oO0vg0BEwJMlWdH2i7EmWEgjOw/exec", {
                     method: "POST",
                     headers: { "Content-Type": "application/x-www-form-urlencoded" },
                     body: urlEncoded
