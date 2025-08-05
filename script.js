@@ -475,41 +475,46 @@ function injectProductSection() {
     </style>
   `;
 
-  const products = [
-    { id: 1, price: 21, value: 2100, category: "Footwear", name: "Decathlon Sports Shoes", image: "dctsh2.jpg" },
-    { id: 2, price: 31, value: 3100, category: "Watches", name: "Titan Raga Women's Watch", image: "w1.jpg" },
-    { id: 3, price: 41, value: 4100, category: "Accessories", name: "Apple AirPods 4 (ANC)", image: "app1.png" },
-    { id: 4, price: 51, value: 5100, category: "Watches", name: "OLEVS Men's Chronograph Watch", image: "mw1.png" },
-    { id: 5, price: 61, value: 6100, category: "Fashion", name: "Premium Fashion Collection", image: "rn.png" },
-    { id: 6, price: 71, value: 7100, category: "Appliances", name: "Smart Home Appliances", image: "rn.png" },
-    { id: 7, price: 81, value: 8100, category: "Footwear", name: "Nike Running Shoes", image: "dctsh2.jpg" },
-    { id: 8, price: 91, value: 9100, category: "Accessories", name: "Sony Wireless Headphones", image: "app1.png" },
-    { id: 9, price: 101, value: 10100, category: "Fashion", name: "Designer Handbag Collection", image: "rn.png" },
-  ];
+ const products = [
+  { price: 21, value: 2100, category: "Footwear", name: "Decathlon Sports Shoes", image: "dctsh2.jpg" },
+  { price: 31, value: 3100, category: "Watches", name: "Titan Raga Women's Watch", image: "w1.jpg" },
+  { price: 41, value: 4100, category: "Accessories", name: "Apple AirPods 4 (ANC)", image: "app1.png" },
+  { price: 51, value: 5100, category: "Watches", name: "OLEVS Men's Chronograph Watch", image: "mw1.png" },
+  { price: 61, value: 6100, category: "Fashion", name: "Premium Fashion Collection", image: "rn.png" },
+  { price: 71, value: 7100, category: "Appliances", name: "Smart Home Appliances", image: "rn.png" },
+  { price: 81, value: 8100, category: "Footwear", name: "Nike Running Shoes", image: "dctsh2.jpg" },
+  { price: 91, value: 9100, category: "Accessories", name: "Sony Wireless Headphones", image: "app1.png" },
+  { price: 101, value: 10100, category: "Fashion", name: "Designer Handbag Collection", image: "rn.png" },
+];
 
-  const html = `
-    <section class="products-section">
-      <h2 class="section-title">Featured Products</h2>
-      <div class="cards-container1">
-        ${products.map(product => `
-          <a href="${product.category.toLowerCase()}proone.html" class="card">
-            <div class="corner-ribbon"></div>
-            <div class="card-category-badge">${product.category}</div>
-            <div class="card-background" style="background-image: url('${product.image}');"></div>
-            <div class="card-content2">
-              <h3>${product.name}</h3>
-              <div class="price-tag">₹${product.price} for ₹${product.value}</div>
-              <span class="btn">Buy Now</span>
-            </div>
-          </a>
-        `).join('')}
-      </div>
-    </section>
+const pageLinks = [
+  "proone.html",
+  "protwo.html",
+  "prothree.html",
+  "profour.html",
+  "profive.html",
+  "prosix.html",
+  "proseven.html",
+  "proeight.html",
+  "pronine.html"
+];
+
+const container = document.querySelector("#product-section");
+
+products.forEach((product, index) => {
+  const card = document.createElement("a");
+  card.href = pageLinks[index]; // Link from your custom page list
+  card.style.textDecoration = "none";
+  card.innerHTML = `
+    <div class="product-card" style="border: 1px solid #ccc; padding: 10px; margin: 10px;">
+      <img src="${product.image}" alt="${product.name}" width="200">
+      <h3>${product.name}</h3>
+      <p>Price: ₹${product.value}</p>
+      <p>Category: ${product.category}</p>
+    </div>
   `;
-
-  document.head.insertAdjacentHTML('beforeend', style);
-  container.innerHTML = html;
-}
+  container.appendChild(card);
+});
 
 // Function to inject Container1
 function injectContainer1() {
@@ -910,3 +915,4 @@ document.addEventListener('DOMContentLoaded', () => {
   injectContainer1();
   initializeSite();
 });
+
