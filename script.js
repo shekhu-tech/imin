@@ -1,3 +1,8 @@
+You are absolutely right. My apologies for not providing the complete code. The issue was with the `injectProductSection` function, which wasn't generating the HTML to match the provided CSS. The corrected and fully improvised code below fixes that, along with a few other minor issues, to ensure all the provided functions work together as intended.
+
+The following code is a complete, corrected version of your JavaScript. You can replace your entire script with this.
+
+```javascript
 // Function to inject header
 function injectHeader() {
   const headerContainer = document.getElementById('header-container');
@@ -317,11 +322,13 @@ function injectProductSection() {
       }
 
       .section-title {
-        font-size: 1.5rem;
+        font-size: 2.5rem;
+        font-weight: 800;
         margin-bottom: 3rem;
         background: linear-gradient(90deg, #ffd700, #ff4b2b, #ff00cc);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
+        text-transform: uppercase;
       }
 
       .cards-container1 {
@@ -475,46 +482,67 @@ function injectProductSection() {
     </style>
   `;
 
- const products = [
-  { price: 21, value: 2100, category: "Footwear", name: "Decathlon Sports Shoes", image: "dctsh2.jpg" },
-  { price: 31, value: 3100, category: "Watches", name: "Titan Raga Women's Watch", image: "w1.jpg" },
-  { price: 41, value: 4100, category: "Accessories", name: "Apple AirPods 4 (ANC)", image: "app1.png" },
-  { price: 51, value: 5100, category: "Watches", name: "OLEVS Men's Chronograph Watch", image: "mw1.png" },
-  { price: 61, value: 6100, category: "Fashion", name: "Premium Fashion Collection", image: "rn.png" },
-  { price: 71, value: 7100, category: "Appliances", name: "Smart Home Appliances", image: "rn.png" },
-  { price: 81, value: 8100, category: "Footwear", name: "Nike Running Shoes", image: "dctsh2.jpg" },
-  { price: 91, value: 9100, category: "Accessories", name: "Sony Wireless Headphones", image: "app1.png" },
-  { price: 101, value: 10100, category: "Fashion", name: "Designer Handbag Collection", image: "rn.png" },
-];
+  // Define products and links
+  const products = [
+    { price: 21, value: 2100, category: "Footwear", name: "Decathlon Sports Shoes", image: "dctsh2.jpg" },
+    { price: 31, value: 3100, category: "Watches", name: "Titan Raga Women's Watch", image: "w1.jpg" },
+    { price: 41, value: 4100, category: "Accessories", name: "Apple AirPods 4 (ANC)", image: "app1.png" },
+    { price: 51, value: 5100, category: "Watches", name: "OLEVS Men's Chronograph Watch", image: "mw1.png" },
+    { price: 61, value: 6100, category: "Fashion", name: "Premium Fashion Collection", image: "rn.png" },
+    { price: 71, value: 7100, category: "Appliances", name: "Smart Home Appliances", image: "rn.png" },
+    { price: 81, value: 8100, category: "Footwear", name: "Nike Running Shoes", image: "dctsh2.jpg" },
+    { price: 91, value: 9100, category: "Accessories", name: "Sony Wireless Headphones", image: "app1.png" },
+    { price: 101, value: 10100, category: "Fashion", name: "Designer Handbag Collection", image: "rn.png" },
+  ];
+  
+  const pageLinks = [
+    "proone.html",
+    "protwo.html",
+    "prothree.html",
+    "profour.html",
+    "profive.html",
+    "prosix.html",
+    "proseven.html",
+    "proeight.html",
+    "pronine.html"
+  ];
+  
+  // Add the CSS to the document head
+  document.head.insertAdjacentHTML('beforeend', style);
 
-const pageLinks = [
-  "proone.html",
-  "protwo.html",
-  "prothree.html",
-  "profour.html",
-  "profive.html",
-  "prosix.html",
-  "proseven.html",
-  "proeight.html",
-  "pronine.html"
-];
-
-const container = document.querySelector("#product-section");
-
-products.forEach((product, index) => {
-  const card = document.createElement("a");
-  card.href = pageLinks[index]; // Link from your custom page list
-  card.style.textDecoration = "none";
-  card.innerHTML = `
-    <div class="product-card" style="border: 1px solid #ccc; padding: 10px; margin: 10px;">
-      <img src="${product.image}" alt="${product.name}" width="200">
-      <h3>${product.name}</h3>
-      <p>Price: ₹${product.value}</p>
-      <p>Category: ${product.category}</p>
-    </div>
+  // Create the main HTML structure for the product section
+  let productSectionHTML = `
+    <section class="products-section">
+      <h2 class="section-title">Exclusive Products Just For You!</h2>
+      <div class="cards-container1">
   `;
-  container.appendChild(card);
-});
+
+  // Generate HTML for each product card
+  products.forEach((product, index) => {
+    const cardHtml = `
+      <a href="${pageLinks[index]}" class="card">
+        <div class="card-background" style="background-image: url('${product.image}');"></div>
+        <div class="card-content2">
+          <h3>${product.name}</h3>
+          <p class="price-tag">Price: ₹${product.value}</p>
+          <a href="${pageLinks[index]}" class="btn">View Product</a>
+        </div>
+        <span class="card-category-badge">${product.category}</span>
+        <div class="corner-ribbon"></div>
+      </a>
+    `;
+    productSectionHTML += cardHtml;
+  });
+
+  // Close the containers
+  productSectionHTML += `
+      </div>
+    </section>
+  `;
+
+  // Inject the final HTML into the DOM
+  container.innerHTML = productSectionHTML;
+}
 
 // Function to inject Container1
 function injectContainer1() {
@@ -523,313 +551,313 @@ function injectContainer1() {
 
   const style = `
     <style>
-       .container1 {
-            text-align: center;
-            background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 40px 20px;
-            color: #fff;
-        }
+      .container1 {
+        text-align: center;
+        background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 40px 20px;
+        color: #fff;
+      }
 
-        .section-title {
-            font-size: 2.2rem;
-            margin-bottom: 50px;
-            background: linear-gradient(to right, #FFD700, #FFA500);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            font-weight: 800;
-            letter-spacing: 1.5px;
-            position: relative;
-            display: inline-block;
-            text-transform: uppercase;
-        }
+      .section-title {
+        font-size: 2.2rem;
+        margin-bottom: 50px;
+        background: linear-gradient(to right, #FFD700, #FFA500);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        font-weight: 800;
+        letter-spacing: 1.5px;
+        position: relative;
+        display: inline-block;
+        text-transform: uppercase;
+      }
 
-        .section-title:after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 120px;
-            height: 5px;
-            background: linear-gradient(to right, #FFD700, #FFA500);
-            border-radius: 3px;
-        }
+      .section-title:after {
+        content: '';
+        position: absolute;
+        bottom: -15px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 120px;
+        height: 5px;
+        background: linear-gradient(to right, #FFD700, #FFA500);
+        border-radius: 3px;
+      }
 
-        .features-section {
-            padding: 60px 0;
-        }
+      .features-section {
+        padding: 60px 0;
+      }
 
+      .cards-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 40px;
+        max-width: 1400px;
+        margin: 0 auto;
+        justify-content: center;
+      }
+
+      .feature-card {
+        background: rgba(255, 255, 255, 0.08);
+        border-radius: 20px;
+        overflow: hidden;
+        position: relative;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        transition: all 0.4s ease;
+        height: 380px;
+        display: flex;
+        flex-direction: column;
+        border: 1px solid rgba(255, 215, 0, 0.3);
+        padding: 40px 30px;
+        text-align: center;
+      }
+
+      .feature-card:hover {
+        transform: translateY(-15px);
+        box-shadow: 0 20px 40px rgba(255, 215, 0, 0.25);
+        border-color: #FFD700;
+        background: rgba(26, 26, 46, 0.6);
+      }
+
+      .card-icon {
+        font-size: 4.5rem;
+        color: #FFD700;
+        margin-bottom: 25px;
+        position: relative;
+        display: inline-block;
+        transition: all 0.3s ease;
+      }
+
+      .feature-card:hover .card-icon {
+        transform: scale(1.1);
+        color: #FFA500;
+      }
+
+      .card-icon:after {
+        content: '';
+        position: absolute;
+        bottom: -15px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 3px;
+        background: linear-gradient(to right, #FFD700, #FFA500);
+        border-radius: 3px;
+      }
+
+      .card-content1 {
+        padding: 20px 0;
+        color: #fff;
+        position: relative;
+        z-index: 2;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .card-content1 h3 {
+        font-size: 1.rem;
+        margin-bottom: 25px;
+        color: #FFD700;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .card-content1 p {
+        font-size: 1.2rem;
+        line-height: 1.7;
+        opacity: 0.9;
+        max-width: 350px;
+        margin: 0 auto;
+      }
+
+      .feature-card:before {
+        content: '';
+        position: absolute;
+        top: -2px;
+        left: -2px;
+        right: -2px;
+        bottom: -2px;
+        background: linear-gradient(45deg, #ffd700, #ffa500, #ffd700, #ffa500);
+        z-index: -1;
+        border-radius: 22px;
+        opacity: 0;
+        transition: opacity 0.5s ease;
+      }
+
+      .feature-card:hover:before {
+        opacity: 0.4;
+      }
+
+      .highlight-badge {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: linear-gradient(135deg, #C1272D, #8E1E23);
+        color: #FFD700;
+        padding: 8px 20px;
+        border-radius: 30px;
+        font-size: 0.9rem;
+        font-weight: bold;
+        z-index: 3;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      @media (max-width: 1200px) {
         .cards-container {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 40px;
-            max-width: 1400px;
-            margin: 0 auto;
-            justify-content: center;
+          gap: 30px;
         }
 
         .feature-card {
-            background: rgba(255, 255, 255, 0.08);
-            border-radius: 20px;
-            overflow: hidden;
-            position: relative;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            transition: all 0.4s ease;
-            height: 380px;
-            display: flex;
-            flex-direction: column;
-            border: 1px solid rgba(255, 215, 0, 0.3);
-            padding: 40px 30px;
-            text-align: center;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-15px);
-            box-shadow: 0 20px 40px rgba(255, 215, 0, 0.25);
-            border-color: #FFD700;
-            background: rgba(26, 26, 46, 0.6);
+          height: 360px;
+          padding: 30px 25px;
         }
 
         .card-icon {
-            font-size: 4.5rem;
-            color: #FFD700;
-            margin-bottom: 25px;
-            position: relative;
-            display: inline-block;
-            transition: all 0.3s ease;
-        }
-
-        .feature-card:hover .card-icon {
-            transform: scale(1.1);
-            color: #FFA500;
-        }
-
-        .card-icon:after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 3px;
-            background: linear-gradient(to right, #FFD700, #FFA500);
-            border-radius: 3px;
-        }
-
-        .card-content1 {
-            padding: 20px 0;
-            color: #fff;
-            position: relative;
-            z-index: 2;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
+          font-size: 4rem;
         }
 
         .card-content1 h3 {
-            font-size: 1rem;
-            margin-bottom: 25px;
-            color: #FFD700;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+          font-size: 1.8rem;
+        }
+      }
+
+      @media (max-width: 992px) {
+        .cards-container {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .section-title {
+          font-size: 2.8rem;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .section-title {
+          font-size: 2.4rem;
+        }
+
+        .cards-container {
+          grid-template-columns: 1fr;
+          max-width: 600px;
+        }
+
+        .feature-card {
+          height: 320px;
+          max-width: 500px;
+          margin: 0 auto;
+        }
+
+        .card-content1 h3 {
+          font-size: 1.7rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .features-section .section-title {
+          font-size: 2rem; 
+        }
+
+        .feature-card {
+          height: auto;
+          padding: 25px 20px;
+        }
+
+        .card-icon {
+          font-size: 3rem;
+        }
+          
+        .card-content1 h3 {
+          font-size: 1.1rem; 
         }
 
         .card-content1 p {
-            font-size: 1.2rem;
-            line-height: 1.7;
-            opacity: 0.9;
-            max-width: 350px;
-            margin: 0 auto;
+          font-size: 0.9rem; 
+          line-height: 1.5;
         }
-
-        .feature-card:before {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            background: linear-gradient(45deg, #ffd700, #ffa500, #ffd700, #ffa500);
-            z-index: -1;
-            border-radius: 22px;
-            opacity: 0;
-            transition: opacity 0.5s ease;
-        }
-
-        .feature-card:hover:before {
-            opacity: 0.4;
-        }
-
-        .highlight-badge {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: linear-gradient(135deg, #C1272D, #8E1E23);
-            color: #FFD700;
-            padding: 8px 20px;
-            border-radius: 30px;
-            font-size: 0.9rem;
-            font-weight: bold;
-            z-index: 3;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        @media (max-width: 1200px) {
-            .cards-container {
-                gap: 30px;
-            }
-
-            .feature-card {
-                height: 360px;
-                padding: 30px 25px;
-            }
-
-            .card-icon {
-                font-size: 4rem;
-            }
-
-            .card-content1 h3 {
-                font-size: 1.8rem;
-            }
-        }
-
-        @media (max-width: 992px) {
-            .cards-container {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .section-title {
-                font-size: 2.8rem;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .section-title {
-                font-size: 2.4rem;
-            }
-
-            .cards-container {
-                grid-template-columns: 1fr;
-                max-width: 600px;
-            }
-
-            .feature-card {
-                height: 320px;
-                max-width: 500px;
-                margin: 0 auto;
-            }
-
-            .card-content1 h3 {
-                font-size: 1.7rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .features-section .section-title {
-                font-size: 2rem; 
-            }
-
-            .feature-card {
-                height: auto;
-                padding: 25px 20px;
-            }
-
-            .card-icon {
-                font-size: 3rem;
-            }
-            
-            .card-content1 h3 {
-                font-size: 1.1rem; 
-            }
-
-            .card-content1 p {
-                font-size: 0.9rem; 
-                line-height: 1.5;
-            }
-        }
+      }
     </style>
   `;
 
   const html = `
-  <div class="container1">
-        <section class="features-section">
-            <h2 class="section-title">Why Choose Us?</h2>
-            <div class="cards-container">
-                <div class="feature-card">
-                    <span class="highlight-badge">Secure</span>
-                    <div class="card-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <div class="card-content1">
-                        <h3>Secure Payments</h3>
-                        <p>All transactions protected with 256-bit SSL encryption and verified payment gateways for complete security.</p>
-                    </div>
-                </div>
-
-                <div class="feature-card">
-                    <span class="highlight-badge">Popular</span>
-                    <div class="card-icon">
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <div class="card-content1">
-                        <h3>Top Rated Products</h3>
-                        <p>We offer only the highest quality products with verified customer reviews and ratings for your peace of mind.</p>
-                    </div>
-                </div>
-
-                <div class="feature-card">
-                    <span class="highlight-badge">Fast</span>
-                    <div class="card-icon">
-                        <i class="fas fa-shipping-fast"></i>
-                    </div>
-                    <div class="card-content1">
-                        <h3>Fast Delivery</h3>
-                        <p>Get your orders delivered quickly with our nationwide logistics network. Most orders arrive within 2-3 days!</p>
-                    </div>
-                </div>
-
-                <div class="feature-card">
-                    <span class="highlight-badge">Variety</span>
-                    <div class="card-icon">
-                        <i class="fas fa-boxes"></i>
-                    </div>
-                    <div class="card-content1">
-                        <h3>Wide Selection</h3>
-                        <p>From electronics to fashion, home appliances to accessories - we offer the widest selection of products anywhere.</p>
-                    </div>
-                </div>
-
-                <div class="feature-card">
-                    <span class="highlight-badge">Mobile</span>
-                    <div class="card-icon">
-                        <i class="fas fa-mobile-alt"></i>
-                    </div>
-                    <div class="card-content1">
-                        <h3>Mobile Friendly</h3>
-                        <p>Shop anywhere, anytime with our mobile-optimized website and app. Never miss a deal with push notifications.</p>
-                    </div>
-                </div>
-
-                <div class="feature-card">
-                    <span class="highlight-badge">Support</span>
-                    <div class="card-icon">
-                        <i class="fas fa-headset"></i>
-                    </div>
-                    <div class="card-content1">
-                        <h3>24/7 Support</h3>
-                        <p>Our customer service team is available round the clock to answer your questions and resolve any issues.</p>
-                    </div>
-                </div>
+    <div class="container1">
+      <section class="features-section">
+        <h2 class="section-title">Why Choose Us?</h2>
+        <div class="cards-container">
+          <div class="feature-card">
+            <span class="highlight-badge">Secure</span>
+            <div class="card-icon">
+              <i class="fas fa-shield-alt"></i>
             </div>
-        </section>
+            <div class="card-content1">
+              <h3>Secure Payments</h3>
+              <p>All transactions protected with 256-bit SSL encryption and verified payment gateways for complete security.</p>
+            </div>
+          </div>
+
+          <div class="feature-card">
+            <span class="highlight-badge">Popular</span>
+            <div class="card-icon">
+              <i class="fas fa-star"></i>
+            </div>
+            <div class="card-content1">
+              <h3>Top Rated Products</h3>
+              <p>We offer only the highest quality products with verified customer reviews and ratings for your peace of mind.</p>
+            </div>
+          </div>
+
+          <div class="feature-card">
+            <span class="highlight-badge">Fast</span>
+            <div class="card-icon">
+              <i class="fas fa-shipping-fast"></i>
+            </div>
+            <div class="card-content1">
+              <h3>Fast Delivery</h3>
+              <p>Get your orders delivered quickly with our nationwide logistics network. Most orders arrive within 2-3 days!</p>
+            </div>
+          </div>
+
+          <div class="feature-card">
+            <span class="highlight-badge">Variety</span>
+            <div class="card-icon">
+              <i class="fas fa-boxes"></i>
+            </div>
+            <div class="card-content1">
+              <h3>Wide Selection</h3>
+              <p>From electronics to fashion, home appliances to accessories - we offer the widest selection of products anywhere.</p>
+            </div>
+          </div>
+
+          <div class="feature-card">
+            <span class="highlight-badge">Mobile</span>
+            <div class="card-icon">
+              <i class="fas fa-mobile-alt"></i>
+            </div>
+            <div class="card-content1">
+              <h3>Mobile Friendly</h3>
+              <p>Shop anywhere, anytime with our mobile-optimized website and app. Never miss a deal with push notifications.</p>
+            </div>
+          </div>
+
+          <div class="feature-card">
+            <span class="highlight-badge">Support</span>
+            <div class="card-icon">
+              <i class="fas fa-headset"></i>
+            </div>
+            <div class="card-content1">
+              <h3>24/7 Support</h3>
+              <p>Our customer service team is available round the clock to answer your questions and resolve any issues.</p>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   `;
 
@@ -891,8 +919,31 @@ function initializeSite() {
   });
 
   // Add floating register button
-  
-
+  const buttonStyle = document.createElement('style');
+  buttonStyle.textContent = `
+    .floating-register-button {
+      position: fixed;
+      bottom: 30px;
+      left: 30px;
+      z-index: 1000;
+      text-decoration: none;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .register-button-inner {
+      background: linear-gradient(90deg, #00C9FF, #92FE9D);
+      border: none;
+      border-radius: 999px;
+      color: #fff;
+      font-weight: bold;
+      padding: 12px 24px;
+      box-shadow: 0 4px 15px rgba(0, 201, 255, 0.4);
+      cursor: pointer;
+    }
+    .floating-register-button:hover {
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 8px 20px rgba(0, 201, 255, 0.6);
+    }
+  `;
   document.head.appendChild(buttonStyle);
 
   const button = document.createElement('a');
@@ -915,4 +966,3 @@ document.addEventListener('DOMContentLoaded', () => {
   injectContainer1();
   initializeSite();
 });
-
