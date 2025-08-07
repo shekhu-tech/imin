@@ -524,7 +524,7 @@ function injectProductSection() {
     <a href="profour.html" class="card">
       <div class="corner-ribbon"></div>
       <div class="card-category-badge">Smarphones</div>
-      <div class="card-background" style="background-image: url('mw1.png');"></div>
+      <div class="card-background" style="background-image: url('ph1.jpg');"></div>
       <div class="card-content2">
         <h3>Nothing Phone 2A Gray</h3>
         <h2>₹34 for ₹34000</h2>
@@ -535,7 +535,7 @@ function injectProductSection() {
     <a href="profifth.html" class="card">
       <div class="corner-ribbon"></div>
       <div class="card-category-badge">Smarphones</div>
-      <div class="card-background" style="background-image: url('nph2.jpg');"></div>
+      <div class="card-background" style="background-image: url('ph2.jpg');"></div>
       <div class="card-content2">
         <h3>OnePlus 13R </h3>
         <h2>₹41 for ₹41000</h2>
@@ -546,7 +546,7 @@ function injectProductSection() {
     <a href="prosixth.html" class="card">
       <div class="corner-ribbon"></div>
       <div class="card-category-badge">Smarphones</div>
-      <div class="card-background" style="background-image: url('rn.png');"></div>
+      <div class="card-background" style="background-image: url('nph2.jpg');"></div>
       <div class="card-content2">
         <h3>OnePlus 13s Elite </h3>
         <h2>₹54 for ₹54000</h2>
@@ -579,7 +579,7 @@ function injectProductSection() {
     <a href="pronine.html" class="card">
       <div class="corner-ribbon"></div>
       <div class="card-category-badge">Apple</div>
-      <div class="card-background" style="background-image: url('rn.png');"></div>
+      <div class="card-background" style="background-image: url('iph16.jpg');"></div>
       <div class="card-content2">
         <h3>iPhone16 Pro Max 256GB</h3>
         <h2>₹159 for ₹159000</h2>
@@ -997,5 +997,6 @@ document.addEventListener('DOMContentLoaded', () => {
   injectContainer1();     // This function was missing from the DOMContentLoaded listener
   initializeSite();
 });
+
 
 
