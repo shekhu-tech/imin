@@ -491,10 +491,10 @@ function injectProductSection() {
     <a href="proone.html" class="card">
       <div class="corner-ribbon"></div>
       <div class="card-category-badge">Footwear</div>
-      <div class="card-background" style="background-image: url('dctsh2.jpg');"></div>
+      <div class="card-background" style="background-image: url('dctsh1.jpg');"></div>
       <div class="card-content2">
-        <h3>Decathlon Sports Shoes</h3>
-        <h2>₹21 for ₹2100</h2>
+        <h3>Nike SB Air Jorden 4</h3>
+        <h2>₹21 for ₹21000</h2>
         <span class="btn">Participate Now</span>
       </div>
     </a>
@@ -502,54 +502,54 @@ function injectProductSection() {
     <a href="protwo.html" class="card">
       <div class="corner-ribbon"></div>
       <div class="card-category-badge">Watches</div>
-      <div class="card-background" style="background-image: url('w1.jpg');"></div>
+      <div class="card-background" style="background-image: url('mw1.jpg');"></div>
       <div class="card-content2">
-        <h3>Titan Raga Women's Watch</h3>
-        <h2>₹31 for ₹3100</h2>
+        <h3>Seiko Men New </h3>
+        <h2>₹31 for ₹31000</h2>
         <span class="btn">Participate Now</span>
       </div>
     </a>
 
     <a href="prothree.html" class="card">
       <div class="corner-ribbon"></div>
-      <div class="card-category-badge">Accessories</div>
-      <div class="card-background" style="background-image: url('app1.png');"></div>
+      <div class="card-category-badge">Apple</div>
+      <div class="card-background" style="background-image: url('app1.jpg');"></div>
       <div class="card-content2">
-        <h3>Apple AirPods 4 (ANC)</h3>
-        <h2>₹41 for ₹4100</h2>
+        <h3>Apple AirPods Max (ANC)</h3>
+        <h2>₹59 for ₹59000</h2>
         <span class="btn">Participate Now</span>
       </div>
     </a>
 
     <a href="profour.html" class="card">
       <div class="corner-ribbon"></div>
-      <div class="card-category-badge">Watches</div>
+      <div class="card-category-badge">Smarphones</div>
       <div class="card-background" style="background-image: url('mw1.png');"></div>
       <div class="card-content2">
-        <h3>OLEVS Men's Chronograph Watch</h3>
-        <h2>₹51 for ₹5100</h2>
+        <h3>Nothing Phone 2A Gray</h3>
+        <h2>₹34 for ₹34000</h2>
         <span class="btn">Participate Now</span>
       </div>
     </a>
 
     <a href="profifth.html" class="card">
       <div class="corner-ribbon"></div>
-      <div class="card-category-badge">Fashion</div>
-      <div class="card-background" style="background-image: url('rn.png');"></div>
+      <div class="card-category-badge">Smarphones</div>
+      <div class="card-background" style="background-image: url('nph2.jpg');"></div>
       <div class="card-content2">
-        <h3>Premium Fashion Collection</h3>
-        <h2>₹61 for ₹6100</h2>
+        <h3>OnePlus 13R </h3>
+        <h2>₹41 for ₹41000</h2>
         <span class="btn">Participate Now</span>
       </div>
     </a>
 
     <a href="prosixth.html" class="card">
       <div class="corner-ribbon"></div>
-      <div class="card-category-badge">Appliances</div>
+      <div class="card-category-badge">Smarphones</div>
       <div class="card-background" style="background-image: url('rn.png');"></div>
       <div class="card-content2">
-        <h3>Smart Home Appliances</h3>
-        <h2>₹71 for ₹7100</h2>
+        <h3>OnePlus 13s Elite </h3>
+        <h2>₹54 for ₹54000</h2>
         <span class="btn">Participate Now</span>
       </div>
     </a>
@@ -578,11 +578,11 @@ function injectProductSection() {
 
     <a href="pronine.html" class="card">
       <div class="corner-ribbon"></div>
-      <div class="card-category-badge">Fashion</div>
+      <div class="card-category-badge">Apple</div>
       <div class="card-background" style="background-image: url('rn.png');"></div>
       <div class="card-content2">
-        <h3>Designer Handbag Collection</h3>
-        <h2>₹101 for ₹10100</h2>
+        <h3>iPhone16 Pro Max 256GB</h3>
+        <h2>₹159 for ₹159000</h2>
         <span class="btn">Participate Now</span>
       </div>
     </a>
@@ -997,4 +997,5 @@ document.addEventListener('DOMContentLoaded', () => {
   injectContainer1();     // This function was missing from the DOMContentLoaded listener
   initializeSite();
 });
+
 
