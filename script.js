@@ -266,7 +266,11 @@ function injectFooter() {
   const html = `
     <footer id="site-footer">
       <div class="footer-container">
-        <h2 class="footer-heading">ShopEase</h2>
+        <div class="sidebar-logo">
+          <a href="index.html">
+            <img src="logo.png" alt="ShopEase Logo" />
+          </a>
+        </div>
         <p class="footer-lines">
           Premium products across all categories<br>
           Fast shipping & secure payment options<br>
@@ -997,6 +1001,7 @@ document.addEventListener('DOMContentLoaded', () => {
   injectContainer1();     // This function was missing from the DOMContentLoaded listener
   initializeSite();
 });
+
 
 
 
