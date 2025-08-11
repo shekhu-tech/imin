@@ -410,6 +410,7 @@
 }
 
 /* Lottery Stats */
+/* Lottery Stats */
 .lottery-stats {
     display: flex;
     justify-content: center;
@@ -425,6 +426,7 @@
     min-width: 220px;
     border: 1px solid rgba(255, 215, 0, 0.2);
     transition: all 0.3s ease;
+    text-align: center; /* ✅ Center text */
 }
 
 .stat-card:hover {
@@ -444,7 +446,6 @@
     font-weight: 700;
     color: #fff;
 }
-
 /* Responsive Breakpoints */
 @media (max-width: 992px) {
     .slider-overlay h1 {
@@ -785,3 +786,4 @@
 
     
  
+
