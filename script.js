@@ -572,7 +572,7 @@ function injectProductSection() {
     <a href="proeight.html" class="card">
       <div class="corner-ribbon"></div>
       <div class="card-category-badge">Gaming</div>
-      <div class="card-background" style="background-image: url('lapy.png');"></div>
+      <div class="card-background" style="background-image: url('lapy.jpg');"></div>
       <div class="card-content2">
         <h3>Lenovo Smartchoice I7-13620H</h3>
         <h2>₹65 for ₹65000</h2>
@@ -1001,6 +1001,7 @@ document.addEventListener('DOMContentLoaded', () => {
   injectContainer1();     // This function was missing from the DOMContentLoaded listener
   initializeSite();
 });
+
 
 
 
