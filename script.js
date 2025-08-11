@@ -560,22 +560,22 @@ function injectProductSection() {
 
     <a href="proseven.html" class="card">
       <div class="corner-ribbon"></div>
-      <div class="card-category-badge">Footwear</div>
-      <div class="card-background" style="background-image: url('dctsh2.jpg');"></div>
+      <div class="card-category-badge">Gaming</div>
+      <div class="card-background" style="background-image: url('ps5.jpg');"></div>
       <div class="card-content2">
-        <h3>Nike Running Shoes</h3>
-        <h2>₹81 for ₹8100</h2>
+        <h3>Sony PlayStation®5 Console Slim</h3>
+        <h2>₹51 for ₹55000</h2>
         <span class="btn">Participate Now</span>
       </div>
     </a>
 
     <a href="proeight.html" class="card">
       <div class="corner-ribbon"></div>
-      <div class="card-category-badge">Accessories</div>
-      <div class="card-background" style="background-image: url('app1.png');"></div>
+      <div class="card-category-badge">Gaming</div>
+      <div class="card-background" style="background-image: url('lapy.png');"></div>
       <div class="card-content2">
-        <h3>Sony Wireless Headphones</h3>
-        <h2>₹91 for ₹9100</h2>
+        <h3>Lenovo Smartchoice I7-13620H</h3>
+        <h2>₹65 for ₹65000</h2>
         <span class="btn">Participate Now</span>
       </div>
     </a>
@@ -1001,6 +1001,7 @@ document.addEventListener('DOMContentLoaded', () => {
   injectContainer1();     // This function was missing from the DOMContentLoaded listener
   initializeSite();
 });
+
 
 
 
