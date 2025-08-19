@@ -1,0 +1,1202 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UPSC सिविल सेवा परीक्षा (CSE): संपूर्ण मार्गदर्शिका</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&family=Noto+Sans+Devanagari:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Color Palette: Brilliant Blues -->
+    <!-- Narrative Plan: 1. What is UPSC? 2. The 3-stage exam process. 3. Eligibility & Attempts. 4. Core Subjects (Prelims & Mains detailed). 5. Optional Subjects (detailed list). 6. Interview Qualities. 7. Preparation Strategy. 8. What Not to Do. -->
+    <!-- Visualization Choices:
+        - Exam Process: Goal: Organize -> Chosen: HTML/CSS Flowchart with interactive modals.
+        - Attempts Comparison: Goal: Compare -> Chosen: Bar Chart (Chart.js).
+        - Mains Paper Distribution: Goal: Compare/Composition -> Chosen: Doughnut Chart (Chart.js).
+        - Interview Qualities: Goal: Organize -> Chosen: Bubble Chart (Chart.js).
+    -->
+    <style>
+        body {
+            font-family: 'Inter', 'Noto Sans Devanagari', sans-serif;
+            background-color: #E6F0F8; /* Lighter blue background */
+            color: #242424;
+        }
+        .section-heading {
+            border-bottom: 3px solid #009FFD;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            color: #004AAD;
+        }
+        .card {
+            background-color: #FFFFFF;
+            border-radius: 1.25rem; /* More rounded */
+            box-shadow: 0 10px 15px -3px rgba(0, 74, 173, 0.1), 0 4px 6px -2px rgba(0, 74, 173, 0.05); /* Blueish shadow */
+            padding: 1.75rem; /* Slightly more padding */
+            transition: all 0.3s ease-in-out;
+            border: 1px solid rgba(0, 74, 173, 0.1);
+        }
+        .card:hover {
+            box-shadow: 0 20px 25px -5px rgba(0, 74, 173, 0.15), 0 10px 10px -5px rgba(0, 74, 173, 0.08);
+            transform: translateY(-5px);
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 550px; /* Slightly larger max-width */
+            margin-left: auto;
+            margin-right: auto;
+            height: 320px; /* Adjusted height */
+            max-height: 450px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 380px; /* Larger height on desktop */
+            }
+        }
+        .flowchart-step {
+            border: 3px solid #004AAD;
+            color: #004AAD;
+            background-color: #E6F0F8;
+            transition: all 0.3s ease-in-out;
+            cursor: pointer; /* Indicate clickable */
+        }
+        .flowchart-step:hover {
+            background-color: #004AAD;
+            color: #FFFFFF;
+            transform: scale(1.05);
+        }
+        .flowchart-arrow {
+            color: #009FFD;
+        }
+        .subject-category-heading {
+            color: #004AAD;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            font-size: 1.25rem;
+            padding-bottom: 0.25rem;
+            border-bottom: 1px solid #009FFD;
+        }
+        .subject-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 0.5rem;
+        }
+        .subject-item span {
+            color: #009FFD;
+            margin-right: 0.75rem;
+            font-size: 1.125rem;
+            line-height: 1.5rem; /* Align icon with text */
+        }
+        .subject-item div {
+            flex: 1;
+        }
+        .subject-item strong {
+            color: #004AAD;
+        }
+        .timeline-step {
+            color: #004AAD;
+            background-color: #E6F0F8;
+            border-color: #009FFD;
+        }
+
+        /* Modal specific styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+            overflow-y: auto; /* Allow scrolling for tall modals */
+            padding: 1rem; /* Added padding for responsiveness on small screens */
+        }
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .modal-content {
+            background-color: #FFFFFF;
+            border-radius: 1.25rem;
+            padding: 2rem;
+            box-shadow: 0 15px 25px -5px rgba(0, 74, 173, 0.2), 0 10px 10px -5px rgba(0, 74, 173, 0.1);
+            max-width: 600px; /* Wider modal for better readability */
+            width: 90%;
+            position: relative;
+            transform: translateY(-50px);
+            opacity: 0;
+            transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+            margin: 20px 0; /* Add margin for scrollability on small screens */
+        }
+        @media (min-width: 768px) {
+            .modal-content {
+                max-width: 900px; /* Wider for desktop to accommodate 5 cards */
+            }
+        }
+        .modal-overlay.active .modal-content {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        .modal-close-button {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #004AAD;
+            transition: color 0.2s;
+        }
+        .modal-close-button:hover {
+            color: #FF0000;
+        }
+        .modal-buttons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        .modal-subject-button {
+            background-color: #009FFD;
+            color: white;
+            padding: 0.75rem 1rem;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s, transform 0.2s;
+            text-align: center;
+        }
+        .modal-subject-button:hover {
+            background-color: #007ACC;
+            transform: translateY(-2px);
+        }
+        .modal-subject-details {
+            margin-top: 1.5rem;
+            border-top: 1px solid #E6F0F8;
+            padding-top: 1.5rem;
+        }
+        .modal-back-button {
+            background-color: #004AAD;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            margin-top: 1rem;
+        }
+        .modal-back-button:hover {
+            background-color: #003366;
+        }
+
+        /* Service List Specific Styles */
+        .service-type-card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Responsive grid for service cards */
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        @media (min-width: 768px) {
+            .service-type-card-container {
+                grid-template-columns: repeat(5, 1fr); /* 5 columns for PC */
+            }
+        }
+        .service-card {
+            background-color: #E6F0F8;
+            border-radius: 1rem;
+            padding: 1.25rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 74, 173, 0.1), 0 2px 4px -1px rgba(0, 74, 173, 0.06);
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 120px; /* Ensure cards have a minimum height */
+        }
+        .service-card:hover {
+            background-color: #DDEBF8;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 10px -1px rgba(0, 74, 173, 0.15), 0 3px 6px -1px rgba(0, 74, 173, 0.08);
+        }
+        .service-card .icon {
+            font-size: 2.5rem;
+            color: #004AAD;
+            margin-bottom: 0.5rem;
+        }
+        .service-card .name {
+            font-weight: bold;
+            color: #004AAD;
+            font-size: 1rem;
+            line-height: 1.3;
+        }
+        .service-details-view {
+            margin-top: 1.5rem;
+            border-top: 1px solid #E6F0F8;
+            padding-top: 1.5rem;
+            text-align: left;
+        }
+        .service-details-view h4 {
+            font-weight: bold;
+            color: #009FFD;
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+        .service-details-view p {
+            font-size: 1rem;
+            color: #242424;
+            margin-bottom: 1rem;
+        }
+        .service-category-heading {
+            font-weight: bold;
+            color: #004AAD;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            font-size: 1.15rem;
+            width: 100%; /* Ensure it spans full width in grid */
+            text-align: left;
+            grid-column: 1 / -1; /* Make the heading span all columns */
+            margin-top: 2rem;
+            border-bottom: 1px solid #009FFD;
+            padding-bottom: 0.5rem;
+        }
+
+        /* 8th Schedule Language Modal Styles */
+        .language-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+        .language-item {
+            background-color: #E6F0F8;
+            border-radius: 0.75rem;
+            padding: 0.75rem;
+            text-align: center;
+            font-weight: 500;
+            color: #004AAD;
+            box-shadow: 0 2px 4px rgba(0, 74, 173, 0.05);
+        }
+    </style>
+</head>
+<body class="text-[#242424] leading-relaxed">
+
+    <div class="container mx-auto p-4 md:p-8 lg:p-12" id="mainContent">
+
+        <header class="text-center mb-16">
+            <h1 class="text-4xl md:text-6xl font-extrabold text-[#004AAD] mb-4 drop-shadow-md">🚀 UPSC सिविल सेवा परीक्षा:मार्गदर्शन 🚀</h1>
+            <p class="text-xl md:text-2xl text-[#009FFD] font-semibold">आपका राष्ट्र सेवा का मार्ग - सरल और सटीक जानकारी के साथ</p>
+        </header>
+
+        <main class="grid grid-cols-1 gap-10">
+
+            <section class="card">
+                <h2 class="text-3xl font-bold section-heading">1. UPSC क्या है? 🤔</h2>
+                <p class="text-lg mb-6">UPSC (संघ लोक सेवा आयोग) भारत की सबसे प्रतिष्ठित सरकारी भर्ती संस्था है। इसका मुख्य काम **IAS, IPS, IFS** जैसी **20 से ज़्यादा बड़ी सरकारी नौकरियों** के लिए सबसे योग्य अधिकारियों को चुनना है, ताकि वे देश और समाज की सेवा कर सकें।</p>
+                <div class="text-center">
+                    <div class="text-7xl font-extrabold text-[#009FFD] drop-shadow-lg">20+</div>
+                    <div class="text-xl font-semibold text-[#004AAD]">विभिन्न सेवाओं के लिए भर्ती</div>
+                    <button class="modal-subject-button mt-6 inline-block" data-modal-target="serviceListModal">सभी सेवाएँ देखें</button>
+                </div>
+            </section>
+
+            <section class="card">
+                <h2 class="text-3xl font-bold section-heading text-center">2. परीक्षा प्रक्रिया: 3 आसान और महत्वपूर्ण चरण 🎯</h2>
+                <p class="text-lg text-center mb-10 max-w-3xl mx-auto">UPSC की सिविल सेवा परीक्षा एक साल तक चलती है और इसके 3 मुख्य पड़ाव हैं। हर पड़ाव आपको अगले चरण तक ले जाता है, और अंत में आप अपनी मनचाही सेवा में पहुँचते हैं।</p>
+                <div class="flex flex-col md:flex-row items-center justify-center space-y-6 md:space-y-0 md:space-x-8 lg:space-x-12">
+                    <div class="text-center flex flex-col items-center">
+                        <div class="w-36 h-36 flex items-center justify-center border-4 rounded-full flowchart-step font-bold text-lg p-3 text-center leading-tight" data-modal-target="prelimsModal">चरण 1:<br>प्रीलिम्स</div>
+                        <p class="mt-3 font-semibold text-[#242424]">स्क्रीनिंग टेस्ट</p>
+                    </div>
+                    <div class="text-5xl font-light flowchart-arrow transform md:rotate-0 rotate-90">→</div>
+                    <div class="text-center flex flex-col items-center">
+                        <div class="w-36 h-36 flex items-center justify-center border-4 rounded-full flowchart-step font-bold text-lg p-3 text-center leading-tight" data-modal-target="mainsModal">चरण 2:<br>मेन्स</div>
+                        <p class="mt-3 font-semibold text-[#242424]">लिखने वाली परीक्षा</p>
+                    </div>
+                    <div class="text-5xl font-light flowchart-arrow transform md:rotate-0 rotate-90">→</div>
+                    <div class="text-center flex flex-col items-center">
+                        <div class="w-36 h-36 flex items-center justify-center border-4 rounded-full flowchart-step font-bold text-lg p-3 text-center leading-tight" data-modal-target="interviewModal">चरण 3:<br>साक्षात्कार</div>
+                        <p class="mt-3 font-semibold text-[#242424]">व्यक्तित्व टेस्ट</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="card grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+                <div>
+                    <h2 class="text-3xl font-bold section-heading">3. कौन आवेदन कर सकता है? ✅</h2>
+                    <p class="text-lg mb-6">UPSC परीक्षा देने के लिए आपको कुछ ज़रूरी शर्तें पूरी करनी होती हैं:</p>
+                    <ul class="space-y-4 text-base">
+                        <li class="flex items-start"><span class="text-2xl text-[#009FFD] mr-4">🎓</span><div><strong class="text-[#004AAD]">पढ़ाई (Education):</strong> किसी भी मान्यता प्राप्त यूनिवर्सिटी से **ग्रेजुएट (स्नातक)** होना ज़रूरी है।</div></li>
+                        <li class="flex items-start"><span class="text-2xl text-[#009FFD] mr-4">🎂</span><div><strong class="text-[#004AAD]">उम्र (Age):</strong> **न्यूनतम 21 साल**। अधिकतम आयु **सामान्य - 32 साल, OBC - 35 साल, SC/ST - 37 साल**। (उम्र 1 अगस्त को गिनी जाती है)।</div></li>
+                        <li class="flex items-start"><span class="text-2xl text-[#009FFD] mr-4">🇮🇳</span><div><strong class="text-[#004AAD]">नागरिकता (Nationality):</strong> IAS/IPS के लिए **भारतीय नागरिक** होना अनिवार्य है।</div></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold text-[#004AAD] mb-6 border-b border-[#009FFD] pb-2">आप कितनी बार दे सकते हैं परीक्षा? 📊</h3>
+                    <p class="mb-6 text-lg">हर वर्ग के उम्मीदवारों के लिए परीक्षा देने के **प्रयासों की संख्या तय** है।</p>
+                    <div class="chart-container h-72">
+                        <canvas id="attemptsChart"></canvas>
+                    </div>
+                    <p class="text-sm text-center text-gray-600 mt-4">*(SC/ST के लिए उम्र सीमा तक असीमित प्रयास होते हैं।)*</p>
+                </div>
+            </section>
+
+            <section class="card">
+                <h2 class="text-3xl font-bold section-heading text-center">4. UPSC के मुख्य विषय: प्रीलिम्स और मेन्स 📚</h2>
+                <p class="text-lg text-center mb-8 max-w-4xl mx-auto">UPSC सिविल सेवा परीक्षा का पाठ्यक्रम बहुत बड़ा और विस्तृत है। यहाँ प्रमुख विषय दिए गए हैं, जो प्रारंभिक और मुख्य परीक्षा दोनों के लिए महत्वपूर्ण हैं, या किसी एक के लिए विशिष्ट हैं।</p>
+
+                <!-- Subjects organized in 3 columns for larger screens, 1 for small, 2 for medium -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div>
+                        <h3 class="subject-category-heading">इतिहास और संस्कृति 📜</h3>
+                        <div class="space-y-3">
+                            <div class="subject-item"><span class="font-bold">🏛️</span><div><strong class="text-lg">कला और संस्कृति:</strong> भारतीय वास्तुकला, नृत्य, संगीत और पुराने विरासत स्थलों के बारे में।</div></div>
+                            <div class="subject-item"><span class="font-bold">🗿</span><div><strong class="text-lg">प्राचीन भारत का इतिहास:</strong> पाषाण काल से मौर्य, गुप्त और दक्षिण भारत के साम्राज्यों तक की कहानी।</div></div>
+                            <div class="subject-item"><span class="font-bold">⚔️</span><div><strong class="text-lg">मध्यकालीन भारत का इतिहास:</strong> दिल्ली सल्तनत से मुगल काल तक का सफर।</div></div>
+                            <div class="subject-item"><span class="font-bold">🇮🇳</span><div><strong class="text-lg">आधुनिक भारत का इतिहास:</strong> 17वीं सदी से 1947 की आज़ादी और उसके बाद का भारत।</div></div>
+                            <div class="subject-item"><span class="font-bold">🌍</span><div><strong class="text-lg">आधुनिक विश्व का इतिहास:</strong> (केवल मेन्स के लिए) विश्व की बड़ी घटनाएँ और बदलाव।</div></div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="subject-category-heading">भूगोल और समाज 🏞️</h3>
+                        <div class="space-y-3">
+                            <div class="subject-item"><span class="font-bold">🗺️</span><div><strong class="text-lg">भारतीय भूगोल:</strong> भारत की नदियाँ, पहाड़, जलवायु और मिट्टी।</div></div>
+                            <div class="subject-item"><span class="font-bold">🌐</span><div><strong class="text-lg">भौतिक भूगोल:</strong> विश्व की भौगोलिक बनावट, जैसे पर्वत, पठार, नदियाँ और मैपिंग।</div></div>
+                            <div class="subject-item"><span class="font-bold">👨‍👩‍👧‍👦</span><div><strong class="text-lg">मानव भूगोल:</strong> जनसंख्या, कृषि, उद्योग और शहरीकरण का अध्ययन।</div></div>
+                            <div class="subject-item"><span class="font-bold">🤝</span><div><strong class="text-lg">भारतीय समाज:</strong> सामाजिक मुद्दे, समाज की संरचना और करेंट अफेयर्स से जुड़े विषय।</div></div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="subject-category-heading">राजव्यवस्था और शासन 🏛️</h3>
+                        <div class="space-y-3">
+                            <div class="subject-item"><span class="font-bold">🗳️</span><div><strong class="text-lg">भारतीय राजव्यवस्था:</strong> देश का संविधान, सरकार कैसे काम करती है, और नागरिकों के अधिकार।</div></div>
+                            <div class="subject-item"><span class="font-bold">⚖️</span><div><strong class="text-lg">सामाजिक न्याय:</strong> समाज के कमज़ोर वर्गों के लिए बनाई गई सरकारी नीतियाँ और योजनाएँ।</div></div>
+                            <div class="subject-item"><span class="font-bold">💼</span><div><strong class="text-lg">शासन (Governance):</strong> सरकारी नीतियाँ, काम करने के तरीके और भ्रष्टाचार से जुड़े मुद्दे।</div></div>
+                            <div class="subject-item"><span class="font-bold">🌐</span><div><strong class="text-lg">अंतर्राष्ट्रीय संबंध:</strong> भारत के अन्य देशों और विश्व के संगठनों (जैसे UN) से रिश्ते।</div></div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="subject-category-heading">अर्थव्यवस्था और विज्ञान 🔬</h3>
+                        <div class="space-y-3">
+                            <div class="subject-item"><span class="font-bold">💰</span><div><strong class="text-lg">भारतीय अर्थव्यवस्था:</strong> RBI, बैंक, कृषि, उद्योग, और GDP जैसे आर्थिक मुद्दे।</div></div>
+                            <div class="subject-item"><span class="font-bold">🔭</span><div><strong class="text-lg">विज्ञान और प्रौद्योगिकी:</strong> अंतरिक्ष, रक्षा, परमाणु ऊर्जा और बायोटेक्नोलॉजी में नए विकास।</div></div>
+                            <div class="subject-item"><span class="font-bold">🧬</span><div><strong class="text-lg">सामान्य विज्ञान:</strong> जीव विज्ञान (Biology), भौतिकी (Physics) और रसायन विज्ञान (Chemistry) के सामान्य सिद्धांत।</div></div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="subject-category-heading">पर्यावरण और सुरक्षा 🌲</h3>
+                        <div class="space-y-3">
+                            <div class="subject-item"><span class="font-bold">🌱</span><div><strong class="text-lg">पारिस्थितिकी और पर्यावरण:</strong> जैव विविधता, प्रदूषण और जलवायु परिवर्तन के मुद्दे।</div></div>
+                            <div class="subject-item"><span class="font-bold">🚨</span><div><strong class="text-lg">आपदा प्रबंधन:</strong> भूकंप, बाढ़ जैसी आपदाओं से निपटने की तैयारी और प्रबंधन।</div></div>
+                            <div class="subject-item"><span class="font-bold">🛡️</span><div><strong class="text-lg">आंतरिक सुरक्षा:</strong> आतंकवाद, नक्सलवाद और क्षेत्रवाद जैसे देश के अंदर के सुरक्षा मुद्दे।</div></div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="subject-category-heading">नैतिकता, निबंध और अन्य 📝</h3>
+                        <div class="space-y-3">
+                            <div class="subject-item"><span class="font-bold">💡</span><div><strong class="text-lg">नीति शास्त्र (Ethics):</strong> नैतिकता के सिद्धांत और शासन में ईमानदारी का महत्व।</div></div>
+                            <div class="subject-item"><span class="font-bold">✍️</span><div><strong class="text-lg">निबंध (Essay):</strong> विभिन्न विषयों पर अपनी सोच और ज्ञान को निबंध के रूप में व्यक्त करना।</div></div>
+                            <div class="subject-item"><span class="font-bold">📰</span><div><strong class="text-lg">करेंट अफेयर्स:</strong> देश और दुनिया की ताज़ा घटनाएँ और सरकारी योजनाएँ।</div></div>
+                            <div class="subject-item"><span class="font-bold">🧠</span><div><strong class="text-lg">सीसैट (CSAT):</strong> (क्वालिफाइंग) इसमें कॉम्प्रिhension, गणित और रीजनिंग के सवाल होते हैं।</div></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="card">
+                <h2 class="text-3xl font-bold section-heading text-center">5. मेन्स के अनिवार्य भाषा पेपर 🗣️</h2>
+                <p class="text-lg text-center mb-8 max-w-3xl mx-auto">मुख्य परीक्षा में दो अनिवार्य क्वालिफाइंग भाषा पेपर होते हैं, जिनमें पास होना ज़रूरी है। इनके अंक अंतिम मेरिट में नहीं जुड़ते।</p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-base">
+                    <div class="p-6 bg-[#E6F0F8] rounded-xl border border-[#009FFD] flex flex-col items-center justify-center text-left">
+                        <span class="text-6xl text-[#004AAD] mb-3"></span>
+                        <h3 class="font-bold text-xl text-[#004AAD] mb-2">1. पेपर-A (अनिवार्य भारतीय भाषा)</h3>
+                        <p class="text-sm text-[#242424] mb-2">यह paper किसी एक Indian Language (जो 8th Schedule में सूचीबद्ध है) में देना पड़ता है। Candidates को language list में से अपनी पसंद की भाषा चुननी होती है।</p>
+                        <p class="text-sm text-[#242424] mb-2">अधिकतम अंक: **300** | क्वालिफाइंग पेपर: सिर्फ **33% (i.e., 90 marks)** minimum चाहिए। Marks final merit में नहीं जोड़े जाते।</p>
+                        <p class="text-sm text-[#004AAD] font-semibold mt-2">📌 छूट (Exemption):</p>
+                        <p class="text-xs text-[#242424]">उत्तर-पूर्वी राज्यों (अरुणाचल प्रदेश, मणिपुर, मेघालय, मिजोरम, नागालैंड, और सिक्किम) के candidates और जिनका माध्यम English है और जिनके पास Indian language का formal education background नहीं है, उन्हें Paper-A से छूट (exempted) मिलती है।</p>
+                        <button class="modal-subject-button mt-4 inline-block" data-modal-target="eighthScheduleLangModal">8वीं अनुसूची की भाषाएँ देखें</button>
+                    </div>
+                    <div class="p-6 bg-[#E6F0F8] rounded-xl border border-[#009FFD] flex flex-col items-center justify-center text-left">
+                        <span class="text-6xl text-[#004AAD] mb-3"></span>
+                        <h3 class="font-bold text-xl text-[#004AAD] mb-2">2. पेपर-B (अंग्रेजी भाषा)</h3>
+                        <p class="text-sm text-[#242424] mb-2">यह paper English में ही होता है।</p>
+                        <p class="text-sm text-[#242424] mb-2">अधिकतम अंक: **300** | क्वालिफाइंग पेपर: सिर्फ **33% (90 marks)** minimum चाहिए। Marks final merit में नहीं जोड़े जाते।</p>
+                    </div>
+                </div>
+
+                <div class="mt-8 text-center">
+                    <h4 class="text-xl font-bold text-[#004AAD] mb-4">✍️ दोनों पेपर्स (पेपर-A & पेपर-B) में क्या पूछा जाता है?</h4>
+                    <ul class="list-disc list-inside text-base text-[#242424] max-w-xl mx-auto space-y-1">
+                        <li>निबंध लेखन (Essay writing)</li>
+                        <li>रीडिंग कॉम्प्रिहेंशन (Reading comprehension)</li>
+                        <li>सारांश लेखन (Precis writing)</li>
+                        <li>उपयोग और शब्दावली (Usage and vocabulary)</li>
+                        <li>अनुवाद (Translation: English ↔ चुनी हुई भारतीय भाषा)</li>
+                    </ul>
+                </div>
+
+                <div class="mt-8 p-4 bg-red-50 border border-red-200 rounded-lg shadow-sm text-center">
+                    <h4 class="text-xl font-bold text-red-800 mb-2">🚩 महत्वपूर्ण बिंदु</h4>
+                    <p class="text-base text-red-700 mb-2">अगर कोई भी candidate इन compulsory language papers (पेपर-A या पेपर-B) में fail हो जाता है ❌ → उसके बाकी papers evaluate ही नहीं होते। यानी वह exam से बाहर हो जाता है।</p>
+                    <p class="text-base text-red-700">ये सिर्फ qualifying nature के लिए होते हैं, main merit में इनका कोई योगदान नहीं होता।</p>
+                </div>
+            </section>
+
+            <section class="card">
+                <h2 class="text-3xl font-bold section-heading text-center">6. वैकल्पिक विषय (Optional Subjects) 🌟</h2>
+                <p class="text-lg text-center mb-8 max-w-4xl mx-auto">मुख्य परीक्षा में आपको **48 विषयों** में से कोई एक वैकल्पिक विषय चुनना होता है। इस विषय के **दो पेपर** होते हैं (प्रत्येक 250 अंकों का), और इनके कुल **500 अंक** आपकी रैंक तय करने में बहुत महत्वपूर्ण भूमिका निभाते हैं।</p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-base">
+                    <div>
+                        <h3 class="subject-category-heading">विज्ञान और इंजीनियरिंग 🧪</h3>
+                        <ul class="list-disc list-inside space-y-1">
+                            <li>कृषि (Agriculture)</li>
+                            <li>पशुपालन और पशु चिकित्सा विज्ञान (Animal Husbandry & Vet. Science)</li>
+                            <li>वनस्पति विज्ञान (Botany)</li>
+                            <li>रसायन विज्ञान (Chemistry)</li>
+                            <li>सिविल इंजीनियरिंग (Civil Engineering)</li>
+                            <li>विद्युत इंजीनियरिंग (Electrical Engineering)</li>
+                            <li>भूविज्ञान (Geology)</li>
+                            <li>गणित (Mathematics)</li>
+                            <li>यांत्रिक इंजीनियरिंग (Mechanical Engineering)</li>
+                            <li>चिकित्सा विज्ञान (Medical Science)</li>
+                            <li>भौतिक विज्ञान (Physics)</li>
+                            <li>सांख्यिकी (Statistics)</li>
+                            <li>प्राणी विज्ञान (Zoology)</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="subject-category-heading">मानविकी और सामाजिक विज्ञान 🌍</h3>
+                        <ul class="list-disc list-inside space-y-1">
+                            <li>मानवशास्त्र (Anthropology)</li>
+                            <li>वाणिज्य एवं लेखाशास्त्र (Commerce & Accountancy)</li>
+                            <li>अर्थशास्त्र (Economics)</li>
+                            <li>भूगोल (Geography)</li>
+                            <li>इतिहास (History)</li>
+                            <li>कानून (Law)</li>
+                            <li>प्रबंधन (Management)</li>
+                            <li>दर्शनशास्त्र (Philosophy)</li>
+                            <li>राजनीति विज्ञान एवं अंतर्राष्ट्रीय संबंध (Political Science & International Relations)</li>
+                            <li>मनोविज्ञान (Psychology)</li>
+                            <li>लोक प्रशासन (Public Administration)</li>
+                            <li>समाजशास्त्र (Sociology)</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="subject-category-heading">साहित्य के विषय 📚</h3>
+                        <ul class="list-disc list-inside space-y-1">
+                            <li>हिंदी साहित्य (Hindi Literature)</li>
+                            <li>अंग्रेजी साहित्य (English Literature)</li>
+                            <li>संस्कृत साहित्य (Sanskrit Literature)</li>
+                            <li>तमिल साहित्य (Tamil Literature)</li>
+                            <li>बंगाली साहित्य (Bengali Literature)</li>
+                            <li>और अन्य 23 भारतीय भाषाओं के साहित्य उपलब्ध हैं।</li>
+                        </ul>
+                    </div>
+                </div>
+                <p class="mt-8 text-lg font-semibold text-[#004AAD]">वैकल्पिक विषय चुनने के लिए कुछ महत्वपूर्ण बातें:</p>
+                <ul class="list-disc list-inside space-y-2 mt-4 text-base">
+                    <li>आपकी **रुचि** और **ग्रेजुएशन की पृष्ठभूमि**।</li>
+                    <li>उस विषय के **अच्छे टीचर** और **अध्ययन सामग्री** की उपलब्धता।</li>
+                    <li>**पिछले 12 सालों (2013-2024) के मेंस के प्रश्न (PYQs)** को अच्छे से तैयार करना, यह 270+ अंक दिलाने का **सबसे बड़ा शॉर्टकट** है!</li>
+                </ul>
+            </section>
+
+            <section class="card grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                <div>
+                    <h2 class="text-3xl font-bold section-heading">7. साक्षात्कार में क्या देखा जाता है? 🤔</h2>
+                    <p class="text-lg mb-6">साक्षात्कार (इंटरव्यू) में आपके ज्ञान से ज़्यादा आपकी सोच, व्यक्तित्व और दबाव में रहने की क्षमता को परखा जाता है। पैनल आपकी इन मुख्य खूबियों को देखता है:</p>
+                    <div class="chart-container h-80">
+                        <canvas id="interviewQualitiesChart"></canvas>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold text-[#004AAD] mb-6 border-b border-[#009FFD] pb-2">मुख्य गुण:</h3>
+                    <ul class="space-y-3 text-base">
+                        <li class="flex items-start"><span class="text-xl text-[#009FFD] mr-3">🧠</span><div><strong class="text-[#004AAD]">मानसिक सतर्कता:</strong> प्रश्नों को जल्दी समझना।</div></li>
+                        <li class="flex items-start"><span class="text-xl text-[#009FFD] mr-3">🧐</span><div><strong class="text-[#004AAD]">आलोचनात्मक सोच:</strong> चीज़ों का गहराई से विश्लेषण करना।</div></li>
+                        <li class="flex items-start"><span class="text-xl text-[#009FFD] mr-3">⚖️</span><div><strong class="text-[#004AAD]">संतुलित निर्णय:</strong> सही और निष्पक्ष फैसले लेना।</div></li>
+                        <li class="flex items-start"><span class="text-xl text-[#009FFD] mr-3">💬</span><div><strong class="text-[#004AAD]">संचार कौशल:</strong> अपनी बात साफ और असरदार तरीके से कहना।</div></li>
+                        <li class="flex items-start"><span class="text-xl text-[#009FFD] mr-3">🧘‍♀️</span><div><strong class="text-[#004AAD]">दबाव संभालने की क्षमता:</strong> मुश्किल हालात में शांत रहना।</div></li>
+                        <li class="flex items-start"><span class="text-xl text-[#009FFD] mr-3">🌟</span><div><strong class="text-[#004AAD]">नेतृत्व क्षमता:</strong> टीम को लीड करने की काबिलियत।</div></li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="card">
+                <h2 class="text-3xl font-bold section-heading">8. आपकी तैयारी की रणनीति: स्मार्ट वर्क 📈</h2>
+                <p class="text-lg mb-8 max-w-4xl mx-auto">UPSC परीक्षा एक मैराथन है! इसे पास करने के लिए एक अच्छी योजना और बहुत मेहनत की ज़रूरत है।</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-2xl font-bold text-[#004AAD] mb-4">📚 पढ़ाई के चरण:</h3>
+                        <ol class="relative border-l-4 border-[#009FFD] pl-6 space-y-8">
+                            <li class="timeline-step py-2 -ml-9 pl-4 rounded-lg shadow-md hover:shadow-lg transition-all duration-300">
+                                <div class="absolute flex items-center justify-center w-8 h-8 bg-[#009FFD] rounded-full -left-4 ring-8 ring-white timeline-step font-bold text-lg text-white">1</div>
+                                <h4 class="font-semibold text-xl text-[#004AAD] mb-1">दिसंबर तक (बेसिक्स)</h4>
+                                <p class="text-base text-[#242424]">NCERT (कक्षा 6-12), इतिहास, भूगोल, राजव्यवस्था, अर्थव्यवस्था, पर्यावरण, साइंस एंड टेक जैसे 6 मुख्य विषयों को पूरा करें।</p>
+                            </li>
+                            <li class="timeline-step py-2 -ml-9 pl-4 rounded-lg shadow-md hover:shadow-lg transition-all duration-300">
+                                <div class="absolute flex items-center justify-center w-8 h-8 bg-[#009FFD] rounded-full -left-4 ring-8 ring-white timeline-step font-bold text-lg text-white">2</div>
+                                <h4 class="font-semibold text-xl text-[#004AAD] mb-1">मार्च तक (अतिरिक्त विषय)</h4>
+                                <p class="text-base text-[#242424]">आईआर, सामान्य विज्ञान (जनरल साइंस), नीति शास्त्र (एथिक्स) और वैकल्पिक विषय को कवर करें।</p>
+                            </li>
+                            <li class="timeline-step py-2 -ml-9 pl-4 rounded-lg shadow-md hover:shadow-lg transition-all duration-300">
+                                <div class="absolute flex items-center justify-center w-8 h-8 bg-[#009FFD] rounded-full -left-4 ring-8 ring-white timeline-step font-bold text-lg text-white">3</div>
+                                <h4 class="font-semibold text-xl text-[#004AAD] mb-1">अप्रैल से परीक्षा तक (रिवीजन)</h4>
+                                <p class="text-base text-[#242424]">मुख्य ध्यान केवल रिवीजन पर! आपदा प्रबंधन, आंतरिक सुरक्षा, सामाजिक न्याय जैसे मेन्स-ओनली विषयों को बाद में देख सकते हैं।</p>
+                            </li>
+                        </ol>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold text-[#004AAD] mb-4">🔄 रिवीजन का जादू:</h3>
+                        <p class="text-lg mb-4">**ज़्यादा पढ़ने वाला नहीं, ज़्यादा रिवाइज करने वाला सफल होता है!**</p>
+                        <ul class="list-disc list-inside space-y-2 text-base">
+                            <li>**कम पढ़ें, ज़्यादा दोहराएं:** गिनी-चुनी किताबें और नोट्स को ही बार-बार पढ़ें।</li>
+                            <li>**रिवisión चक्र (अनुमानित):**
+                                <ul class="list-disc list-inside ml-4 space-y-1">
+                                    <li>पहला रिवीजन: ~45 दिन</li>
+                                    <li>दूसरा रिवीजन: ~20 दिन</li>
+                                    <li>तीसरा रिवीजन: ~12 दिन</li>
+                                    <li>चौथा रिवीजन: ~5 दिन (पूरा सिलेबस!)</li>
+                                </ul>
+                            </li>
+                            <li>**कॉमन सेंस का विकास:** जब आप बार-बार रिवाइज करते हैं, तो आपकी समझ बढ़ती है और मुश्किल सवालों में भी आप कॉमन सेंस लगा पाते हैं।</li>
+                            <li>**PYQs का महत्व:**
+                                <ul class="list-disc list-inside ml-4 space-y-1">
+                                    <li>**प्रीलिम्स:** पॉलिटी, ज्योग्राफी, हिस्ट्री के PYQs बहुत ज़रूरी हैं (ये दोहराए जाते हैं)।</li>
+                                    <li>**मेन्स:** वैकल्पिक विषय के PYQs आपकी रैंक तय करते हैं।</li>
+                                    <li>बाकी विषयों के लिए टेस्ट सीरीज़ और नए प्रश्नों पर ध्यान दें।</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="card">
+                <h2 class="text-3xl font-bold section-heading text-center">9. क्या नहीं करना है? 🚫 (टॉपर की सीख)</h2>
+                <p class="text-lg text-center mb-8 max-w-4xl mx-auto">सफलता के लिए यह जानना भी ज़रूरी है कि किन गलतियों से बचना है।</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-base">
+                    <div class="flex items-start p-4 bg-red-50 border border-red-200 rounded-lg shadow-sm">
+                        <span class="text-3xl text-red-600 mr-4">❌</span>
+                        <div>
+                            <strong class="text-lg text-red-800">रणनीतियाँ बार-बार न बदलें:</strong> एक बार प्लान बना लिया, तो उस पर भरोसा करें और टिके रहें।
+                        </div>
+                    </div>
+                    <div class="flex items-start p-4 bg-red-50 border border-red-200 rounded-lg shadow-sm">
+                        <span class="text-3xl text-red-600 mr-4">❌</span>
+                        <div>
+                            <strong class="text-lg text-red-800">एक ही विषय से प्रेम न करें:</strong> किसी एक विषय पर ही अटके न रहें। सिलेबस के अनुसार सभी विषयों को पूरा करें।
+                        </div>
+                    </div>
+                    <div class="flex items-start p-4 bg-red-50 border border-red-200 rounded-lg shadow-sm">
+                        <span class="text-3xl text-red-600 mr-4">❌</span>
+                        <div>
+                            <strong class="text-lg text-red-800">एक विषय की 10 किताबें न पढ़ें:</strong> कम, लेकिन अच्छी किताबों और नोट्स को ही बार-बार पढ़ें और रिवाइज करें।
+                        </div>
+                    </div>
+                    <div class="flex items-start p-4 bg-red-50 border border-red-200 rounded-lg shadow-sm">
+                        <span class="text-3xl text-red-600 mr-4">❌</span>
+                        <div>
+                            <strong class="text-lg text-red-800">अपने दिमाग को थकाएं नहीं:</strong> 8-9 घंटे की फोकस्ड पढ़ाई 16 घंटे की बेतरतीब पढ़ाई से बेहतर है। रविवार को पूरा आराम लें।
+                        </div>
+                    </div>
+                </div>
+                <p class="text-center text-xl font-bold text-[#004AAD] mt-10">✨ याद रखें: **ज़्यादा पढ़ने वाला नहीं, ज़्यादा रिवीजन करने वाला सफल होता है!** ✨</p>
+            </section>
+
+        </main>
+
+        <footer class="text-center mt-16 border-t-2 pt-8 border-[#004AAD]/20">
+            <p class="text-[#242424] text-lg font-medium">&copy; 2025 UPSC CSE । आपकी राष्ट्र सेवा की यात्रा के लिए हार्दिक शुभकामनाएँ।</p>
+        </footer>
+
+    </div>
+
+    <!-- Modals for Prelims, Mains, Interview, and Service List -->
+    <div id="prelimsModal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close-button" onclick="closeModal('prelimsModal')">&times;</button>
+            <h3 class="text-2xl font-bold text-[#004AAD] mb-4">प्रीलिम्स (प्रारंभिक परीक्षा)</h3>
+            <div id="prelimsSubjectButtons" class="modal-buttons-grid">
+                <button class="modal-subject-button" data-stage-subject="prelims-gs1">GS Paper I</button>
+                <button class="modal-subject-button" data-stage-subject="prelims-csat">CSAT Paper II</button>
+                <button class="modal-subject-button" data-stage-subject="prelims-mix">प्रीलिम्स मिक्स</button>
+            </div>
+            <div id="prelimsSubjectDetails" class="modal-subject-details hidden">
+                <h4 id="prelimsSubjectTitle" class="text-xl font-bold text-[#009FFD] mb-3"></h4>
+                <p id="prelimsSubjectDescription" class="text-base text-[#242424] mb-4"></p>
+                <button class="modal-back-button" onclick="showPrelimsButtons()">पीछे जाएँ</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="mainsModal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close-button" onclick="closeModal('mainsModal')">&times;</button>
+            <h3 class="text-2xl font-bold text-[#004AAD] mb-4">मेन्स (मुख्य परीक्षा)</h3>
+            <div id="mainsSubjectButtons" class="modal-buttons-grid">
+                <button class="modal-subject-button" data-stage-subject="mains-gs1">GS Paper I</button>
+                <button class="modal-subject-button" data-stage-subject="mains-gs2">GS Paper II</button>
+                <button class="modal-subject-button" data-stage-subject="mains-gs3">GS Paper III</button>
+                <button class="modal-subject-button" data-stage-subject="mains-gs4">GS Paper IV</button>
+                <button class="modal-subject-button" data-stage-subject="mains-optional">वैकल्पिक विषय</button>
+                <button class="modal-subject-button" data-stage-subject="mains-essay">निबंध</button>
+                <button class="modal-subject-button" data-stage-subject="mains-hindi">अनिवार्य हिंदी</button>
+                <button class="modal-subject-button" data-stage-subject="mains-english">अनिवार्य अंग्रेजी</button>
+                <button class="modal-subject-button" data-stage-subject="mains-mix">मेन्स मिक्स</button>
+            </div>
+            <div id="mainsSubjectDetails" class="modal-subject-details hidden">
+                <h4 id="mainsSubjectTitle" class="text-xl font-bold text-[#009FFD] mb-3"></h4>
+                <p id="mainsSubjectDescription" class="text-base text-[#242424] mb-4"></p>
+                <button class="modal-back-button" onclick="showMainsButtons()">पीछे जाएँ</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="interviewModal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close-button" onclick="closeModal('interviewModal')">&times;</button>
+            <h3 class="text-2xl font-bold text-[#004AAD] mb-4">साक्षात्कार (व्यक्तित्व परीक्षण)</h3>
+            <p class="text-base text-[#242424] mb-3">यह UPSC परीक्षा का **अंतिम और निर्णायक चरण** है। यह लगभग 30-45 मिनट का मौखिक परीक्षण होता है।</p>
+            <ul class="list-disc list-inside text-base text-[#242424] space-y-1">
+                <li>**प्रकृति:** मौखिक परीक्षण (Oral Test) - व्यक्तित्व का आकलन।</li>
+                <li>**उद्देश्य:** उम्मीदवार के मानसिक गुणों, सामाजिक गुणों, नेतृत्व क्षमता और दबाव में निर्णय लेने की क्षमता का मूल्यांकन करना।</li>
+                <li>**महत्वपूर्ण:** यह ज्ञान का नहीं, बल्कि व्यक्तित्व की समग्रता का परीक्षण है।</li>
+                <li>**अंक:** 275 अंक।</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- New Service List Modal -->
+    <div id="serviceListModal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close-button" onclick="closeModal('serviceListModal')">&times;</button>
+            <h3 class="text-2xl font-bold text-[#004AAD] mb-4">सभी सिविल सेवाएँ</h3>
+            <p class="text-base text-[#242424] mb-3">UPSC सिविल सेवा परीक्षा (CSE) के माध्यम से विभिन्न प्रतिष्ठित सेवाओं में अधिकारियों की भर्ती की जाती है:</p>
+
+            <div id="serviceCardsContainer" class="service-type-card-container">
+                <!-- Service Cards will be dynamically inserted here -->
+            </div>
+
+            <div id="serviceDetailView" class="service-details-view hidden">
+                <h4 id="serviceDetailTitle"></h4>
+                <p id="serviceDetailDescription"></p>
+                <button class="modal-back-button" onclick="showServiceCards()">पीछे जाएँ</button>
+            </div>
+
+            <p class="service-total-count text-base text-[#242424] mt-4">✅ **कुल मिलाकर:** 24 सेवाएँ (IAS + IPS + IFoS + 21 ग्रुप A/B सेवाएँ) UPSC सिविल सेवा परीक्षा (CSE) से कवर होती हैं।</p>
+        </div>
+    </div>
+
+    <!-- 8th Schedule Language Modal -->
+    <div id="eighthScheduleLangModal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close-button" onclick="closeModal('eighthScheduleLangModal')">&times;</button>
+            <h3 class="text-2xl font-bold text-[#004AAD] mb-4">8वीं अनुसूची की सभी भाषाएँ (कुल 22)</h3>
+            <div class="language-grid" id="eighthScheduleLanguageGrid">
+                <!-- Languages will be dynamically inserted here -->
+            </div>
+            <div class="mt-6 p-3 bg-[#E6F0F8] rounded-lg text-sm text-[#004AAD] font-semibold">
+                ⚡ **मुख्य बिंदु:** Paper-A इन्हीं 22 भाषाओं में से एक में देना होता है। यह paper सिर्फ qualifying है (33% minimum marks ज़रूरी)। Marks final merit में नहीं जोड़े जाते।
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Common utility function to handle label wrapping for Chart.js
+        const wrapLabel = (label) => {
+            const maxLength = 16;
+            if (typeof label !== 'string' || label.length <= maxLength) return label;
+            const words = label.split(' ');
+            const lines = [];
+            let currentLine = '';
+            for (const word of words) {
+                if ((currentLine + word).length > maxLength && currentLine !== '') {
+                    lines.push(currentLine.trim());
+                    currentLine = '';
+                }
+                currentLine += word + ' ';
+            }
+            if (currentLine.trim() !== '') {
+                lines.push(currentLine.trim());
+            }
+            return lines;
+        };
+
+        // Common Chart.js tooltip callback for multi-line titles
+        const tooltipTitleCallback = (tooltipItems) => {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            if (Array.isArray(label)) {
+                return label.join(' ');
+            } else {
+                return label;
+            }
+        };
+
+        // Color palette for charts (Brilliant Blues)
+        const chartColors = {
+            blue1: '#004AAD', /* Dark Blue */
+            blue2: '#009FFD', /* Bright Blue */
+            blue3: '#6BB4FF', /* Medium Blue */
+            blue4: '#C1E3FF', /* Light Blue */
+            textGrey: '#242424'
+        };
+
+        // Default options for all Chart.js instances
+        const defaultChartOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                    labels: {
+                        color: chartColors.textGrey,
+                        font: {
+                            family: "'Inter', 'Noto Sans Devanagari', sans-serif"
+                        }
+                    }
+                },
+                tooltip: {
+                    callbacks: {
+                        title: tooltipTitleCallback
+                    },
+                    bodyFont: {
+                        family: "'Inter', 'Noto Sans Devanagari', sans-serif"
+                    },
+                    titleFont: {
+                        family: "'Inter', 'Noto Sans Devanagari', sans-serif",
+                        weight: 'bold'
+                    },
+                    padding: 12,
+                    boxPadding: 6,
+                    backgroundColor: 'rgba(0, 74, 173, 0.9)', /* Darker blue tooltip */
+                    borderColor: chartColors.blue2,
+                    borderWidth: 1,
+                    cornerRadius: 8
+                }
+            }
+        };
+
+        // Initialize Charts
+        new Chart(document.getElementById('attemptsChart'), {
+            type: 'bar',
+            data: {
+                labels: ['सामान्य', 'OBC', 'SC / ST'],
+                datasets: [{
+                    label: 'अधिकतम प्रयास',
+                    data: [6, 9, 100], /* 100 for unlimited conceptually */
+                    backgroundColor: [chartColors.blue1, chartColors.blue2, chartColors.blue3],
+                    borderColor: '#ffffff',
+                    borderWidth: 2,
+                    borderRadius: 8
+                }]
+            },
+            options: {
+                ...defaultChartOptions,
+                indexAxis: 'y', /* Horizontal bars for better readability of categories */
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        ticks: {
+                            callback: function(value) {
+                                if (value === 100) return 'असीमित';
+                                return value;
+                            },
+                            color: chartColors.textGrey,
+                            font: { family: "'Inter', 'Noto Sans Devanagari', sans-serif" }
+                        },
+                        grid: {
+                            color: '#e0e0e0',
+                            drawBorder: false
+                        }
+                    },
+                    y: {
+                       ticks: {
+                            color: chartColors.textGrey,
+                            font: { family: "'Inter', 'Noto Sans Devanagari', sans-serif" }
+                        },
+                        grid: {
+                            display: false
+                        }
+                    }
+                },
+                plugins: {
+                    ...defaultChartOptions.plugins,
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
+
+        // The mainsSyllabusChart was not used in the original HTML, and was causing an error. It has been removed.
+        /*
+        new Chart(document.getElementById('mainsSyllabusChart'), {
+            type: 'doughnut',
+            data: {
+                labels: ['सामान्य अध्ययन', 'वैकल्पिक विषय', 'निबंध', 'क्वालिफाइंग पेपर'],
+                datasets: [{
+                    label: 'पेपर्स की संख्या',
+                    data: [4, 2, 1, 2],
+                    backgroundColor: [chartColors.blue1, chartColors.blue2, chartColors.blue3, chartColors.blue4],
+                    hoverOffset: 8,
+                    borderRadius: 5,
+                    spacing: 3
+                }]
+            },
+            options: {
+                ...defaultChartOptions
+            }
+        });
+        */
+
+        const interviewQualities = [
+            'मानसिक सतर्कता', 'आलोचनात्मक सोच', 'संतुलित निर्णय',
+            'संचार कौशल', 'दबाव संभालने की क्षमता', 'नेतृत्व क्षमता'
+        ];
+        const interviewLabelsWrapped = interviewQualities.map(wrapLabel);
+
+        new Chart(document.getElementById('interviewQualitiesChart'), {
+            type: 'bubble',
+            data: {
+                labels: interviewLabelsWrapped,
+                datasets: [{
+                    label: 'महत्वपूर्ण गुण',
+                    data: [
+                        {x: 1, y: 3, r: 25}, /* Mental Alertness */
+                        {x: 2.5, y: 1.5, r: 30}, /* Critical Thinking */
+                        {x: 4, y: 3.8, r: 28}, /* Balanced Judgment */
+                        {x: 1.8, y: 4.5, r: 22}, /* Communication Skills */
+                        {x: 3.5, y: 0.5, r: 26}, /* Pressure Handling */
+                        {x: 0.5, y: 2.5, r: 20}  /* Leadership Qualities */
+                    ],
+                    backgroundColor: [
+                        chartColors.blue1,
+                        chartColors.blue2,
+                        chartColors.blue3,
+                        chartColors.blue4,
+                        chartColors.blue1,
+                        chartColors.blue2
+                    ],
+                    borderColor: 'rgba(255,255,255,0.8)',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                 ...defaultChartOptions,
+                 scales: {
+                     x: { display: false, min: 0, max: 5 },
+                     y: { display: false, min: 0, max: 5 }
+                 },
+                 plugins: {
+                    ...defaultChartOptions.plugins,
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        callbacks: {
+                            title: tooltipTitleCallback,
+                            label: function(context) {
+                                let label = context.chart.data.labels[context.dataIndex];
+                                if (Array.isArray(label)) {
+                                    return label.join(' ');
+                                }
+                                return label;
+                            }
+                        }
+                    }
+                 }
+            }
+        });
+
+        // Subject Data for Popups
+        const subjectData = {
+            'prelims-gs1': {
+                title: 'GS Paper I (प्रीलिम्स)',
+                description: 'यह प्रीलिम्स का स्कोरिंग पेपर है। इसमें इतिहास, भूगोल, राजव्यवस्था, अर्थव्यवस्था, पर्यावरण और करेंट अफेयर्स जैसे विषय शामिल हैं।'
+            },
+            'prelims-csat': {
+                title: 'CSAT Paper II (प्रीलिम्स)',
+                description: 'यह क्वालिफाइंग पेपर है (न्यूनतम 33% अंक - 66/200)। इसमें कॉम्प्रिहेंशन, गणित और रीज़निंग के प्रश्न आते हैं।'
+            },
+            'prelims-mix': {
+                title: 'प्रीलिम्स: GS I + CSAT',
+                description: 'प्रीलिम्स में GS पेपर I (स्कोरिंग) और CSAT पेपर II (क्वालिफाइंग) शामिल हैं। GS I से मेरिट बनती है, जबकि CSAT में पास होना ज़रूरी है। दोनों को मिलाकर कुल 400 अंकों की परीक्षा होती है।'
+            },
+            'mains-gs1': {
+                title: 'GS Paper I (मेन्स)',
+                description: 'इसमें भारतीय विरासत और संस्कृति (कला और संस्कृति), विश्व का इतिहास और भूगोल, और भारतीय समाज जैसे विषय शामिल हैं।'
+            },
+            'mains-gs2': {
+                title: 'GS Paper II (मेन्स)',
+                description: 'इसमें शासन, संविधान, राजव्यवस्था, सामाजिक न्याय और अंतर्राष्ट्रीय संबंध जैसे विषय शामिल हैं.'
+            },
+            'mains-gs3': {
+                title: 'GS Paper III (मेन्स)',
+                description: 'इसमें प्रौद्योगिकी, आर्थिक विकास, जैव-विविधता, पर्यावरण, सुरक्षा और आपदा प्रबंधन जैसे विषय शामिल हैं.'
+            },
+            'mains-gs4': {
+                title: 'GS Paper IV (मेन्स)',
+                description: 'यह नीतिशास्त्र, सत्यनिष्ठा और अभिवृत्ति (Ethics, Integrity, Aptitude) पर केंद्रित है। इसमें केस स्टडीज़ भी होती हैं।'
+            },
+            'mains-optional': {
+                title: 'वैकल्पिक विषय (मेन्स)',
+                description: 'आप 48 विषयों में से अपनी पसंद का एक विषय चुनते हैं। इसके दो पेपर होते हैं (कुल 500 अंक)। यह आपकी रैंक में सबसे महत्वपूर्ण भूमिका निभाता है।'
+            },
+            'mains-essay': {
+                title: 'निबंध (मेन्स)',
+                description: 'आपको दिए गए विषयों पर दो निबंध लिखने होते हैं (कुल 250 अंक)। यह आपके विचारों की स्पष्टता और लेखन कौशल को परखता है।'
+            },
+            'mains-hindi': {
+                title: 'अनिवार्य हिंदी (मेन्स)',
+                description: 'यह एक क्वालिफाइंग भाषा पेपर है (300 अंक, न्यूनतम 25% अंक)। आप संविधान की 8वीं अनुसूची में शामिल कोई भी भारतीय भाषा चुन सकते हैं।'
+            },
+            'mains-english': {
+                title: 'अनिवार्य अंग्रेजी (मेन्स)',
+                description: 'यह एक क्वालिफाइंग भाषा पेपर है (300 अंक, न्यूनतम 25% अंक)। यह आपकी अंग्रेजी भाषा की समझ और लेखन क्षमता का परीक्षण करता है।'
+            },
+            'mains-mix': {
+                title: 'मेन्स: सभी पेपरों का मिश्रण',
+                description: 'मेन्स में 7 मेरिट पेपर (4 GS, 2 वैकल्पिक, 1 निबंध) और 2 क्वालिफाइंग भाषा पेपर शामिल हैं। मेरिट पेपरों के कुल 1750 अंक आपकी अंतिम रैंक निर्धारित करते हैं। यह आपकी व्यापक समझ और लेखन कौशल का सबसे बड़ा परीक्षण है।'
+            }
+        };
+
+        // Service Data for Service List Modal
+        const serviceDetailsData = {
+            'ias': { icon: '🌟', name: 'भारतीय प्रशासनिक सेवा (IAS)', description: 'यह भारत की प्रमुख सिविल सेवा है। IAS अधिकारी सरकार की नीतियों को लागू करते हैं और प्रशासन का प्रबंधन करते हैं।' },
+            'ips': { icon: '👮‍♂️', name: 'भारतीय पुलिस सेवा (IPS)', description: 'IPS अधिकारी कानून और व्यवस्था बनाए रखने, अपराधों को रोकने और पुलिस बल का नेतृत्व करने के लिए जिम्मेदार होते हैं।' },
+            'ifs_forest': { icon: '🌳', name: 'भारतीय वन सेवा (IFS)', description: 'ये अधिकारी पर्यावरण, वन और वन्यजीवों के संरक्षण और प्रबंधन का काम करते हैं।' },
+            'ifs_diplomatic': { icon: '🌐', name: 'भारतीय विदेश सेवा (IFS – diplomatic)', description: 'IFS अधिकारी विदेशों में भारत का प्रतिनिधित्व करते हैं और राजनयिक संबंधों का प्रबंधन करते हैं।' },
+            'iaas': { icon: '💰', name: 'भारतीय लेखा परीक्षा और लेखा सेवा (IAAS)', description: 'ये अधिकारी सरकार के खातों और खर्चों का ऑडिट करते हैं ताकि वित्तीय पारदर्शिता बनी रहे।' },
+            'icas': { icon: '🧾', name: 'भारतीय सिविल लेखा सेवा (ICAS)', description: 'ये अधिकारी सरकार के भुगतान, रसीदें और लेखांकन का प्रबंधन करते हैं।' },
+            'icls': { icon: '⚖️', name: 'भारतीय कॉर्पोरेट कानून सेवा (ICLS)', description: 'ये अधिकारी कॉर्पोरेट मामलों के मंत्रालय के तहत कॉर्पोरेट कानूनों को लागू करते हैं।' },
+            'idas': { icon: '🛡️', name: 'भारतीय रक्षा लेखा सेवा (IDAS)', description: 'ये अधिकारी रक्षा मंत्रालय के वित्तीय मामलों और लेखांकन का प्रबंधन करते हैं।' },
+            'ides': { icon: '🏰', name: 'भारतीय रक्षा संपदा सेवा (IDES)', description: 'ये अधिकारी रक्षा संपदा और छावनी बोर्ड का प्रबंधन करते.' },
+            'iis': { icon: '📢', name: 'भारतीय सूचना सेवा (IIS)', description: 'ये अधिकारी सरकार की नीतियों और कार्यक्रमों के बारे में जनता को जानकारी देते हैं।' },
+            'ipos': { icon: '✉️', name: 'भारतीय डाक सेवा (IPoS)', description: 'ये अधिकारी भारतीय डाक प्रणाली और संबंधित सेवाओं का प्रबंधन करते हैं।' },
+            'iptafs': { icon: '📞', name: 'भारतीय P&T लेखा और वित्त सेवा (IP&TAFS)', description: 'ये अधिकारी डाक और दूरसंचार विभागों के वित्तीय और लेखांकन कार्यों का प्रबंधन करते हैं.' },
+            'irs_it': { icon: '💸', name: 'भारतीय राजस्व सेवा (IRS – Income Tax)', description: 'ये अधिकारी आयकर कानूनों को लागू करते हैं और कर राजस्व इकट्ठा करते हैं।' },
+            'irs_customs': { icon: '🚢', name: 'भारतीय राजस्व सेवा (IRS – Customs & Indirect Taxes)', description: 'ये अधिकारी सीमा शुल्क और अन्य अप्रत्यक्ष करों को लागू करते हैं।' },
+            'itrs': { icon: '📈', name: 'भारतीय व्यापार सेवा (ITrS)', description: 'ये अधिकारी भारत की व्यापार नीतियों और अंतर्राष्ट्रीय व्यापार समझौतों का प्रबंधन करते हैं।' },
+            'rpf': { icon: '🚂', name: 'रेलवे सुरक्षा बल (RPF)', description: 'RPF रेलवे संपत्ति और यात्रियों की सुरक्षा सुनिश्चित करता है।' },
+            'afhqcs': { icon: '🎖️', name: 'सशस्त्र बल मुख्यालय सिविल सेवा (AFHQCS)', description: 'ये अधिकारी सशस्त्र बल मुख्यालय में प्रशासनिक और सहायक भूमिकाएँ निभाते हैं।' },
+            'danics': { icon: '🏝️', name: 'दिल्ली, अंडमान और निकोबार द्वीप समूह सिविल सेवा (DANICS)', description: 'ये अधिकारी दिल्ली, अंडमान और निकोबार, दादरा और नगर हवेली, और दमन और दीव में प्रशासनिक सेवाएँ प्रदान करते हैं।' },
+            'danips': { icon: '🚓', name: 'दिल्ली, अंडमान और निकोबार द्वीप समूह पुलिस सेवा (DANIPS)', description: 'ये अधिकारी DANICS क्षेत्रों में पुलिस और कानून-व्यवस्था बनाए रखने का काम करते हैं।' },
+            'pcs': { icon: '🏛️', name: 'पुडुचेरी सिविल सेवा (PCS)', description: 'ये अधिकारी पुडुचेरी में प्रशासनिक और कार्यकारी भूमिकाएँ निभाते.' },
+            'pps': { icon: '🚨', name: 'पुडुचेरी पुलिस सेवा (PPS)', description: 'ये अधिकारी पुडुचेरी में पुलिस और कानून-व्यवस्था बनाए रखने का काम करते हैं।' }
+        };
+
+        const eighthScheduleLanguages = [
+            'Assamese (असमिया)', 'Bengali (बांग्ला)', 'Bodo (बोडो)', 'Dogri (डोगरी)',
+            'Gujarati (गुजराती)', 'Hindi (हिन्दी)', 'Kannada (कन्नड़)', 'Kashmiri (कश्मीरी)',
+            'Konkani (कोंकणी)', 'Maithili (मैथिली)', 'Malayalam (मलयालम)', 'Manipuri (मणिपुरी/मैतेई)',
+            'Marathi (मराठी)', 'Nepali (नेपाली)', 'Odia (उड़िया)', 'Punjabi (पंजाबी)',
+            'Sanskrit (संस्कृत)', 'Santhali (संथाली)', 'Sindhi (सिंधी)', 'Tamil (तमिल)',
+            'Telugu (तेलुगु)', 'Urdu (उर्दू)'
+        ];
+
+
+        // Function to render service cards
+        function renderServiceCards() {
+            const container = document.getElementById('serviceCardsContainer');
+            container.innerHTML = ''; // Clear previous content
+
+            // Grouped services as per your request
+            const groupedServices = [
+                {
+                    title: 'A) अखिल भारतीय सेवाएँ (All India Services)',
+                    services: [
+                        { id: 'ias', icon: '🌟', name: 'भारतीय प्रशासनिक सेवा (IAS)' },
+                        { id: 'ips', icon: '👮‍♂️', name: 'भारतीय पुलिस सेवा (IPS)' },
+                        { id: 'ifs_forest', icon: '🌳', name: 'भारतीय वन सेवा (IFS)' }
+                    ]
+                },
+                {
+                    title: 'B) केंद्रीय सिविल सेवाएँ – ग्रुप ‘A’ (Central Civil Services – Group ‘A’)',
+                    services: [
+                        { id: 'ifs_diplomatic', icon: '🌐', name: 'भारतीय विदेश सेवा (IFS – diplomatic)' },
+                        { id: 'iaas', icon: '💰', name: 'भारतीय लेखा परीक्षा और लेखा सेवा (IAAS)' },
+                        { id: 'icas', icon: '🧾', name: 'भारतीय सिविल लेखा सेवा (ICAS)' },
+                        { id: 'icls', icon: '⚖️', name: 'भारतीय कॉर्पोरेट कानून सेवा (ICLS)' },
+                        { id: 'idas', icon: '🛡️', name: 'भारतीय रक्षा लेखा सेवा (IDAS)' },
+                        { id: 'ides', icon: '🏰', name: 'भारतीय रक्षा संपदा सेवा (IDES)' },
+                        { id: 'iis', icon: '📢', name: 'भारतीय सूचना सेवा (IIS)' },
+                        { id: 'ipos', icon: '✉️', name: 'भारतीय डाक सेवा (IPoS)' },
+                        { id: 'iptafs', icon: '📞', name: 'भारतीय P&T लेखा और वित्त सेवा (IP&TAFS)' },
+                        { id: 'irs_it', icon: '💸', name: 'भारतीय राजस्व सेवा (IRS – Income Tax)' },
+                        { id: 'irs_customs', icon: '🚢', name: 'भारतीय राजस्व सेवा (IRS – Customs & Indirect Taxes)' },
+                        { id: 'itrs', icon: '📈', name: 'भारतीय व्यापार सेवा (ITrS)' },
+                        { id: 'rpf', icon: '🚂', name: 'रेलवे सुरक्षा बल (RPF)' }
+                    ]
+                },
+                {
+                    title: 'C) केंद्रीय सिविल सेवाएँ – ग्रुप ‘B’ (Central Civil Services – Group ‘B’)',
+                    services: [
+                        { id: 'afhqcs', icon: '🎖️', name: 'सशस्त्र बल मुख्यालय सिविल सेवा (AFHQCS)' },
+                        { id: 'danics', icon: '🏝️', name: 'दिल्ली, अंडमान और निकोबार द्वीप समूह सिविल सेवा (DANICS)' },
+                        { id: 'danips', icon: '🚓', name: 'दिल्ली, अंडमान और निकोबार द्वीप समूह पुलिस सेवा (DANIPS)' },
+                        { id: 'pcs', icon: '🏛️', name: 'पुडुचेरी सिविल सेवा (PCS)' },
+                        { id: 'pps', icon: '🚨', name: 'पुडुचेरी पुलिस सेवा (PPS)' }
+                    ]
+                }
+            ];
+
+            groupedServices.forEach(category => {
+                const categoryTitleDiv = document.createElement('div');
+                categoryTitleDiv.className = 'col-span-full text-left'; // Ensures title spans across grid columns
+                categoryTitleDiv.innerHTML = `<h4 class="service-category-heading">${category.title}</h4>`;
+                container.appendChild(categoryTitleDiv);
+
+                category.services.forEach(service => {
+                    const serviceCard = document.createElement('div');
+                    serviceCard.className = 'service-card';
+                    serviceCard.dataset.serviceId = service.id;
+                    serviceCard.innerHTML = `
+                        <span class="icon">${service.icon}</span>
+                        <div class="name">${service.name}</div>
+                    `;
+                    serviceCard.addEventListener('click', () => showServiceDetails(service.id));
+                    container.appendChild(serviceCard);
+                });
+            });
+        }
+
+        // Function to show individual service details
+        function showServiceDetails(serviceId) {
+            const service = serviceDetailsData[serviceId];
+            if (service) {
+                document.getElementById('serviceCardsContainer').classList.add('hidden');
+                document.getElementById('serviceDetailView').classList.remove('hidden');
+                document.getElementById('serviceDetailTitle').textContent = service.name;
+                document.getElementById('serviceDetailDescription').textContent = service.description;
+            }
+        }
+
+        // Function to show service cards again
+        window.showServiceCards = () => {
+            document.getElementById('serviceCardsContainer').classList.remove('hidden');
+            document.getElementById('serviceDetailView').classList.add('hidden');
+        };
+
+        // Function to render 8th Schedule languages
+        function renderEighthScheduleLanguages() {
+            const langGrid = document.getElementById('eighthScheduleLanguageGrid');
+            if (langGrid) { // Check if element exists before manipulating
+                langGrid.innerHTML = ''; // Clear previous content
+                eighthScheduleLanguages.forEach(lang => {
+                    const langItem = document.createElement('div');
+                    langItem.className = 'language-item';
+                    langItem.textContent = lang;
+                    langGrid.appendChild(langItem);
+                });
+            }
+        }
+
+
+        // Modal functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initial render of service cards when the page loads
+            renderServiceCards();
+            // renderEighthScheduleLanguages(); // Moved to be called when modal is opened
+
+            const modalTriggers = document.querySelectorAll('[data-modal-target]');
+            const modals = document.querySelectorAll('.modal-overlay');
+
+            modalTriggers.forEach(trigger => {
+                trigger.addEventListener('click', () => {
+                    const targetId = trigger.dataset.modalTarget;
+                    const targetModal = document.getElementById(targetId);
+                    if (targetModal) {
+                        targetModal.classList.add('active');
+                        // Reset content to show buttons/cards when opening modal
+                        if (targetId === 'prelimsModal') {
+                            showPrelimsButtons();
+                        } else if (targetId === 'mainsModal') {
+                            showMainsButtons();
+                        } else if (targetId === 'serviceListModal') {
+                            showServiceCards(); // Ensure service cards are shown by default
+                        } else if (targetId === 'eighthScheduleLangModal') {
+                            renderEighthScheduleLanguages(); // Render languages when this specific modal is opened
+                        }
+                    }
+                });
+            });
+
+            modals.forEach(modal => {
+                const closeButton = modal.querySelector('.modal-close-button');
+                closeButton.addEventListener('click', () => {
+                    modal.classList.remove('active');
+                });
+
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) {
+                        modal.classList.remove('active');
+                    }
+                });
+            });
+
+            // Function to show subject details in modal
+            const showSubjectDetails = (stage, subjectKey) => {
+                const detailsDiv = document.getElementById(`${stage}SubjectDetails`);
+                const buttonsGrid = document.getElementById(`${stage}SubjectButtons`);
+                const titleElement = document.getElementById(`${stage}SubjectTitle`);
+                const descriptionElement = document.getElementById(`${stage}SubjectDescription`);
+
+                const data = subjectData[subjectKey];
+                if (data) {
+                    titleElement.textContent = data.title;
+                    descriptionElement.textContent = data.description;
+                    buttonsGrid.classList.add('hidden');
+                    detailsDiv.classList.remove('hidden');
+                }
+            };
+
+            // Function to go back to subject buttons in Prelims modal
+            window.showPrelimsButtons = () => {
+                document.getElementById('prelimsSubjectDetails').classList.add('hidden');
+                document.getElementById('prelimsSubjectButtons').classList.remove('hidden');
+            };
+
+            // Function to go back to subject buttons in Mains modal
+            window.showMainsButtons = () => {
+                document.getElementById('mainsSubjectDetails').classList.add('hidden');
+                document.getElementById('mainsSubjectButtons').classList.remove('hidden');
+            };
+
+            // Event listeners for Prelims subject buttons
+            document.querySelectorAll('#prelimsSubjectButtons .modal-subject-button').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    showSubjectDetails('prelims', e.target.dataset.stageSubject);
+                });
+            });
+
+            // Event listeners for Mains subject buttons
+            document.querySelectorAll('#mainsSubjectButtons .modal-subject-button').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    showSubjectDetails('mains', e.target.dataset.stageSubject);
+                });
+            });
+
+            // Make close modal function globally accessible
+            window.closeModal = (modalId) => {
+                document.getElementById(modalId).classList.remove('active');
+            };
+        });
+
+    </script>
+</body>
+</html>
